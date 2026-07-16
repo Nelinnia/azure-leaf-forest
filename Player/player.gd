@@ -1,0 +1,223 @@
+class_name Player
+extends CharacterBody2D
+
+
+
+@onready var hair_back: Sprite2D = %HairBack
+@onready var player_parts: Node2D = %PlayerParts
+
+var body_parts :Array[Sprite2D]= []
+
+#Quad every base value
+@export var acceleration :float= 2800.0
+@export var deceleration :float= 5600.0
+@export var max_speed :float= 480.0
+
+@export var max_fall_speed :float= 1000.0
+@export var air_acceleration :float= 2000.0
+
+const MAX_JUMPS :int= 2
+var jump_count :int= 0
+
+@export_category("Jump")
+@export_range(10.0, 200.0) var jump_height :float= 200.0
+@export_range(0.1, 1.5) var jump_time_to_peak :float= 0.37 #not quad
+@export_range(0.1, 1.5) var jump_time_to_descent :float= 0.2 #not quad
+@export_range(50.0, 200.0) var jump_horizontal_distance :float= 360.0
+@export_range(5.0, 50.0) var jump_cut_divider :float= 15.0
+
+@export_category("Double Jump")
+@export_range(10.0, 200.0) var double_jump_height :float= 120.0
+@export_range(0.1, 1.5) var double_jump_time_to_peak :float= 0.3 #not quad
+@export_range(0.1, 1.5) var double_jump_time_to_descent :float= 0.25 #not quad
+
+@onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite2D
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
+
+#@onready var dust: GPUParticles2D = %Dust
+
+@onready var jump_speed := calculate_jump_speed(jump_height, jump_time_to_peak)
+@onready var jump_gravity := calculate_jump_gravity(jump_height, jump_time_to_peak)
+@onready var fall_gravity := calculate_fall_gravity(jump_height, jump_time_to_descent)
+@onready var jump_horizontal_speed := calculate_jump_horizontal_speed(jump_horizontal_distance, jump_time_to_peak, jump_time_to_descent)
+
+@onready var double_jump_speed := calculate_jump_speed(double_jump_height, double_jump_time_to_peak)
+@onready var double_jump_gravity := calculate_jump_gravity(double_jump_height, double_jump_time_to_peak)
+@onready var double_jump_fall_gravity := calculate_fall_gravity(double_jump_height, double_jump_time_to_descent)
+
+@onready var coyote_timer := Timer.new()
+
+enum State {
+	GROUND,
+	JUMP,
+	DOUBLE_JUMP,
+	FALL
+}
+
+var current_state :State= State.GROUND
+var direction_x :float= 0.0
+var current_gravity :float= 0.0
+
+func _ready() -> void:
+	_transition_to_state(current_state)
+	coyote_timer.wait_time = 0.1
+	coyote_timer.one_shot = true
+	add_child(coyote_timer)
+	for child in player_parts.get_children():
+		if child is Sprite2D:
+			body_parts.append(child)
+
+func _physics_process(delta: float) -> void:
+	direction_x = signf(Input.get_axis("move_left", "move_right"))
+	
+	match current_state:
+		State.GROUND:
+			process_ground_state(delta)
+		State.JUMP:
+			process_jump_state(delta)
+		State.FALL:
+			process_fall_state(delta)
+		State.DOUBLE_JUMP:
+			process_double_jump_state(delta)
+	
+	velocity.y += current_gravity * delta
+	velocity.y = minf(velocity.y, max_fall_speed)
+	
+	move_and_slide()
+
+func _set_facing(flip: bool) -> void:
+	animated_sprite.flip_h = flip
+	for part in body_parts:
+		part.flip_h = flip
+
+
+func process_ground_state(delta: float) -> void:
+	var is_moving := absf(direction_x) > 0.0
+	#dust.emitting = is_moving
+	if is_moving:
+		velocity.x += acceleration * direction_x * delta
+		velocity.x = clampf(velocity.x, -max_speed, max_speed)
+		
+		#animated_sprite.flip_h = direction_x < 0.0
+		_set_facing(direction_x < 0.0)
+		hair_back.visible = true
+		animated_sprite.play("run")
+		animation_player.play("run")
+	else:
+		velocity.x = move_toward(velocity.x, 0, deceleration * delta)
+		
+		hair_back.visible = true
+		animated_sprite.play("idle")
+		animation_player.play("idle")
+	
+	if Input.is_action_just_pressed("jump"):
+		_transition_to_state(State.JUMP)
+	elif not is_on_floor():
+		_transition_to_state(State.FALL)
+
+func process_jump_state(delta: float) -> void:
+	if direction_x != 0:
+		velocity.x += air_acceleration * direction_x * delta
+		velocity.x = clampf(velocity.x, -jump_horizontal_speed, jump_horizontal_speed)
+		animated_sprite.flip_h = direction_x < 0.0
+	
+	if Input.is_action_just_released("jump"):
+		var jump_cut_speed := jump_speed / jump_cut_divider
+		if velocity.y < 0.0 and velocity.y < jump_cut_speed:
+			velocity.y = jump_cut_speed
+	
+	if velocity.y >= 0:
+		_transition_to_state(State.FALL)
+	elif  Input.is_action_just_pressed("jump"):
+		_transition_to_state(State.DOUBLE_JUMP)
+
+func process_fall_state(delta: float) -> void:
+	if direction_x != 0.0:
+		velocity.x += air_acceleration *  direction_x * delta
+		velocity.x = clampf(velocity.x, -jump_horizontal_speed, jump_horizontal_speed)
+		animated_sprite.flip_h = direction_x < 0.0
+	
+	if Input.is_action_just_pressed("jump"):
+		if not coyote_timer.is_stopped():
+			_transition_to_state( State.JUMP)
+		elif jump_count < MAX_JUMPS:
+			_transition_to_state(State.DOUBLE_JUMP)
+	elif is_on_floor():
+		_transition_to_state(State.GROUND)
+
+func process_double_jump_state(delta: float) -> void:
+	if direction_x != 0.0:
+		velocity.x += air_acceleration * direction_x * delta
+		velocity.x = clampf(velocity.x, -jump_horizontal_speed, jump_horizontal_speed)
+		animated_sprite.flip_h = direction_x < 0.0
+	
+	if velocity.y >= 0.0:
+		_transition_to_state(State.FALL)
+
+func _transition_to_state(new_state: State) -> void:
+	var previous_state := current_state
+	
+	match  previous_state:
+		State.FALL:
+			coyote_timer.stop()
+	
+	current_state = new_state
+	
+	match current_state:
+		State.GROUND:
+			jump_count = 0
+			if previous_state == State.FALL:
+				pass
+				#play_tween_touch_ground()
+		State.JUMP:
+			velocity.y = jump_speed
+			current_gravity = jump_gravity
+			velocity.x = direction_x * jump_horizontal_speed
+			animated_sprite.play("jump_anim")
+			jump_count = 1
+			#play_tween_jump()
+			#dust.emitting = true
+		State.FALL:
+			animated_sprite.play("falling")
+			animation_player.play("falling")
+			hair_back.visible = false
+			if jump_count == MAX_JUMPS:
+				current_gravity = double_jump_fall_gravity
+			else:
+				current_gravity = fall_gravity
+			
+			if previous_state == State.GROUND:
+				coyote_timer.start()
+		State.DOUBLE_JUMP:
+			velocity.y = double_jump_speed
+			current_gravity = double_jump_gravity
+			velocity.x = direction_x * jump_horizontal_speed
+			animated_sprite.play("jump_anim")
+			jump_count = MAX_JUMPS
+			#play_tween_jump()
+			#dust.emitting = true
+
+
+#func play_tween_jump() -> void:
+#	var tween := create_tween()
+#	tween.tween_property(animated_sprite, "scale", Vector2(1.15, 0.86), 0.1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+#	tween.tween_property(animated_sprite, "scale", Vector2(0.86, 1.15), 0.1).set_ease(tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+#	tween.tween_property(animated_sprite, "scale", Vector2.ONE, 0.15)
+#func play_tween_touch_ground() -> void:
+#	var tween := create_tween()
+#	tween.tween_property(animated_sprite, "scale", Vector2(1.1, 0.9), 0.1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+#	tween.tween_property(animated_sprite, "scale", Vector2(0.9, 1.1), 0.1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+#	tween.tween_property(animated_sprite, "scale", Vector2.ONE, 0.15)
+
+
+func calculate_jump_speed(height: float, time_to_peak: float) -> float:
+	return (-2.0 * height) / time_to_peak
+
+func calculate_jump_gravity(height: float, time_to_peak: float) -> float:
+	return (2.0 * height) / pow(time_to_peak, 2.0)
+
+func calculate_fall_gravity(height: float, time_to_descent: float) -> float:
+	return (2.0 * height) / pow(time_to_descent, 2.0)
+
+func calculate_jump_horizontal_speed(distance: float, time_to_peak: float, time_to_descent: float) -> float:
+	return distance / (time_to_peak + time_to_descent)
