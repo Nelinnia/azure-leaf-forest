@@ -6,7 +6,9 @@ extends CharacterBody2D
 @onready var hair_back: Sprite2D = %HairBack
 @onready var player_parts: Node2D = %PlayerParts
 
-var body_parts :Array[Sprite2D]= []
+@onready var right_arm: AnimatedSprite2D = %Right_Arm
+@onready var left_arm: AnimatedSprite2D = %Left_Arm
+
 
 #Quad every base value
 @export var acceleration :float= 2800.0
@@ -33,8 +35,8 @@ var jump_count :int= 0
 
 @onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite2D
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
+@onready var attack_animation_player: AnimationPlayer = %AttackAnimationPlayer
 
-#@onready var dust: GPUParticles2D = %Dust
 
 @onready var jump_speed := calculate_jump_speed(jump_height, jump_time_to_peak)
 @onready var jump_gravity := calculate_jump_gravity(jump_height, jump_time_to_peak)
@@ -54,6 +56,7 @@ enum State {
 	FALL
 }
 
+var is_attacking :bool= false 
 var current_state :State= State.GROUND
 var direction_x :float= 0.0
 var current_gravity :float= 0.0
@@ -63,9 +66,7 @@ func _ready() -> void:
 	coyote_timer.wait_time = 0.1
 	coyote_timer.one_shot = true
 	add_child(coyote_timer)
-	for child in player_parts.get_children():
-		if child is Sprite2D:
-			body_parts.append(child)
+	attack_animation_player.animation_finished.connect(_on_attack_finished)
 
 func _physics_process(delta: float) -> void:
 	direction_x = signf(Input.get_axis("move_left", "move_right"))
@@ -85,21 +86,32 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-func _set_facing(flip: bool) -> void:
-	animated_sprite.flip_h = flip
-	for part in body_parts:
-		part.flip_h = flip
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_released("attack") and not is_attacking:
+		_start_attack()
+func _start_attack() -> void:
+	is_attacking = true
+	var is_ground := current_state == State.GROUND
+	var attack_anim := "sword_swing_ground" if is_ground else "sword_swing_air"
+	attack_animation_player.play("sword_swing_ground")
+	left_arm.play("sword_swing_ground")
+	right_arm.play("sword_swing_ground")
+func _on_attack_finished(anim_name: StringName) -> void:
+	if anim_name == "sword_swing_ground":
+		is_attacking = false
+
 
 
 func process_ground_state(delta: float) -> void:
 	var is_moving := absf(direction_x) > 0.0
-	#dust.emitting = is_moving
 	if is_moving:
 		velocity.x += acceleration * direction_x * delta
 		velocity.x = clampf(velocity.x, -max_speed, max_speed)
 		
-		#animated_sprite.flip_h = direction_x < 0.0
-		_set_facing(direction_x < 0.0)
+		animated_sprite.flip_h = direction_x < 0.0
+		#player_parts.flip_h = direction_x < 0.0
 		hair_back.visible = true
 		animated_sprite.play("run")
 		animation_player.play("run")
@@ -136,6 +148,7 @@ func process_fall_state(delta: float) -> void:
 		velocity.x += air_acceleration *  direction_x * delta
 		velocity.x = clampf(velocity.x, -jump_horizontal_speed, jump_horizontal_speed)
 		animated_sprite.flip_h = direction_x < 0.0
+		animation_player.play("falling")
 	
 	if Input.is_action_just_pressed("jump"):
 		if not coyote_timer.is_stopped():
@@ -168,15 +181,12 @@ func _transition_to_state(new_state: State) -> void:
 			jump_count = 0
 			if previous_state == State.FALL:
 				pass
-				#play_tween_touch_ground()
 		State.JUMP:
 			velocity.y = jump_speed
 			current_gravity = jump_gravity
 			velocity.x = direction_x * jump_horizontal_speed
 			animated_sprite.play("jump_anim")
 			jump_count = 1
-			#play_tween_jump()
-			#dust.emitting = true
 		State.FALL:
 			animated_sprite.play("falling")
 			animation_player.play("falling")
@@ -194,20 +204,9 @@ func _transition_to_state(new_state: State) -> void:
 			velocity.x = direction_x * jump_horizontal_speed
 			animated_sprite.play("jump_anim")
 			jump_count = MAX_JUMPS
-			#play_tween_jump()
-			#dust.emitting = true
 
 
-#func play_tween_jump() -> void:
-#	var tween := create_tween()
-#	tween.tween_property(animated_sprite, "scale", Vector2(1.15, 0.86), 0.1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
-#	tween.tween_property(animated_sprite, "scale", Vector2(0.86, 1.15), 0.1).set_ease(tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
-#	tween.tween_property(animated_sprite, "scale", Vector2.ONE, 0.15)
-#func play_tween_touch_ground() -> void:
-#	var tween := create_tween()
-#	tween.tween_property(animated_sprite, "scale", Vector2(1.1, 0.9), 0.1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
-#	tween.tween_property(animated_sprite, "scale", Vector2(0.9, 1.1), 0.1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
-#	tween.tween_property(animated_sprite, "scale", Vector2.ONE, 0.15)
+
 
 
 func calculate_jump_speed(height: float, time_to_peak: float) -> float:
