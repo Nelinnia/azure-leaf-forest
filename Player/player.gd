@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var hair_back: Sprite2D = %HairBack
 @onready var player_parts: Node2D = %PlayerParts
 
+
 @onready var right_arm: AnimatedSprite2D = %Right_Arm
 @onready var left_arm: AnimatedSprite2D = %Left_Arm
 
@@ -36,6 +37,7 @@ var jump_count :int= 0
 @onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite2D
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var attack_animation_player: AnimationPlayer = %AttackAnimationPlayer
+@onready var visuals: Node2D = %Visuals
 
 
 @onready var jump_speed := calculate_jump_speed(jump_height, jump_time_to_peak)
@@ -59,6 +61,7 @@ enum State {
 var is_attacking :bool= false 
 var current_state :State= State.GROUND
 var direction_x :float= 0.0
+var is_facing_left :bool= false
 var current_gravity :float= 0.0
 
 func _ready() -> void:
@@ -87,7 +90,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-
+@onready var weapon_marker: Marker2D = $Visuals/Weapon/WeaponMarker
 func _input(event: InputEvent) -> void:
 	if event.is_action_released("attack") and not is_attacking:
 		_start_attack()
@@ -95,12 +98,22 @@ func _start_attack() -> void:
 	is_attacking = true
 	var is_ground := current_state == State.GROUND
 	var attack_anim := "sword_swing_ground" if is_ground else "sword_swing_air"
-	attack_animation_player.play("sword_swing_ground")
-	left_arm.play("sword_swing_ground")
-	right_arm.play("sword_swing_ground")
+	attack_animation_player.play(attack_anim)
+	left_arm.play(attack_anim)
+	right_arm.play(attack_anim)
 func _on_attack_finished(anim_name: StringName) -> void:
 	if anim_name == "sword_swing_ground":
 		is_attacking = false
+		weapon_marker.rotation = 0.0
+		weapon_marker.position = Vector2.ZERO
+
+# handles the direction the player sprites are facing
+func _update_facing(new_direction_x: float) -> void:
+	if new_direction_x == 0.0:
+		return #idle faces the direction the player stoped moving in
+	is_facing_left = new_direction_x < 0.0
+	
+	visuals.scale.x = -1.0 if is_facing_left else 1.0
 
 
 
@@ -110,8 +123,7 @@ func process_ground_state(delta: float) -> void:
 		velocity.x += acceleration * direction_x * delta
 		velocity.x = clampf(velocity.x, -max_speed, max_speed)
 		
-		animated_sprite.flip_h = direction_x < 0.0
-		#player_parts.flip_h = direction_x < 0.0
+		_update_facing(direction_x)
 		hair_back.visible = true
 		animated_sprite.play("run")
 		animation_player.play("run")
@@ -131,7 +143,7 @@ func process_jump_state(delta: float) -> void:
 	if direction_x != 0:
 		velocity.x += air_acceleration * direction_x * delta
 		velocity.x = clampf(velocity.x, -jump_horizontal_speed, jump_horizontal_speed)
-		animated_sprite.flip_h = direction_x < 0.0
+		_update_facing(direction_x)
 	
 	if Input.is_action_just_released("jump"):
 		var jump_cut_speed := jump_speed / jump_cut_divider
@@ -147,7 +159,7 @@ func process_fall_state(delta: float) -> void:
 	if direction_x != 0.0:
 		velocity.x += air_acceleration *  direction_x * delta
 		velocity.x = clampf(velocity.x, -jump_horizontal_speed, jump_horizontal_speed)
-		animated_sprite.flip_h = direction_x < 0.0
+		_update_facing(direction_x)
 		animation_player.play("falling")
 	
 	if Input.is_action_just_pressed("jump"):
@@ -162,7 +174,7 @@ func process_double_jump_state(delta: float) -> void:
 	if direction_x != 0.0:
 		velocity.x += air_acceleration * direction_x * delta
 		velocity.x = clampf(velocity.x, -jump_horizontal_speed, jump_horizontal_speed)
-		animated_sprite.flip_h = direction_x < 0.0
+		_update_facing(direction_x)
 	
 	if velocity.y >= 0.0:
 		_transition_to_state(State.FALL)

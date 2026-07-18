@@ -24,7 +24,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerParts/HairBack:position")
+tracks/0/path = NodePath("Visuals/PlayerParts/HairBack:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -36,7 +36,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerParts/HairBack:rotation")
+tracks/1/path = NodePath("Visuals/PlayerParts/HairBack:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -48,7 +48,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerParts/Leg_Right:rotation")
+tracks/2/path = NodePath("Visuals/PlayerParts/Leg_Right:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -60,7 +60,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("PlayerParts/Leg_Left:position")
+tracks/3/path = NodePath("Visuals/PlayerParts/Leg_Left:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -72,7 +72,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("PlayerParts/Leg_Left:rotation")
+tracks/4/path = NodePath("Visuals/PlayerParts/Leg_Left:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -84,7 +84,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("PlayerParts/Leg_Right:position")
+tracks/5/path = NodePath("Visuals/PlayerParts/Leg_Right:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -105,7 +105,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerParts/HairBack:rotation")
+tracks/0/path = NodePath("Visuals/PlayerParts/HairBack:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -117,7 +117,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerParts/Leg_Right:rotation")
+tracks/1/path = NodePath("Visuals/PlayerParts/Leg_Right:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -129,7 +129,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerParts/Leg_Left:position")
+tracks/2/path = NodePath("Visuals/PlayerParts/Leg_Left:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -141,7 +141,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("PlayerParts/Leg_Left:rotation")
+tracks/3/path = NodePath("Visuals/PlayerParts/Leg_Left:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -157,7 +157,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerParts/HairBack:position")
+tracks/0/path = NodePath("Visuals/PlayerParts/HairBack:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -169,7 +169,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerParts/HairBack:rotation")
+tracks/1/path = NodePath("Visuals/PlayerParts/HairBack:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -181,7 +181,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerParts/Leg_Right:position")
+tracks/2/path = NodePath("Visuals/PlayerParts/Leg_Right:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -193,7 +193,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("PlayerParts/Leg_Right:rotation")
+tracks/3/path = NodePath("Visuals/PlayerParts/Leg_Right:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -205,7 +205,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("PlayerParts/Leg_Left:rotation")
+tracks/4/path = NodePath("Visuals/PlayerParts/Leg_Left:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -217,7 +217,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("PlayerParts/Leg_Left:position")
+tracks/5/path = NodePath("Visuals/PlayerParts/Leg_Left:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -241,7 +241,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Weapon/WeaponMarker:rotation")
+tracks/0/path = NodePath("Visuals/Weapon/WeaponMarker:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -253,7 +253,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Weapon/WeaponMarker:position")
+tracks/1/path = NodePath("Visuals/Weapon/WeaponMarker:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -267,6 +267,9 @@ tracks/1/keys = {
 _data = {
 &"sword_swing_ground": SubResource("Animation_o28un")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nq3hm"]
+size = Vector2(11, 19)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l8h54"]
 animations = [{
@@ -308,9 +311,6 @@ animations = [{
 "name": &"run",
 "speed": 5.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nq3hm"]
-size = Vector2(11, 19)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o28un"]
 animations = [{
@@ -367,49 +367,52 @@ libraries/ = SubResource("AnimationLibrary_5htga")
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_n471f")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=896912173]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1874615948]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_nq3hm")
+
+[node name="Visuals" type="Node2D" parent="." unique_id=1449225136]
+unique_name_in_owner = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals" unique_id=896912173]
 unique_name_in_owner = true
 position = Vector2(0, -9)
 scale = Vector2(0.13888891, 0.13888888)
 sprite_frames = SubResource("SpriteFrames_l8h54")
 animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1874615948]
-position = Vector2(-0.5, 0.5)
-shape = SubResource("RectangleShape2D_nq3hm")
-
-[node name="PlayerParts" type="Node2D" parent="." unique_id=259045276]
+[node name="PlayerParts" type="Node2D" parent="Visuals" unique_id=259045276]
 unique_name_in_owner = true
 
-[node name="Leg_Left" type="Sprite2D" parent="PlayerParts" unique_id=799551684]
+[node name="Leg_Left" type="Sprite2D" parent="Visuals/PlayerParts" unique_id=799551684]
 unique_name_in_owner = true
 z_index = -1
 position = Vector2(0, -9)
 scale = Vector2(0.139, 0.139)
 texture = ExtResource("8_00tjw")
 
-[node name="Leg_Right" type="Sprite2D" parent="PlayerParts" unique_id=28573776]
+[node name="Leg_Right" type="Sprite2D" parent="Visuals/PlayerParts" unique_id=28573776]
 unique_name_in_owner = true
 z_index = -1
 position = Vector2(0, -9.000001)
 scale = Vector2(0.139, 0.139)
 texture = ExtResource("9_x3vf3")
 
-[node name="HairBack" type="Sprite2D" parent="PlayerParts" unique_id=1689437038]
+[node name="HairBack" type="Sprite2D" parent="Visuals/PlayerParts" unique_id=1689437038]
 unique_name_in_owner = true
 z_index = -2
 position = Vector2(0, -9)
 scale = Vector2(0.139, 0.139)
 texture = ExtResource("10_x3vf3")
 
-[node name="Left_Arm" type="AnimatedSprite2D" parent="PlayerParts" unique_id=1757928267]
+[node name="Left_Arm" type="AnimatedSprite2D" parent="Visuals/PlayerParts" unique_id=1757928267]
 unique_name_in_owner = true
 position = Vector2(-2, 0)
 scale = Vector2(0.139, 0.139)
 sprite_frames = SubResource("SpriteFrames_o28un")
 animation = &"sword_swing_ground"
 
-[node name="Right_Arm" type="AnimatedSprite2D" parent="PlayerParts" unique_id=250897268]
+[node name="Right_Arm" type="AnimatedSprite2D" parent="Visuals/PlayerParts" unique_id=250897268]
 unique_name_in_owner = true
 z_index = 2
 position = Vector2(-2, 0)
@@ -417,36 +420,36 @@ scale = Vector2(0.139, 0.139)
 sprite_frames = SubResource("SpriteFrames_nq3hm")
 animation = &"sword_swing_ground"
 
-[node name="Weapon" type="Node2D" parent="." unique_id=1269724272]
+[node name="Weapon" type="Node2D" parent="Visuals" unique_id=1269724272]
 script = ExtResource("17_b1ygp")
 
-[node name="WeaponMarker" type="Marker2D" parent="Weapon" unique_id=793270116]
+[node name="WeaponMarker" type="Marker2D" parent="Visuals/Weapon" unique_id=793270116]
 z_index = 1
 position = Vector2(2, 2)
 
-[node name="Sword" type="Sprite2D" parent="Weapon/WeaponMarker" unique_id=1695683423]
+[node name="Sword" type="Sprite2D" parent="Visuals/Weapon/WeaponMarker" unique_id=1695683423]
 position = Vector2(-16, 4)
 rotation = -1.8779358
 scale = Vector2(0.18443385, 0.18443385)
 texture = ExtResource("11_apopc")
 
-[node name="SwordArea2D" type="Area2D" parent="Weapon/WeaponMarker/Sword" unique_id=753741040]
+[node name="SwordArea2D" type="Area2D" parent="Visuals/Weapon/WeaponMarker/Sword" unique_id=753741040]
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon/WeaponMarker/Sword/SwordArea2D" unique_id=1673595275]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visuals/Weapon/WeaponMarker/Sword/SwordArea2D" unique_id=1673595275]
 position = Vector2(-0.29921305, -22.404547)
 rotation = 0.022648752
 shape = SubResource("CapsuleShape2D_nq3hm")
 debug_color = Color(0.9395802, 0.21215683, 0.33157519, 0.41960785)
 
-[node name="Sparkle" type="Sprite2D" parent="Weapon/WeaponMarker" unique_id=1236384062]
+[node name="Sparkle" type="Sprite2D" parent="Visuals/Weapon/WeaponMarker" unique_id=1236384062]
 unique_name_in_owner = true
 
-[node name="Sparkle2" type="Sprite2D" parent="Weapon/WeaponMarker" unique_id=32097326]
+[node name="Sparkle2" type="Sprite2D" parent="Visuals/Weapon/WeaponMarker" unique_id=32097326]
 unique_name_in_owner = true
 
-[node name="Sparkle3" type="Sprite2D" parent="Weapon/WeaponMarker" unique_id=1270466129]
+[node name="Sparkle3" type="Sprite2D" parent="Visuals/Weapon/WeaponMarker" unique_id=1270466129]
 unique_name_in_owner = true
 
-[node name="ChargeTimer" type="Timer" parent="Weapon/WeaponMarker" unique_id=106411532]
+[node name="ChargeTimer" type="Timer" parent="Visuals/Weapon/WeaponMarker" unique_id=106411532]
 unique_name_in_owner = true
