@@ -40,6 +40,8 @@ var jump_count :int= 0
 @onready var visuals: Node2D = %Visuals
 
 @onready var weapon: Node2D = %Weapon
+@onready var weapon_bow: Node2D = $WeaponBow
+
 
 
 @onready var jump_speed := calculate_jump_speed(jump_height, jump_time_to_peak)
@@ -52,6 +54,14 @@ var jump_count :int= 0
 @onready var double_jump_fall_gravity := calculate_fall_gravity(double_jump_height, double_jump_time_to_descent)
 
 @onready var coyote_timer := Timer.new()
+
+
+enum Weapon_State {
+	SWORD,
+	BOW
+}
+
+var current_weapon :Weapon_State= Weapon_State.SWORD
 
 enum State {
 	GROUND,
@@ -68,6 +78,7 @@ var current_gravity :float= 0.0
 
 func _ready() -> void:
 	_transition_to_state(current_state)
+	_swap_weapon()
 	coyote_timer.wait_time = 0.1
 	coyote_timer.one_shot = true
 	add_child(coyote_timer)
@@ -92,10 +103,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+
 @onready var pips: Node2D = %Pips
 @onready var charge_timer: Timer = %ChargeTimer
 @onready var weapon_marker: Marker2D = $Visuals/Weapon/WeaponMarker
 func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("weapon_swap"):
+		_swap_weapon()
 	if event.is_action_pressed("attack") and not is_attacking:
 		charge_timer.start()
 		attack_animation_player.play("sword_swing_charge")
@@ -133,6 +147,21 @@ func _update_facing(new_direction_x: float) -> void:
 	
 	visuals.scale.x = -1.0 if is_facing_left else 1.0
 
+# Handles the node visibility for when the weapons are swapped
+func _swap_weapon() -> void:
+	current_weapon = Weapon_State.BOW if current_weapon == Weapon_State.SWORD else Weapon_State.SWORD
+	
+	match  current_weapon:
+		Weapon_State.SWORD:
+			weapon.visible = true
+			weapon_bow.visible = false
+			left_arm.visible = true
+			right_arm.visible = false
+		Weapon_State.BOW:
+			weapon.visible = false
+			weapon_bow.visible = true
+			left_arm.visible = false
+			right_arm.visible = false
 
 
 func process_ground_state(delta: float) -> void:

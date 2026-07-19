@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c6jhhxs44yc76"]
+
+[ext_resource type="Texture2D" uid="uid://cw2hhirusj2b5" path="res://Player/Weapons/Bow/Arrows/Simple_Wooden_Arrow.png" id="1_agyrc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nq3hm"]
+size = Vector2(41, 18)
+
+[node name="BasicArrow" type="Node2D" unique_id=1399733500]
+
+[node name="ArrowSprite" type="Sprite2D" parent="." unique_id=677980988]
+position = Vector2(-6.0000005, -1)
+rotation = -0.04747954
+texture = ExtResource("1_agyrc")
+
+[node name="ArrowArea" type="Area2D" parent="." unique_id=296111389]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArrowArea" unique_id=1870051525]
+position = Vector2(50.5, 0)
+shape = SubResource("RectangleShape2D_nq3hm")
+debug_color = Color(0.956139, 0.19117999, 0.23758855, 0.41960785)
