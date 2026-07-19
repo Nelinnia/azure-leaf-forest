@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bbx1yqurtxbim"]
+
+[node name="PlayerUI" type="Control" unique_id=1326240640]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthBar" type="TextureProgressBar" parent="." unique_id=2028332464]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StatControl" type="Control" parent="." unique_id=1493742960]
+anchors_preset = 0
+offset_left = 102.0
+offset_top = 434.0
+offset_right = 142.0
+offset_bottom = 474.0
+
+[node name="IncreaseButton" type="TextureButton" parent="StatControl" unique_id=936176224]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DecreaseButton" type="TextureButton" parent="StatControl" unique_id=754389675]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StatNumberRect" type="TextureRect" parent="StatControl" unique_id=608307163]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StatLabel" type="Label" parent="StatControl" unique_id=610840989]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

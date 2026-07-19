@@ -39,6 +39,8 @@ var jump_count :int= 0
 @onready var attack_animation_player: AnimationPlayer = %AttackAnimationPlayer
 @onready var visuals: Node2D = %Visuals
 
+@onready var weapon: Node2D = %Weapon
+
 
 @onready var jump_speed := calculate_jump_speed(jump_height, jump_time_to_peak)
 @onready var jump_gravity := calculate_jump_gravity(jump_height, jump_time_to_peak)
@@ -90,10 +92,24 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+@onready var pips: Node2D = %Pips
+@onready var charge_timer: Timer = %ChargeTimer
 @onready var weapon_marker: Marker2D = $Visuals/Weapon/WeaponMarker
 func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("attack") and not is_attacking:
+		charge_timer.start()
+		attack_animation_player.play("sword_swing_charge")
+		
+		left_arm.play("sword_swing_ground")
+		left_arm.frame = 1
+		left_arm.pause()
+		
+		right_arm.play("sword_swing_ground")
+		right_arm.frame = 1
+		right_arm.pause()
 	if event.is_action_released("attack") and not is_attacking:
 		_start_attack()
+		charge_timer.stop()
 func _start_attack() -> void:
 	is_attacking = true
 	var is_ground := current_state == State.GROUND
@@ -102,10 +118,12 @@ func _start_attack() -> void:
 	left_arm.play(attack_anim)
 	right_arm.play(attack_anim)
 func _on_attack_finished(anim_name: StringName) -> void:
-	if anim_name == "sword_swing_ground":
+	if anim_name == "sword_swing_ground" or anim_name == "sword_swing_air":
 		is_attacking = false
 		weapon_marker.rotation = 0.0
 		weapon_marker.position = Vector2.ZERO
+		charge_timer.stop()
+		weapon.reset_charges()
 
 # handles the direction the player sprites are facing
 func _update_facing(new_direction_x: float) -> void:

@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://8gaopw0yur0k" path="res://Player/Sword_Swing/left_arm/Azure_Leage_Elf_Left_Arm_03.png" id="12_7emwf"]
 [ext_resource type="Texture2D" uid="uid://d0t4vruaph5bp" path="res://Player/Sword_Swing/left_arm/Azure_Leage_Elf_Left_Arm_04.png" id="13_hshwv"]
 [ext_resource type="Script" uid="uid://ccruvudyvhot7" path="res://Player/weapon_sword.gd" id="17_b1ygp"]
+[ext_resource type="Texture2D" uid="uid://bbdq0hogjvu88" path="res://User Interface/Assets/Pip.png" id="19_o28un"]
 
 [sub_resource type="Animation" id="Animation_x3vf3"]
 length = 0.001
@@ -235,9 +236,40 @@ _data = {
 &"run": SubResource("Animation_5htga")
 }
 
-[sub_resource type="Animation" id="Animation_o28un"]
-resource_name = "sword_swing_ground"
-length = 0.5
+[sub_resource type="Animation" id="Animation_n471f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7emwf"]
+resource_name = "sword_swing_air"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.5707964, 3.1415927, 4.712389, 6.2831855]
+}
+
+[sub_resource type="Animation" id="Animation_b1ygp"]
+resource_name = "sword_swing_charge"
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -263,8 +295,39 @@ tracks/1/keys = {
 "values": [Vector2(2, 2)]
 }
 
+[sub_resource type="Animation" id="Animation_o28un"]
+resource_name = "sword_swing_ground"
+length = 0.45
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Weapon/WeaponMarker:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333, 0.1, 0.2333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.8726646259971648, 0.87266463, 2.9136431, 3.6466737]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Weapon/WeaponMarker:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n471f"]
 _data = {
+&"RESET": SubResource("Animation_n471f"),
+&"sword_swing_air": SubResource("Animation_7emwf"),
+&"sword_swing_charge": SubResource("Animation_b1ygp"),
 &"sword_swing_ground": SubResource("Animation_o28un")
 }
 
@@ -324,7 +387,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("12_7emwf")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": ExtResource("13_hshwv")
 }],
 "loop": 0,
@@ -344,7 +407,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("8_pisgm")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": ExtResource("9_b1ygp")
 }],
 "loop": 0,
@@ -421,6 +484,7 @@ sprite_frames = SubResource("SpriteFrames_nq3hm")
 animation = &"sword_swing_ground"
 
 [node name="Weapon" type="Node2D" parent="Visuals" unique_id=1269724272]
+unique_name_in_owner = true
 script = ExtResource("17_b1ygp")
 
 [node name="WeaponMarker" type="Marker2D" parent="Visuals/Weapon" unique_id=793270116]
@@ -442,14 +506,35 @@ rotation = 0.022648752
 shape = SubResource("CapsuleShape2D_nq3hm")
 debug_color = Color(0.9395802, 0.21215683, 0.33157519, 0.41960785)
 
-[node name="Sparkle" type="Sprite2D" parent="Visuals/Weapon/WeaponMarker" unique_id=1236384062]
-unique_name_in_owner = true
-
-[node name="Sparkle2" type="Sprite2D" parent="Visuals/Weapon/WeaponMarker" unique_id=32097326]
-unique_name_in_owner = true
-
-[node name="Sparkle3" type="Sprite2D" parent="Visuals/Weapon/WeaponMarker" unique_id=1270466129]
-unique_name_in_owner = true
-
 [node name="ChargeTimer" type="Timer" parent="Visuals/Weapon/WeaponMarker" unique_id=106411532]
 unique_name_in_owner = true
+
+[node name="Pips" type="Node2D" parent="Visuals/Weapon/WeaponMarker" unique_id=1160307461]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(-2.8176641, 0.2465136)
+rotation = -0.87266463
+
+[node name="Sparkle" type="Sprite2D" parent="Visuals/Weapon/WeaponMarker/Pips" unique_id=1236384062]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-16, -11.999999)
+rotation = 0.87266463
+scale = Vector2(0.10000001, 0.10000001)
+texture = ExtResource("19_o28un")
+
+[node name="Sparkle2" type="Sprite2D" parent="Visuals/Weapon/WeaponMarker/Pips" unique_id=32097326]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-11, -8)
+rotation = 0.87266463
+scale = Vector2(0.10000001, 0.10000001)
+texture = ExtResource("19_o28un")
+
+[node name="Sparkle3" type="Sprite2D" parent="Visuals/Weapon/WeaponMarker/Pips" unique_id=1270466129]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-7, -5.0000005)
+rotation = 0.87266463
+scale = Vector2(0.10000001, 0.10000001)
+texture = ExtResource("19_o28un")
