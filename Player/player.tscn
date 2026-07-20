@@ -23,9 +23,11 @@
 [ext_resource type="Texture2D" uid="uid://ddn77qsixxnwm" path="res://Player/Weapons/ChargeAnimation/Charge_Aura_02.png" id="20_hshwv"]
 [ext_resource type="AudioStream" uid="uid://3t3rqydydkm7" path="res://Player/Weapons/ChargeAnimation/Spell Cast (Version 1).wav" id="22_hshwv"]
 [ext_resource type="Texture2D" uid="uid://dsxkfbnppbiig" path="res://Player/Weapons/Bow/Simple_Wooden_Bow_01.png" id="23_8viyr"]
+[ext_resource type="Script" uid="uid://coe2f1xcfxfey" path="res://Player/Weapons/Bow/weapon_bow.gd" id="23_sm0op"]
 [ext_resource type="Texture2D" uid="uid://chhvmbksa7ydr" path="res://Player/Weapons/Bow/Simple_Wooden_Bow_02.png" id="24_sm0op"]
 [ext_resource type="Texture2D" uid="uid://t5ml0081qjcs" path="res://Player/Weapons/Bow/Simple_Wooden_Bow_03.png" id="25_76lrf"]
 [ext_resource type="Texture2D" uid="uid://b2oikrs4j46jn" path="res://Player/Weapons/Bow/Simple_Wooden_Bow_04.png" id="26_efx54"]
+[ext_resource type="Texture2D" uid="uid://cw2hhirusj2b5" path="res://Player/Weapons/Bow/Arrows/Simple_Wooden_Arrow.png" id="28_76lrf"]
 
 [sub_resource type="Animation" id="Animation_x3vf3"]
 length = 0.001
@@ -478,6 +480,9 @@ shape = SubResource("RectangleShape2D_nq3hm")
 [node name="ChargeTimer" type="Timer" parent="." unique_id=106411532]
 unique_name_in_owner = true
 
+[node name="DrawTimer" type="Timer" parent="." unique_id=2141199147]
+unique_name_in_owner = true
+
 [node name="Visuals" type="Node2D" parent="." unique_id=1449225136]
 unique_name_in_owner = true
 
@@ -514,6 +519,7 @@ texture = ExtResource("10_x3vf3")
 
 [node name="Left_Arm" type="AnimatedSprite2D" parent="Visuals/PlayerParts" unique_id=1757928267]
 unique_name_in_owner = true
+visible = false
 position = Vector2(-2, 0)
 scale = Vector2(0.139, 0.139)
 sprite_frames = SubResource("SpriteFrames_o28un")
@@ -521,6 +527,7 @@ animation = &"sword_swing_ground"
 
 [node name="Right_Arm" type="AnimatedSprite2D" parent="Visuals/PlayerParts" unique_id=250897268]
 unique_name_in_owner = true
+visible = false
 z_index = 2
 position = Vector2(-2, 0)
 scale = Vector2(0.139, 0.139)
@@ -529,6 +536,7 @@ animation = &"sword_swing_ground"
 
 [node name="Weapon" type="Node2D" parent="Visuals" unique_id=1269724272]
 unique_name_in_owner = true
+visible = false
 script = ExtResource("17_b1ygp")
 
 [node name="WeaponMarker" type="Marker2D" parent="Visuals/Weapon" unique_id=793270116]
@@ -594,9 +602,9 @@ texture = ExtResource("19_o28un")
 stream = ExtResource("22_hshwv")
 
 [node name="WeaponBow" type="Node2D" parent="." unique_id=809111670]
-visible = false
 position = Vector2(3, -1)
 scale = Vector2(0.15, 0.15)
+script = ExtResource("23_sm0op")
 
 [node name="BowMarker" type="Marker2D" parent="WeaponBow" unique_id=1669744701]
 position = Vector2(-13.333333, 6.6666665)
@@ -604,3 +612,10 @@ position = Vector2(-13.333333, 6.6666665)
 [node name="BowAniSprite" type="AnimatedSprite2D" parent="WeaponBow/BowMarker" unique_id=500218225]
 position = Vector2(-13.333334, -6.6666665)
 sprite_frames = SubResource("SpriteFrames_5yyr1")
+
+[node name="ArrowSprite" type="Sprite2D" parent="WeaponBow/BowMarker" unique_id=1511170533]
+visible = false
+rotation = -0.046508465
+texture = ExtResource("28_76lrf")
+
+[node name="BowreleaseAudio" type="AudioStreamPlayer2D" parent="WeaponBow" unique_id=2044408074]

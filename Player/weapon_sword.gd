@@ -1,9 +1,9 @@
-extends Node2D
+class_name WeaponSword
+extends WeaponBase
 
-@onready var player :Player= get_parent().get_parent()
 
 
-@onready var bow_ani_sprite: AnimatedSprite2D = $"../../WeaponBow/BowMarker/BowAniSprite"
+
 @onready var weapon_marker: Marker2D = $WeaponMarker
 @onready var charge_timer: Timer = %ChargeTimer
 
@@ -21,6 +21,20 @@ var charges :int= 0
 
 func _ready() -> void:
 	charge_timer.timeout.connect(_on_charge_timeout)
+
+func on_attack_pressed() -> void:
+	charge_timer.start()
+	player.attack_animation_player.play("sword_swing_charge")
+	player.left_arm.play("sword_swing_ground")
+	player.left_arm.frame = 1
+	player.left_arm.pause()
+	player.right_arm.frame = 1
+	player.right_arm.pause()
+
+func on_attack_released() -> void:
+	charge_timer.stop()
+	player._start_attack()
+	reset_charges()
 
 
 func _on_charge_timeout() -> void:
