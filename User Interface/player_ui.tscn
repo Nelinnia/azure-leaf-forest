@@ -15,5 +15,14 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="StatControl" parent="." unique_id=125857881 instance=ExtResource("1_akys6")]
+[node name="GameUI" type="Control" parent="." unique_id=457372774]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StatControl" parent="GameUI" unique_id=125857881 instance=ExtResource("1_akys6")]
 layout_mode = 0
+offset_left = 228.0
+offset_top = 140.0
+offset_right = 268.0
+offset_bottom = 180.0
