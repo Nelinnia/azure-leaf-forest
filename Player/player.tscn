@@ -614,7 +614,6 @@ position = Vector2(-13.333334, -6.6666665)
 sprite_frames = SubResource("SpriteFrames_5yyr1")
 
 [node name="ArrowSprite" type="Sprite2D" parent="WeaponBow/BowMarker" unique_id=1511170533]
-visible = false
 rotation = -0.046508465
 texture = ExtResource("28_76lrf")
 

@@ -3,7 +3,6 @@ extends WeaponBase
 
 
 
-
 @onready var weapon_marker: Marker2D = $WeaponMarker
 @onready var charge_timer: Timer = %ChargeTimer
 
@@ -16,8 +15,8 @@ extends WeaponBase
 @onready var pipcharge_audio: AudioStreamPlayer2D = $WeaponMarker/Pips/PipchargeAudio
 
 
-
 var charges :int= 0
+
 
 func _ready() -> void:
 	charge_timer.timeout.connect(_on_charge_timeout)

@@ -5,8 +5,6 @@ extends CharacterBody2D
 
 @onready var hair_back: Sprite2D = %HairBack
 @onready var player_parts: Node2D = %PlayerParts
-
-
 @onready var right_arm: AnimatedSprite2D = %Right_Arm
 @onready var left_arm: AnimatedSprite2D = %Left_Arm
 
@@ -117,20 +115,8 @@ func _input(event: InputEvent) -> void:
 		_swap_weapon()
 	if event.is_action_pressed("attack") and not is_attacking:
 		current_weapon_node.on_attack_pressed()
-		#charge_timer.start()
-		#attack_animation_player.play("sword_swing_charge")
-		#
-		#left_arm.play("sword_swing_ground")
-		#left_arm.frame = 1
-		#left_arm.pause()
-		#
-		#right_arm.play("sword_swing_ground")
-		#right_arm.frame = 1
-		#right_arm.pause()
 	if event.is_action_released("attack") and not is_attacking:
 		current_weapon_node.on_attack_released()
-		#_start_attack()
-		#charge_timer.stop()
 func _start_attack() -> void:
 	is_attacking = true
 	var is_ground := current_state == State.GROUND
