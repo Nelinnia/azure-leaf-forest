@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://cod13b5xbrjmm"]
+
+[ext_resource type="Script" uid="uid://ixm13sms31xh" path="res://User Interface/stat_control.gd" id="1_ftdfd"]
+[ext_resource type="AudioStream" uid="uid://cg13qk33a3j2e" path="res://User Interface/Assets/Button Click.wav" id="2_uaw1b"]
+[ext_resource type="Texture2D" uid="uid://02yyg5ilh47j" path="res://User Interface/Dark_Red_Arrow.png" id="3_da3bs"]
+[ext_resource type="Texture2D" uid="uid://bd3fifvxml485" path="res://User Interface/Light_Red_Arrow.png" id="4_rn4j6"]
+[ext_resource type="Texture2D" uid="uid://nsg2dj6adoku" path="res://User Interface/Dark_Green_Arrow.png" id="5_pmf2q"]
+[ext_resource type="Texture2D" uid="uid://d1y8a0ix7o5op" path="res://User Interface/Light_Green_Arrow.png" id="6_ok844"]
+
+[node name="StatControl" type="Control" unique_id=125857881]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 197.0
+offset_top = 330.0
+offset_right = 237.0
+offset_bottom = 370.0
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_ftdfd")
+
+[node name="ClickAudio" type="AudioStreamPlayer2D" parent="." unique_id=414108842]
+stream = ExtResource("2_uaw1b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=896208330]
+layout_mode = 0
+offset_left = 46.0
+offset_top = -480.0
+offset_right = 553.0
+offset_bottom = 148.0
+
+[node name="StrengthGrid" type="GridContainer" parent="VBoxContainer" unique_id=1425848221]
+layout_mode = 2
+columns = 4
+
+[node name="StatLabel" type="Label" parent="VBoxContainer/StrengthGrid" unique_id=465478112]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 65
+text = "Str"
+
+[node name="STRDecreaseButton" type="TextureButton" parent="VBoxContainer/StrengthGrid" unique_id=651367213]
+layout_mode = 2
+texture_normal = ExtResource("3_da3bs")
+texture_pressed = ExtResource("4_rn4j6")
+
+[node name="STRStatNumberLabel" type="Label" parent="VBoxContainer/StrengthGrid" unique_id=1286921549]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 65
+text = "99"
+
+[node name="STRIncreaseButton" type="TextureButton" parent="VBoxContainer/StrengthGrid" unique_id=1567389577]
+layout_mode = 2
+texture_normal = ExtResource("5_pmf2q")
+texture_pressed = ExtResource("6_ok844")
+
+[node name="StatNumberRect" type="TextureRect" parent="VBoxContainer/StrengthGrid" unique_id=2066104586]
+layout_mode = 2
+
+[node name="DexterityGrid" type="GridContainer" parent="VBoxContainer" unique_id=585733513]
+layout_mode = 2
+columns = 4
+
+[node name="StatLabel" type="Label" parent="VBoxContainer/DexterityGrid" unique_id=2028727839]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 65
+text = "Dex"
+
+[node name="DEXDecreaseButton" type="TextureButton" parent="VBoxContainer/DexterityGrid" unique_id=1148700652]
+layout_mode = 2
+texture_normal = ExtResource("3_da3bs")
+texture_pressed = ExtResource("4_rn4j6")
+
+[node name="DEXStatNumberLabel" type="Label" parent="VBoxContainer/DexterityGrid" unique_id=2086486962]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 65
+text = "99"
+
+[node name="DEXIncreaseButton" type="TextureButton" parent="VBoxContainer/DexterityGrid" unique_id=628864227]
+layout_mode = 2
+texture_normal = ExtResource("5_pmf2q")
+texture_pressed = ExtResource("6_ok844")
+
+[node name="StatNumberRect" type="TextureRect" parent="VBoxContainer/DexterityGrid" unique_id=279221781]
+layout_mode = 2
+
+[node name="AgilityGrid" type="GridContainer" parent="VBoxContainer" unique_id=595984481]
+layout_mode = 2
+columns = 4
+
+[node name="StatLabel" type="Label" parent="VBoxContainer/AgilityGrid" unique_id=217234007]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 65
+text = "Agi"
+
+[node name="AGIDecreaseButton" type="TextureButton" parent="VBoxContainer/AgilityGrid" unique_id=319600372]
+layout_mode = 2
+texture_normal = ExtResource("3_da3bs")
+texture_pressed = ExtResource("4_rn4j6")
+
+[node name="AGIStatNumberLabel" type="Label" parent="VBoxContainer/AgilityGrid" unique_id=1626873541]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 65
+text = "99"
+
+[node name="AGIIncreaseButton" type="TextureButton" parent="VBoxContainer/AgilityGrid" unique_id=1633772303]
+layout_mode = 2
+texture_normal = ExtResource("5_pmf2q")
+texture_pressed = ExtResource("6_ok844")
+
+[node name="StatNumberRect" type="TextureRect" parent="VBoxContainer/AgilityGrid" unique_id=779438931]
+layout_mode = 2
+
+[node name="WisdomGrid" type="GridContainer" parent="VBoxContainer" unique_id=1738570353]
+layout_mode = 2
+columns = 4
+
+[node name="StatLabel" type="Label" parent="VBoxContainer/WisdomGrid" unique_id=519813272]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 65
+text = "Wis"
+
+[node name="WISDecreaseButton" type="TextureButton" parent="VBoxContainer/WisdomGrid" unique_id=831063795]
+layout_mode = 2
+texture_normal = ExtResource("3_da3bs")
+texture_pressed = ExtResource("4_rn4j6")
+
+[node name="WISStatNumberLabel" type="Label" parent="VBoxContainer/WisdomGrid" unique_id=1253671381]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 65
+text = "99"
+
+[node name="WISIncreaseButton" type="TextureButton" parent="VBoxContainer/WisdomGrid" unique_id=711925606]
+layout_mode = 2
+texture_normal = ExtResource("5_pmf2q")
+texture_pressed = ExtResource("6_ok844")
+
+[node name="StatNumberRect" type="TextureRect" parent="VBoxContainer/WisdomGrid" unique_id=1224570892]
+layout_mode = 2

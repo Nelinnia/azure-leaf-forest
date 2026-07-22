@@ -17,6 +17,8 @@ extends CharacterBody2D
 @export var max_fall_speed :float= 1000.0
 @export var air_acceleration :float= 2000.0
 
+@export var boost_duration :float= 0.15
+
 const MAX_JUMPS :int= 2
 var jump_count :int= 0
 
@@ -142,6 +144,11 @@ func _update_facing(new_direction_x: float) -> void:
 	is_facing_left = new_direction_x < 0.0
 	
 	visuals.scale.x = -1.0 if is_facing_left else 1.0
+
+func apply_movement_boost(displacement: Vector2) -> void:
+	var boost_speed := displacement / boost_duration
+	velocity = boost_speed
+
 
 # Handles the node visibility for when the weapons are swapped
 func _swap_weapon() -> void:

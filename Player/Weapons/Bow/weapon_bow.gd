@@ -16,6 +16,7 @@ var draw_counter :int= 0
 
 var aim_angle :float= 0.0
 
+@export var boost_distance :float= 300.0
 
 func _ready() -> void:
 	draw_timer.timeout.connect(_draw_bow)
@@ -45,9 +46,9 @@ func on_attack_released() -> void:
 	arrow.global_rotation = aim_angle
 	arrow.apply_charge(draw_counter)
 	
-	draw_counter = 0
-	
 	launch_backward()
+	
+	draw_counter = 0
 
 @export var max_charge :int= 3
 func _draw_bow() -> void:
@@ -60,6 +61,9 @@ func _draw_bow() -> void:
 		draw_timer.stop()
 
 func launch_backward() -> void:
-	var to_mouse := get_global_mouse_position() - player.global_position
-	if draw_counter >= 3 and not player.State.GROUND :
-		pass
+	var is_airboren := player.current_state != Player.State.GROUND
+	var is_max_charge := draw_counter >= max_charge
+	
+	if is_airboren and is_max_charge:
+		var boost_direction := -Vector2.RIGHT.rotated( aim_angle)
+		player.apply_movement_boost(boost_direction * boost_distance)

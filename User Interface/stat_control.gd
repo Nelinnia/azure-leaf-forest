@@ -22,3 +22,14 @@ extends Control
 @onready var wis_decrease_button: TextureButton = $VBoxContainer/WisdomGrid/WISDecreaseButton
 @onready var wis_stat_number_label: Label = $VBoxContainer/WisdomGrid/WISStatNumberLabel
 @onready var wis_increase_button: TextureButton = $VBoxContainer/WisdomGrid/WISIncreaseButton
+
+
+var button_array :Array[Button]= []
+
+
+func _ready() -> void:
+	pass
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_pressed("stat_panel"):
+		visible = !visible
