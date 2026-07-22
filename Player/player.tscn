@@ -28,6 +28,8 @@
 [ext_resource type="Texture2D" uid="uid://t5ml0081qjcs" path="res://Player/Weapons/Bow/Simple_Wooden_Bow_03.png" id="25_76lrf"]
 [ext_resource type="Texture2D" uid="uid://b2oikrs4j46jn" path="res://Player/Weapons/Bow/Simple_Wooden_Bow_04.png" id="26_efx54"]
 [ext_resource type="Texture2D" uid="uid://cw2hhirusj2b5" path="res://Player/Weapons/Bow/Arrows/Simple_Wooden_Arrow.png" id="28_76lrf"]
+[ext_resource type="AudioStream" uid="uid://kn77n08o6g33" path="res://Player/Weapons/Bow/Bow Drawn.wav" id="29_efx54"]
+[ext_resource type="AudioStream" uid="uid://de5mqlogjshim" path="res://Player/Weapons/Sword Taking .wav" id="30_755ss"]
 
 [sub_resource type="Animation" id="Animation_x3vf3"]
 length = 0.001
@@ -614,7 +616,12 @@ position = Vector2(-13.333334, -6.6666665)
 sprite_frames = SubResource("SpriteFrames_5yyr1")
 
 [node name="ArrowSprite" type="Sprite2D" parent="WeaponBow/BowMarker" unique_id=1511170533]
-rotation = -0.046508465
 texture = ExtResource("28_76lrf")
 
-[node name="BowreleaseAudio" type="AudioStreamPlayer2D" parent="WeaponBow" unique_id=2044408074]
+[node name="BowDrawAudio" type="AudioStreamPlayer2D" parent="WeaponBow" unique_id=2044408074]
+unique_name_in_owner = true
+stream = ExtResource("29_efx54")
+
+[node name="WeaponSwapAudio" type="AudioStreamPlayer2D" parent="." unique_id=413742612]
+unique_name_in_owner = true
+stream = ExtResource("30_755ss")

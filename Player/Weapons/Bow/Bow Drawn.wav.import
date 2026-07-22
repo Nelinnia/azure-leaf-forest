@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://kn77n08o6g33"
+path="res://.godot/imported/Bow Drawn.wav-daf7dd7755e727202679ad0ea5829562.sample"
+
+[deps]
+
+source_file="res://Player/Weapons/Bow/Bow Drawn.wav"
+dest_files=["res://.godot/imported/Bow Drawn.wav-daf7dd7755e727202679ad0ea5829562.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -13,11 +13,10 @@ collision_mask = 2
 script = ExtResource("1_cxx4f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1870051525]
-position = Vector2(50.5, 0)
+position = Vector2(53.333332, 3.3333333)
 shape = SubResource("RectangleShape2D_nq3hm")
 debug_color = Color(0.956139, 0.19117999, 0.23758855, 0.41960785)
 
 [node name="ArrowSprite" type="Sprite2D" parent="." unique_id=677980988]
 position = Vector2(-6.0000005, -1)
-rotation = -0.04747954
 texture = ExtResource("1_agyrc")

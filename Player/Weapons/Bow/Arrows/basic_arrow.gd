@@ -4,8 +4,8 @@ extends Area2D
 @export_category("Per-Charge Stats")
 @export var charge_speeds :Array[float]= [500.0, 1000.0, 1500.0, 2000.0]
 @export var charge_drop_speeds :Array[float]= [250.0, 180.0, 110.0, 40.0]
-@export var charge_drop_rotations :Array[float]= [140.0, 90.0, 50.0, 10.0]
-@export var charge_drop_start_distance: Array[float] = [250.0, 1000.0, 2000.0, 3000.0]
+@export var charge_drop_rotations :Array[float]= [180.0, 90.0, 50.0, 10.0]
+@export var charge_drop_start_distance: Array[float] = [100.0, 1000.0, 2000.0, 3000.0]
 
 @export var max_distance :float= 10000.0
 

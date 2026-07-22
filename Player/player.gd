@@ -54,6 +54,9 @@ var jump_count :int= 0
 @onready var coyote_timer := Timer.new()
 
 
+@onready var weapon_swap_audio: AudioStreamPlayer2D = %WeaponSwapAudio
+const SWORD_SWAP = preload("res://Player/Weapons/Sword Taking .wav")
+
 enum Weapon_State {
 	SWORD,
 	BOW
@@ -149,6 +152,7 @@ func _swap_weapon() -> void:
 	
 	match  current_weapon:
 		Weapon_State.SWORD:
+			weapon_swap_audio.play()
 			weapon_bow.visible = false
 			left_arm.visible = true
 			right_arm.visible = true

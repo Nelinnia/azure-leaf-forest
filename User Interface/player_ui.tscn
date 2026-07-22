@@ -1,5 +1,12 @@
 [gd_scene format=3 uid="uid://bbx1yqurtxbim"]
 
+[ext_resource type="AudioStream" uid="uid://cg13qk33a3j2e" path="res://User Interface/Assets/Button Click.wav" id="1_3dkjn"]
+[ext_resource type="Texture2D" uid="uid://nsg2dj6adoku" path="res://User Interface/Dark_Green_Arrow.png" id="1_vmcks"]
+[ext_resource type="Script" uid="uid://ixm13sms31xh" path="res://User Interface/stat_control.gd" id="1_y77tf"]
+[ext_resource type="Texture2D" uid="uid://d1y8a0ix7o5op" path="res://User Interface/Light_Green_Arrow.png" id="2_3dkjn"]
+[ext_resource type="Texture2D" uid="uid://02yyg5ilh47j" path="res://User Interface/Dark_Red_Arrow.png" id="3_y77tf"]
+[ext_resource type="Texture2D" uid="uid://bd3fifvxml485" path="res://User Interface/Light_Red_Arrow.png" id="4_5bung"]
+
 [node name="PlayerUI" type="Control" unique_id=1326240640]
 layout_mode = 3
 anchors_preset = 15
@@ -15,27 +22,143 @@ offset_bottom = 40.0
 
 [node name="StatControl" type="Control" parent="." unique_id=1493742960]
 anchors_preset = 0
-offset_left = 102.0
-offset_top = 434.0
-offset_right = 142.0
-offset_bottom = 474.0
+offset_left = 197.0
+offset_top = 330.0
+offset_right = 237.0
+offset_bottom = 370.0
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_y77tf")
 
-[node name="IncreaseButton" type="TextureButton" parent="StatControl" unique_id=936176224]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="ClickAudio" type="AudioStreamPlayer2D" parent="StatControl" unique_id=1527806954]
+stream = ExtResource("1_3dkjn")
 
-[node name="DecreaseButton" type="TextureButton" parent="StatControl" unique_id=754389675]
+[node name="VBoxContainer" type="VBoxContainer" parent="StatControl" unique_id=393321873]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 46.0
+offset_top = -480.0
+offset_right = 553.0
+offset_bottom = 148.0
 
-[node name="StatNumberRect" type="TextureRect" parent="StatControl" unique_id=608307163]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="StrengthGrid" type="GridContainer" parent="StatControl/VBoxContainer" unique_id=43047049]
+layout_mode = 2
+columns = 4
 
-[node name="StatLabel" type="Label" parent="StatControl" unique_id=610840989]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="StatLabel" type="Label" parent="StatControl/VBoxContainer/StrengthGrid" unique_id=683001738]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 65
+text = "Str"
+
+[node name="STRDecreaseButton" type="TextureButton" parent="StatControl/VBoxContainer/StrengthGrid" unique_id=754389675]
+layout_mode = 2
+texture_normal = ExtResource("3_y77tf")
+texture_pressed = ExtResource("4_5bung")
+
+[node name="STRStatNumberLabel" type="Label" parent="StatControl/VBoxContainer/StrengthGrid" unique_id=610840989]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 65
+text = "99"
+
+[node name="STRIncreaseButton" type="TextureButton" parent="StatControl/VBoxContainer/StrengthGrid" unique_id=936176224]
+layout_mode = 2
+texture_normal = ExtResource("1_vmcks")
+texture_pressed = ExtResource("2_3dkjn")
+
+[node name="StatNumberRect" type="TextureRect" parent="StatControl/VBoxContainer/StrengthGrid" unique_id=608307163]
+layout_mode = 2
+
+[node name="DexterityGrid" type="GridContainer" parent="StatControl/VBoxContainer" unique_id=300037367]
+layout_mode = 2
+columns = 4
+
+[node name="StatLabel" type="Label" parent="StatControl/VBoxContainer/DexterityGrid" unique_id=204376057]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 65
+text = "Dex"
+
+[node name="DEXDecreaseButton" type="TextureButton" parent="StatControl/VBoxContainer/DexterityGrid" unique_id=1432531975]
+layout_mode = 2
+texture_normal = ExtResource("3_y77tf")
+texture_pressed = ExtResource("4_5bung")
+
+[node name="DEXStatNumberLabel" type="Label" parent="StatControl/VBoxContainer/DexterityGrid" unique_id=1314811662]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 65
+text = "99"
+
+[node name="DEXIncreaseButton" type="TextureButton" parent="StatControl/VBoxContainer/DexterityGrid" unique_id=1657609575]
+layout_mode = 2
+texture_normal = ExtResource("1_vmcks")
+texture_pressed = ExtResource("2_3dkjn")
+
+[node name="StatNumberRect" type="TextureRect" parent="StatControl/VBoxContainer/DexterityGrid" unique_id=2405130]
+layout_mode = 2
+
+[node name="AgilityGrid" type="GridContainer" parent="StatControl/VBoxContainer" unique_id=550514102]
+layout_mode = 2
+columns = 4
+
+[node name="StatLabel" type="Label" parent="StatControl/VBoxContainer/AgilityGrid" unique_id=1927223424]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 65
+text = "Agi"
+
+[node name="AGIDecreaseButton" type="TextureButton" parent="StatControl/VBoxContainer/AgilityGrid" unique_id=396296683]
+layout_mode = 2
+texture_normal = ExtResource("3_y77tf")
+texture_pressed = ExtResource("4_5bung")
+
+[node name="AGIStatNumberLabel" type="Label" parent="StatControl/VBoxContainer/AgilityGrid" unique_id=1274749799]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 65
+text = "99"
+
+[node name="AGIIncreaseButton" type="TextureButton" parent="StatControl/VBoxContainer/AgilityGrid" unique_id=2010717098]
+layout_mode = 2
+texture_normal = ExtResource("1_vmcks")
+texture_pressed = ExtResource("2_3dkjn")
+
+[node name="StatNumberRect" type="TextureRect" parent="StatControl/VBoxContainer/AgilityGrid" unique_id=564988716]
+layout_mode = 2
+
+[node name="WisdomGrid" type="GridContainer" parent="StatControl/VBoxContainer" unique_id=1390047643]
+layout_mode = 2
+columns = 4
+
+[node name="StatLabel" type="Label" parent="StatControl/VBoxContainer/WisdomGrid" unique_id=1263564111]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 65
+text = "Wis"
+
+[node name="WISDecreaseButton" type="TextureButton" parent="StatControl/VBoxContainer/WisdomGrid" unique_id=100422377]
+layout_mode = 2
+texture_normal = ExtResource("3_y77tf")
+texture_pressed = ExtResource("4_5bung")
+
+[node name="WISStatNumberLabel" type="Label" parent="StatControl/VBoxContainer/WisdomGrid" unique_id=1244030540]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 65
+text = "99"
+
+[node name="WISIncreaseButton" type="TextureButton" parent="StatControl/VBoxContainer/WisdomGrid" unique_id=185028803]
+layout_mode = 2
+texture_normal = ExtResource("1_vmcks")
+texture_pressed = ExtResource("2_3dkjn")
+
+[node name="StatNumberRect" type="TextureRect" parent="StatControl/VBoxContainer/WisdomGrid" unique_id=2125677125]
+layout_mode = 2

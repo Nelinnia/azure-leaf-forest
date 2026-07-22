@@ -7,6 +7,8 @@ extends WeaponBase
 @onready var arrow_sprite: Sprite2D = $BowMarker/ArrowSprite
 
 @onready var draw_timer: Timer = %DrawTimer
+@onready var bow_draw_audio: AudioStreamPlayer2D = %BowDrawAudio
+
 
 const BASIC_ARROW :PackedScene= preload("res://Player/Weapons/Bow/Arrows/basic_arrow.tscn")
 
@@ -49,6 +51,7 @@ func on_attack_released() -> void:
 
 @export var max_charge :int= 3
 func _draw_bow() -> void:
+	bow_draw_audio.play()
 	if draw_counter < max_charge:
 		draw_counter += 1
 		bow_ani_sprite.frame += 1
