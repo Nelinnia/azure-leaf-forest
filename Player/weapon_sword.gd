@@ -11,11 +11,13 @@ extends WeaponBase
 @onready var sparkle_3: Sprite2D = %Sparkle3
 @onready var charge_ani_sprite: AnimatedSprite2D = $WeaponMarker/Pips/ChargeAniSprite
 
+@export var boost_distance :float= 300.0
 
 @onready var pipcharge_audio: AudioStreamPlayer2D = $WeaponMarker/Pips/PipchargeAudio
 
 
 var charges :int= 0
+@export var max_charge :int= 3
 
 
 func _ready() -> void:
@@ -33,6 +35,7 @@ func on_attack_pressed() -> void:
 func on_attack_released() -> void:
 	charge_timer.stop()
 	player._start_attack()
+	launch_forward()
 	reset_charges()
 
 
@@ -56,3 +59,11 @@ func reset_charges() -> void:
 	sparkle_2.visible = false
 	sparkle_3.visible = false
 	charge_ani_sprite.visible = false
+
+func launch_forward() -> void:
+	var is_airborn := player.current_state != Player.State.GROUND
+	var is_max_charge := charges >= max_charge
+	
+	if is_airborn and is_max_charge:
+		var boost_direction := Vector2.RIGHT
+		player.apply_movement_boost(boost_direction * boost_distance)

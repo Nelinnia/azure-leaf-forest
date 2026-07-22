@@ -391,6 +391,14 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("10_o28un")
+}],
+"loop": 0,
+"name": &"sword_swing_air",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_o28un")
 }, {
 "duration": 2.0,
 "texture": ExtResource("11_n471f")
@@ -408,6 +416,14 @@ animations = [{
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nq3hm"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_dkpta")
+}],
+"loop": 0,
+"name": &"sword_swing_air",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("6_dkpta")
@@ -525,7 +541,7 @@ visible = false
 position = Vector2(-2, 0)
 scale = Vector2(0.139, 0.139)
 sprite_frames = SubResource("SpriteFrames_o28un")
-animation = &"sword_swing_ground"
+animation = &"sword_swing_air"
 
 [node name="Right_Arm" type="AnimatedSprite2D" parent="Visuals/PlayerParts" unique_id=250897268]
 unique_name_in_owner = true
@@ -534,7 +550,7 @@ z_index = 2
 position = Vector2(-2, 0)
 scale = Vector2(0.139, 0.139)
 sprite_frames = SubResource("SpriteFrames_nq3hm")
-animation = &"sword_swing_ground"
+animation = &"sword_swing_air"
 
 [node name="Weapon" type="Node2D" parent="Visuals" unique_id=1269724272]
 unique_name_in_owner = true
