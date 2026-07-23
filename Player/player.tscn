@@ -638,6 +638,9 @@ texture = ExtResource("28_76lrf")
 unique_name_in_owner = true
 stream = ExtResource("29_efx54")
 
+[node name="LockOutTimer" type="Timer" parent="WeaponBow" unique_id=2131501861]
+unique_name_in_owner = true
+
 [node name="WeaponSwapAudio" type="AudioStreamPlayer2D" parent="." unique_id=413742612]
 unique_name_in_owner = true
 stream = ExtResource("30_755ss")

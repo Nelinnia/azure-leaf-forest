@@ -7,6 +7,7 @@ extends WeaponBase
 @onready var arrow_sprite: Sprite2D = $BowMarker/ArrowSprite
 
 @onready var draw_timer: Timer = %DrawTimer
+@onready var lock_out_timer: Timer = %LockOutTimer
 @onready var bow_draw_audio: AudioStreamPlayer2D = %BowDrawAudio
 
 
@@ -15,11 +16,13 @@ const BASIC_ARROW :PackedScene= preload("res://Player/Weapons/Bow/Arrows/basic_a
 var draw_counter :int= 0
 
 var aim_angle :float= 0.0
+var is_locked_out :bool= false
 
 @export var boost_distance :float= 300.0
 
 func _ready() -> void:
 	draw_timer.timeout.connect(_draw_bow)
+	lock_out_timer.timeout.connect(_lock_out_timeout)
 
 func handle_process(delta: float) -> void:
 	var to_mouse := get_global_mouse_position() - player.global_position
@@ -32,13 +35,21 @@ func handle_process(delta: float) -> void:
 	arrow_sprite.flip_v = facing_left
 
 func on_attack_pressed() -> void:
+	if is_locked_out: #prevents the player from spamming base arrow.
+		return
 	draw_timer.start()
 	arrow_sprite.visible = true
 
 func on_attack_released() -> void:
+	if is_locked_out: #prevents the player from spamming base arrow.
+		return
 	draw_timer.stop()
 	arrow_sprite.visible = false
 	bow_ani_sprite.frame = 0
+	
+	if draw_counter == 0: #prevents the player from spamming base arrow.
+		is_locked_out = true
+		lock_out_timer.start() 
 	
 	var arrow :Node2D= BASIC_ARROW.instantiate()
 	get_tree().current_scene.add_child(arrow)
@@ -67,3 +78,7 @@ func launch_backward() -> void:
 	if is_airboren and is_max_charge:
 		var boost_direction := -Vector2.RIGHT.rotated( aim_angle)
 		player.apply_movement_boost(boost_direction * boost_distance)
+
+#prevents the player from spamming base arrow.
+func _lock_out_timeout() -> void:
+	is_locked_out = false

@@ -5,8 +5,9 @@ signal stat_changed (stat_name: String, new_value: int)
 
 
 var player_hp := 100
-var player_xp := 0
+var player_mana := 10
 var player_lv := 1
+var player_xp := 0
 var player_skill_points_available := 0
 
 
