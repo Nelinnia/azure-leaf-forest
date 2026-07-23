@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bbx1yqurtxbim"]
 
+[ext_resource type="Script" uid="uid://c17q1vexguax" path="res://User Interface/game_ui.gd" id="1_6daay"]
 [ext_resource type="PackedScene" uid="uid://cod13b5xbrjmm" path="res://User Interface/StatPanel/stat_control.tscn" id="1_akys6"]
 
 [node name="PlayerUI" type="Control" unique_id=1326240640]
@@ -19,6 +20,7 @@ offset_bottom = 40.0
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_6daay")
 
 [node name="StatControl" parent="GameUI" unique_id=125857881 instance=ExtResource("1_akys6")]
 layout_mode = 0

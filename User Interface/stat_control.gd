@@ -24,6 +24,8 @@ extends Control
 @onready var wis_increase_button: TextureButton = $PanelContainer/VBoxContainer/WisdomGrid/WISIncreaseButton
 
 
+@onready var points_label: Label = $PanelContainer2/GridContainer/PointsLabel
+
 @onready var click_audio: AudioStreamPlayer2D = $ClickAudio
 
 var _stat_labels :Dictionary= {}
@@ -47,9 +49,12 @@ func _ready() -> void:
 	wis_decrease_button.pressed.connect(_on_button_press.bind("wisdom", -1))
 	
 	PlayerStats.stat_changed.connect(_on_stat_changed)
+	PlayerStats.skill_points_changed.connect(_on_skill_points_changed)
 	
 	for stat_name in _stat_labels.keys():
 		_update_label(stat_name, PlayerStats.get(stat_name))
+	
+	_update_points_label(PlayerStats.player_skill_points_available)
 	
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("stat_panel"):
@@ -59,9 +64,15 @@ func _on_button_press(stat_name: String, amount: int) -> void:
 	click_audio.play()
 	PlayerStats.change_stat(stat_name, amount)
 
+
 func _on_stat_changed(stat_name: String, new_value: int) -> void:
 	_update_label(stat_name, new_value)
 
 func _update_label(stat_name: String, value: int) -> void:
 	if _stat_labels.has(stat_name):
 		_stat_labels[stat_name].text = str(value)
+
+func _on_skill_points_changed(new_value: int) -> void:
+	_update_points_label(new_value)
+func _update_points_label(value: int) -> void:
+	points_label.text = str(value)
