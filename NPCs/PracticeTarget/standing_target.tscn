@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ql8lfo5qj3uf"]
 
 [ext_resource type="Texture2D" uid="uid://b6yuu862so1m2" path="res://NPCs/PracticeTarget/Standing_Target_Head_01.png" id="1_slbs5"]
+[ext_resource type="Script" uid="uid://c7e7ka2qb61xf" path="res://NPCs/PracticeTarget/standing_target.gd" id="1_xm2ot"]
 [ext_resource type="Texture2D" uid="uid://dlf2drjud1363" path="res://NPCs/PracticeTarget/Standing_Target_Torso_01.png" id="2_xm2ot"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_etno1"]
@@ -77,6 +78,8 @@ _data = {
 
 [node name="StandingTarget" type="Node2D" unique_id=1637686509]
 scale = Vector2(0.3, 0.3)
+script = ExtResource("1_xm2ot")
+health = 1000
 
 [node name="HeadSprite" type="Sprite2D" parent="." unique_id=251509438]
 position = Vector2(-3, -2)
