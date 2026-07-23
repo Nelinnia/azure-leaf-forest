@@ -78,6 +78,8 @@ var is_attacking :bool= false
 var current_state :State= State.GROUND
 var direction_x :float= 0.0
 var is_facing_left :bool= false
+var is_boosting :bool= false
+@export var voost_lockout_duratioin :float= 0.25
 var current_gravity :float= 0.0
 
 func _ready() -> void:
@@ -148,6 +150,10 @@ func _update_facing(new_direction_x: float) -> void:
 func apply_movement_boost(displacement: Vector2) -> void:
 	var boost_speed := displacement / boost_duration
 	velocity = boost_speed
+	is_boosting = true
+	
+	var boost_timer := get_tree().create_timer(boost_duration)
+	boost_timer.timeout.connect(func(): is_boosting = false)
 
 
 # Handles the node visibility for when the weapons are swapped
@@ -192,10 +198,13 @@ func process_ground_state(delta: float) -> void:
 		_transition_to_state(State.FALL)
 
 func process_jump_state(delta: float) -> void:
-	if direction_x != 0:
+	if is_boosting:
+		_update_facing(direction_x)
+	elif direction_x != 0:
 		velocity.x += air_acceleration * direction_x * delta
 		velocity.x = clampf(velocity.x, -jump_horizontal_speed, jump_horizontal_speed)
 		_update_facing(direction_x)
+
 	
 	if Input.is_action_just_released("jump"):
 		var jump_cut_speed := jump_speed / jump_cut_divider
@@ -206,13 +215,18 @@ func process_jump_state(delta: float) -> void:
 		_transition_to_state(State.FALL)
 	elif  Input.is_action_just_pressed("jump"):
 		_transition_to_state(State.DOUBLE_JUMP)
+		
 
 func process_fall_state(delta: float) -> void:
-	if direction_x != 0.0:
+	if  is_boosting:
+		_update_facing(direction_x)
+	elif direction_x != 0.0:
 		velocity.x += air_acceleration *  direction_x * delta
 		velocity.x = clampf(velocity.x, -jump_horizontal_speed, jump_horizontal_speed)
 		_update_facing(direction_x)
 		animation_player.play("falling")
+	elif  is_boosting:
+		_update_facing(direction_x)
 	
 	if Input.is_action_just_pressed("jump"):
 		if not coyote_timer.is_stopped():
@@ -223,10 +237,13 @@ func process_fall_state(delta: float) -> void:
 		_transition_to_state(State.GROUND)
 
 func process_double_jump_state(delta: float) -> void:
-	if direction_x != 0.0:
+	if is_boosting:
+		_update_facing(direction_x)
+	elif direction_x != 0.0:
 		velocity.x += air_acceleration * direction_x * delta
 		velocity.x = clampf(velocity.x, -jump_horizontal_speed, jump_horizontal_speed)
 		_update_facing(direction_x)
+
 	
 	if velocity.y >= 0.0:
 		_transition_to_state(State.FALL)

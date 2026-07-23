@@ -65,5 +65,7 @@ func launch_forward() -> void:
 	var is_max_charge := charges >= max_charge
 	
 	if is_airborn and is_max_charge:
-		var boost_direction := Vector2.RIGHT
+		var boost_direction := player.velocity.normalized()
+		if boost_direction == Vector2.ZERO:
+			boost_direction = Vector2.LEFT if player.is_facing_left else Vector2.RIGHT
 		player.apply_movement_boost(boost_direction * boost_distance)
