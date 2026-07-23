@@ -1,5 +1,5 @@
 class_name NPC
-extends Node
+extends Area2D
 
 
 @export var health :int= 100: set = set_health
@@ -24,7 +24,11 @@ func set_health(new_health: int) -> void:
 
 func take_damage(damage: int) -> void:
 	set_health(health - damage)
-
+	
+	var damage_indicator :Node2D= preload("res://User Interface/HUD/damage_indicator.tscn").instantiate()
+	get_tree().current_scene.add_child(damage_indicator)
+	damage_indicator.global_position = global_position
+	damage_indicator.display_amount(damage)
 
 
 func _die(was_killed :bool= false) -> void:

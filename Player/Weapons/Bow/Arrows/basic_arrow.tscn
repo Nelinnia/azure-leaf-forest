@@ -4,16 +4,16 @@
 [ext_resource type="Script" uid="uid://bml3t6puato5j" path="res://Player/Weapons/Bow/Arrows/basic_arrow.gd" id="1_cxx4f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nq3hm"]
-size = Vector2(41, 18)
+size = Vector2(33.833332, 18)
 
 [node name="BasicArrow" type="Area2D" unique_id=296111389]
 scale = Vector2(0.3, 0.3)
-collision_layer = 2
-collision_mask = 2
+collision_layer = 8
+collision_mask = 6
 script = ExtResource("1_cxx4f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1870051525]
-position = Vector2(53.333332, 3.3333333)
+position = Vector2(49.749996, 3.3333333)
 shape = SubResource("RectangleShape2D_nq3hm")
 debug_color = Color(0.956139, 0.19117999, 0.23758855, 0.41960785)
 

@@ -40,9 +40,9 @@ func change_stat(stat_name: String, amount: int) -> void:
 
 
 func get_sword_damage_bonus() -> float:
-	return strength * 1.5
+	return strength * 3
 func get_bow_damage_bonus() -> float:
-	return dexterity * 1.2
+	return dexterity * 2
 
 func get_jump_bonus() -> float:
 	return strength * 5.0 #base 200

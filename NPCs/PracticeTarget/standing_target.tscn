@@ -1,21 +1,21 @@
 [gd_scene format=3 uid="uid://ql8lfo5qj3uf"]
 
 [ext_resource type="Texture2D" uid="uid://b6yuu862so1m2" path="res://NPCs/PracticeTarget/Standing_Target_Head_01.png" id="1_slbs5"]
-[ext_resource type="Script" uid="uid://c7e7ka2qb61xf" path="res://NPCs/PracticeTarget/standing_target.gd" id="1_xm2ot"]
+[ext_resource type="Script" uid="uid://dtrkybcq2nfx6" path="res://NPCs/NPC.gd" id="1_xm2ot"]
 [ext_resource type="Texture2D" uid="uid://dlf2drjud1363" path="res://NPCs/PracticeTarget/Standing_Target_Torso_01.png" id="2_xm2ot"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_etno1"]
 radius = 56.764618
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jy78r"]
-size = Vector2(73.33333, 70)
+size = Vector2(80.85106, 85.106384)
 
 [sub_resource type="Animation" id="Animation_slbs5"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HeadSprite:rotation")
+tracks/0/path = NodePath("../HeadSprite:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -27,7 +27,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HeadSprite:position")
+tracks/1/path = NodePath("../HeadSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -47,7 +47,7 @@ length = 0.39999999999999997
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HeadSprite:rotation")
+tracks/0/path = NodePath("../HeadSprite:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -59,7 +59,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HeadSprite:position")
+tracks/1/path = NodePath("../HeadSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -76,33 +76,34 @@ _data = {
 &"head_hit": SubResource("Animation_xm2ot")
 }
 
-[node name="StandingTarget" type="Node2D" unique_id=1637686509]
-scale = Vector2(0.3, 0.3)
-script = ExtResource("1_xm2ot")
-health = 1000
-
-[node name="HeadSprite" type="Sprite2D" parent="." unique_id=251509438]
-position = Vector2(-3, -2)
-texture = ExtResource("1_slbs5")
-
-[node name="BodySprite" type="Sprite2D" parent="." unique_id=660905927]
-texture = ExtResource("2_xm2ot")
-
-[node name="Area2D" type="Area2D" parent="." unique_id=1412847585]
+[node name="StandingTarget" type="Area2D" unique_id=1412847585]
 collision_layer = 4
 collision_mask = 4
+script = ExtResource("1_xm2ot")
 
-[node name="HeadCollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2079542064]
+[node name="HeadCollisionShape2D" type="CollisionShape2D" parent="." unique_id=2079542064]
 unique_name_in_owner = true
-position = Vector2(6.666666, -40.000015)
+position = Vector2(2.000001, -12.000006)
+scale = Vector2(0.3, 0.3)
 shape = SubResource("CircleShape2D_etno1")
 debug_color = Color(0.60694355, 0.10777175, 4.813075e-08, 0.41960785)
 
-[node name="BodyCollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=236527901]
+[node name="BodyCollisionShape2D2" type="CollisionShape2D" parent="." unique_id=236527901]
 unique_name_in_owner = true
-position = Vector2(3.3333333, 36.666664)
+position = Vector2(1.4999999, 11)
+scale = Vector2(0.235, 0.235)
 shape = SubResource("RectangleShape2D_jy78r")
 debug_color = Color(0.60694355, 0.10777175, 4.813075e-08, 0.41960785)
 
+[node name="HeadSprite" type="Sprite2D" parent="." unique_id=251509438]
+position = Vector2(-0.90000004, -0.6)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_slbs5")
+
+[node name="BodySprite" type="Sprite2D" parent="." unique_id=660905927]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_xm2ot")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1725981923]
+root_node = NodePath("")
 libraries/ = SubResource("AnimationLibrary_5rln3")

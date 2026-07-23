@@ -19,6 +19,8 @@ extends WeaponBase
 var charges :int= 0
 @export var max_charge :int= 3
 
+@export var base_sword_damage :int= 10
+
 
 func _ready() -> void:
 	charge_timer.timeout.connect(_on_charge_timeout)

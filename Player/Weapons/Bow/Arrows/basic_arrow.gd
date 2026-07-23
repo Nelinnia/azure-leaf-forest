@@ -24,6 +24,7 @@ var _max_rotation_offset :float= deg_to_rad(90.0)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void: 
 	area_entered.connect(_on_area_entered)
+	body_entered.connect(_on_body_entered)
 	
 	
 var _rotation_sign :float= 1.0
@@ -50,5 +51,9 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 
 
-func _on_area_entered(other_area: Area2D) -> void:
+func _on_area_entered(other_area: Area2D) -> void: #detects NPCs
+	if other_area is NPC:
+		other_area.take_damage(bow.base_bow_damage)
+	queue_free()
+func _on_body_entered(body: Node2D) -> void: #detects the ground
 	queue_free()

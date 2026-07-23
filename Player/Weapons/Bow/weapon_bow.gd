@@ -14,6 +14,7 @@ extends WeaponBase
 const BASIC_ARROW :PackedScene= preload("res://Player/Weapons/Bow/Arrows/basic_arrow.tscn")
 
 var draw_counter :int= 0
+@export var base_bow_damage :int= 5
 
 var aim_angle :float= 0.0
 var is_locked_out :bool= false
@@ -55,6 +56,7 @@ func on_attack_released() -> void:
 	get_tree().current_scene.add_child(arrow)
 	arrow.global_position = bow_marker.global_position
 	arrow.global_rotation = aim_angle
+	arrow.bow = self
 	arrow.apply_charge(draw_counter)
 	
 	launch_backward()
