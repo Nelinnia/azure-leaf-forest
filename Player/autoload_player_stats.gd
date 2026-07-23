@@ -37,3 +37,24 @@ func change_stat(stat_name: String, amount: int) -> void:
 	var actual_change := new_value - current
 	player_skill_points_available -= actual_change
 	skill_points_changed.emit(player_skill_points_available)
+
+
+func get_sword_damage_bonus() -> float:
+	return strength * 1.5
+func get_bow_damage_bonus() -> float:
+	return dexterity * 1.2
+
+func get_jump_bonus() -> float:
+	return strength * 5.0 #base 200
+func get_double_jump_bonus() -> float:
+	return dexterity * 3.0 #base 120
+func get_move_speed_bonus() -> float:
+	return agility * 5   #base 480
+
+func get_weapon_charge_rate_deduction() -> float:
+	return agility * 0.05   #unsure, 1 agility = .05 seconds. change later mabey
+
+func get_max_mana_increase() -> float:
+	return wisdom * 10
+func get_max_health_increase() -> float:
+	return player_hp + (player_lv * 2)
