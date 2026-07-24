@@ -14,7 +14,7 @@ extends WeaponBase
 const BASIC_ARROW :PackedScene= preload("res://Player/Weapons/Bow/Arrows/basic_arrow.tscn")
 
 var draw_counter :int= 0
-@export var base_bow_damage :int= 5
+@export var base_bow_damage :int= 2
 
 var aim_angle :float= 0.0
 var is_locked_out :bool= false
@@ -65,6 +65,7 @@ func on_attack_released() -> void:
 
 @export var max_charge :int= 3
 func _draw_bow() -> void:
+	get_bow_damage()
 	bow_draw_audio.play()
 	if draw_counter < max_charge:
 		draw_counter += 1
@@ -72,6 +73,10 @@ func _draw_bow() -> void:
 	
 	if draw_counter >= max_charge:
 		draw_timer.stop()
+
+func get_bow_damage() -> float:
+	return base_bow_damage + PlayerStats.get_bow_damage_bonus()
+	
 
 func launch_backward() -> void:
 	var is_airboren := player.current_state != Player.State.GROUND

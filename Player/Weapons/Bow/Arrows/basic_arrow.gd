@@ -51,9 +51,10 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 
 
+
 func _on_area_entered(other_area: Area2D) -> void: #detects NPCs
 	if other_area is NPC:
-		other_area.take_damage(bow.base_bow_damage)
+		other_area.take_damage(bow.get_bow_damage())
 	queue_free()
 func _on_body_entered(body: Node2D) -> void: #detects the ground
 	queue_free()
