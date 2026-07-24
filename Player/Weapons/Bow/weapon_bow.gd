@@ -65,7 +65,7 @@ func on_attack_released() -> void:
 
 @export var max_charge :int= 3
 func _draw_bow() -> void:
-	get_bow_damage()
+	#get_bow_damage()
 	bow_draw_audio.play()
 	if draw_counter < max_charge:
 		draw_counter += 1
@@ -74,8 +74,11 @@ func _draw_bow() -> void:
 	if draw_counter >= max_charge:
 		draw_timer.stop()
 
-func get_bow_damage() -> float:
-	return base_bow_damage + PlayerStats.get_bow_damage_bonus()
+@export var charge_multipliers :Array[float]= [1, 2, 3, 5]
+func get_bow_damage(charge: int) -> float:
+	var index := clampi(charge, 0, charge_multipliers.size() - 1)
+	var multiplier := charge_multipliers[index]
+	return (base_bow_damage + PlayerStats.get_bow_damage_bonus()) * multiplier
 	
 
 func launch_backward() -> void:
