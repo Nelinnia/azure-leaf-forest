@@ -277,6 +277,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0, 1.5707964, 3.1415927, 4.712389, 6.2831855]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Weapon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_attack_end"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_b1ygp"]
 resource_name = "sword_swing_charge"
@@ -332,6 +346,20 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(),
 "update": 0,
 "values": []
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Weapon")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_attack_end"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n471f"]
@@ -559,7 +587,7 @@ script = ExtResource("17_b1ygp")
 
 [node name="WeaponMarker" type="Marker2D" parent="Visuals/Weapon" unique_id=793270116]
 z_index = 1
-position = Vector2(2, 2)
+rotation = 3.6466737
 
 [node name="Sword" type="Sprite2D" parent="Visuals/Weapon/WeaponMarker" unique_id=1695683423]
 position = Vector2(-16, 4)

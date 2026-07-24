@@ -26,9 +26,10 @@ var charge_level :int= 0 # used so when sword swings it remembers what charge th
 
 func _ready() -> void:
 	charge_timer.timeout.connect(_on_charge_timeout)
-	sword_area_2d.area_entered.connect(_on_area_entered)
+	sword_area_2d.area_entered.connect(_on_area_entered) 
 
 func on_attack_pressed() -> void:
+	#sword_area_2d.monitoring = false
 	charge_timer.start()
 	player.attack_animation_player.play("sword_swing_charge")
 	player.left_arm.play("sword_swing_ground")
@@ -45,10 +46,12 @@ func on_attack_released() -> void:
 	launch_forward()
 	reset_charges()
 
+func on_attack_end() -> void: #called during animations as method tracks. 
+	sword_area_2d.monitoring = false
 
 func _on_charge_timeout() -> void:
 	charges += 1
-	print(charges)
+	#print(charges)
 	if charges == 1:
 		sparkle.visible = true
 		pipcharge_audio.play()

@@ -58,6 +58,7 @@ var jump_count :int= 0
 
 @onready var weapon_swap_audio: AudioStreamPlayer2D = %WeaponSwapAudio
 const SWORD_SWAP = preload("res://Player/Weapons/Sword Taking .wav")
+@onready var sword_area_2d: Area2D = $Visuals/Weapon/WeaponMarker/Sword/SwordArea2D
 
 enum Weapon_State {
 	SWORD,
@@ -173,6 +174,8 @@ func _swap_weapon() -> void:
 			weapon_bow.visible = true
 			left_arm.visible = false
 			right_arm.visible = false
+			sword_area_2d.monitoring = false #Bug fix: sword was dealing damage while bow was equipt
+
 
 
 func process_ground_state(delta: float) -> void:
