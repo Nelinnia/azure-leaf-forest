@@ -3,10 +3,13 @@ extends Node
 
 signal stat_changed (stat_name: String, new_value: int)
 signal skill_points_changed(new_value: int)
-
+signal health_changed(current: int, max: int)
+signal xp_changed (current: int)
 
 var player_hp := 100
+var max_player_hp := 100
 var player_mana := 10
+var max_player_mana := 10
 var player_lv := 1
 var player_xp := 0
 var player_skill_points_available := 99
@@ -56,5 +59,11 @@ func get_weapon_charge_rate_deduction() -> float:
 
 func get_max_mana_increase() -> float:
 	return wisdom * 10
-func get_max_health_increase() -> float:
-	return player_hp + (player_lv * 2)
+
+func get_max_health_increase() -> void:
+	max_player_hp = 100 + (player_lv * 2)
+	player_hp = clampi(player_hp, 0, max_player_hp)
+	health_changed.emit(player_hp, max_player_hp)
+func set_hp(new_hp: int) -> void:
+	player_hp = clampi(new_hp, 0, max_player_hp)
+	health_changed.emit(player_hp, max_player_hp)

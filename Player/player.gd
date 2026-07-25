@@ -9,6 +9,8 @@ extends CharacterBody2D
 @onready var left_arm: AnimatedSprite2D = %Left_Arm
 
 
+
+var player_health := PlayerStats.player_hp: set = set_health
 #Quad every base value
 @export var acceleration :float= 2800.0
 @export var deceleration :float= 5600.0
@@ -80,7 +82,7 @@ var current_state :State= State.GROUND
 var direction_x :float= 0.0
 var is_facing_left :bool= false
 var is_boosting :bool= false
-@export var voost_lockout_duratioin :float= 0.25
+#@export var voost_lockout_duratioin :float= 0.25 #look into if this is being used anywhere
 var current_gravity :float= 0.0
 
 func _ready() -> void:
@@ -88,6 +90,7 @@ func _ready() -> void:
 	weapon_sword.setup(self)
 	weapon_bow.setup(self)
 	current_weapon_node = weapon_sword
+	PlayerStats.health_changed.connect(_on_health_changed)
 	_swap_weapon()
 	coyote_timer.wait_time = 0.1
 	coyote_timer.one_shot = true
@@ -113,7 +116,18 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-
+func set_health(new_health: int) -> void:
+	PlayerStats.set_hp(new_health)
+func _on_health_changed(current:int, max_hp: int) -> void:
+	player_health = current
+	if player_health <= 0:
+		death()
+func take_damage(amount: int) -> void:
+	set_health(PlayerStats.player_hp - amount)
+func restore_health(amount: int) -> void:
+	pass #potions? or on timer timeout + amount
+func death() -> void:
+	pass
 
 @onready var pips: Node2D = %Pips
 @onready var charge_timer: Timer = %ChargeTimer
