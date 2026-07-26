@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dtachfi1i0cp4"]
 
 [ext_resource type="Script" uid="uid://li5nuh8do36s" path="res://Player/player.gd" id="1_l8h54"]
+[ext_resource type="Script" uid="uid://bcm600wxap0uh" path="res://Player/restore_timer.gd" id="2_bbimk"]
 [ext_resource type="Texture2D" uid="uid://b1l3i4hu2vny5" path="res://Player/Idle/Elf_Idle_01.png" id="2_btcbx"]
 [ext_resource type="Texture2D" uid="uid://dxjbmblcacge" path="res://Player/Falling/Azure_Leage_Elf_Falling_01.png" id="2_k53q1"]
 [ext_resource type="Texture2D" uid="uid://dacsj0r13e0al" path="res://Player/Falling/Azure_Leage_Elf_Falling_02.png" id="3_fhl08"]
@@ -511,6 +512,11 @@ animations = [{
 [node name="Player" type="CharacterBody2D" unique_id=1729205455]
 script = ExtResource("1_l8h54")
 
+[node name="RestoreTimer" type="Timer" parent="." unique_id=382468989]
+unique_name_in_owner = true
+autostart = true
+script = ExtResource("2_bbimk")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=278240606]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_5htga")
@@ -587,7 +593,7 @@ script = ExtResource("17_b1ygp")
 
 [node name="WeaponMarker" type="Marker2D" parent="Visuals/Weapon" unique_id=793270116]
 z_index = 1
-rotation = 3.6466737
+rotation = 0.87266463
 
 [node name="Sword" type="Sprite2D" parent="Visuals/Weapon/WeaponMarker" unique_id=1695683423]
 position = Vector2(-16, 4)

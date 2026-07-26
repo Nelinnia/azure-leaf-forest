@@ -10,7 +10,7 @@ extends CharacterBody2D
 
 
 
-var player_health := PlayerStats.player_hp: set = set_health
+var player_health :int= PlayerStats.player_hp
 #Quad every base value
 @export var acceleration :float= 2800.0
 @export var deceleration :float= 5600.0
@@ -125,7 +125,9 @@ func _on_health_changed(current:int, max_hp: int) -> void:
 func take_damage(amount: int) -> void:
 	set_health(PlayerStats.player_hp - amount)
 func restore_health(amount: int) -> void:
-	pass #potions? or on timer timeout + amount
+	set_health(PlayerStats.player_hp + amount)
+#func gain_xp(amount: int) -> void: #might need later
+#	PlayerStats.player_xp(amount)
 func death() -> void:
 	pass
 

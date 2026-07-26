@@ -20,7 +20,7 @@ func _on_head_hit(area: Area2D) -> void:
 
 func take_damage(damage: int) -> void:
 	set_health(health - damage)
-	PlayerStats.player_xp += base_xp
+	PlayerStats.add_xp(base_xp)
 	var damage_indicator :Node2D= preload("res://User Interface/HUD/damage_indicator.tscn").instantiate()
 	get_tree().current_scene.add_child(damage_indicator)
 	damage_indicator.global_position = global_position
@@ -30,5 +30,5 @@ func take_damage(damage: int) -> void:
 
 func _die(was_killed :bool= false) -> void:
 	if  health >= 0.0:
-		PlayerStats.player_xp += base_xp
+		PlayerStats.add_xp(base_xp * 2)
 		health += 1000

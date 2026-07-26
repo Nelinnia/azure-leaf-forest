@@ -67,3 +67,7 @@ func get_max_health_increase() -> void:
 func set_hp(new_hp: int) -> void:
 	player_hp = clampi(new_hp, 0, max_player_hp)
 	health_changed.emit(player_hp, max_player_hp)
+
+func add_xp(amount: int) -> void:
+	player_xp += amount
+	xp_changed.emit(player_xp)

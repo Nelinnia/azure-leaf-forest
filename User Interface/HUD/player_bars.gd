@@ -6,8 +6,12 @@ extends Control
 
 func _ready() -> void:
 	PlayerStats.health_changed.connect(update_health_bar)
+	PlayerStats.xp_changed.connect(update_xp_bar)
+
+func update_health_bar(current: int, max_hp: int) -> void:
+	health_bar.value = current
+	health_bar.max_value = max_hp
 
 
-func update_health_bar() -> void:
-	health_bar.value = PlayerStats.player_health
-	health_bar.max_value = PlayerStats.max_player_hp
+func update_xp_bar(current: int) -> void:
+	exp_bar.value = current
