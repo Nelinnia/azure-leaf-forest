@@ -4,6 +4,7 @@ extends Node
 signal stat_changed (stat_name: String, new_value: int)
 signal skill_points_changed(new_value: int)
 signal health_changed(current: int, max: int)
+signal mana_changed(current: int, max: int)
 signal xp_changed (current: int)
 
 var player_hp := 100
@@ -71,3 +72,12 @@ func set_hp(new_hp: int) -> void:
 func add_xp(amount: int) -> void:
 	player_xp += amount
 	xp_changed.emit(player_xp)
+	level_up()
+func level_up() -> void:
+	if player_xp >= 100:
+		player_xp -= 100
+		player_lv += 1
+		player_skill_points_available += 1
+		skill_points_changed.emit(player_skill_points_available)
+		xp_changed.emit(player_xp)
+		get_max_health_increase()
