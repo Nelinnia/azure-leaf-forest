@@ -7,10 +7,12 @@ extends CharacterBody2D
 @onready var player_parts: Node2D = %PlayerParts
 @onready var right_arm: AnimatedSprite2D = %Right_Arm
 @onready var left_arm: AnimatedSprite2D = %Left_Arm
+@onready var levelup_sprite: Sprite2D = %LevelupSprite
 
 
 
 var player_health :int= PlayerStats.player_hp
+var player_mana :int= PlayerStats.player_mana
 #Quad every base value
 @export var acceleration :float= 2800.0
 @export var deceleration :float= 5600.0
@@ -91,6 +93,7 @@ func _ready() -> void:
 	weapon_bow.setup(self)
 	current_weapon_node = weapon_sword
 	PlayerStats.health_changed.connect(_on_health_changed)
+	PlayerStats.level_changed.connect(_on_level_up)
 	_swap_weapon()
 	coyote_timer.wait_time = 0.1
 	coyote_timer.one_shot = true
@@ -126,6 +129,17 @@ func take_damage(amount: int) -> void:
 	set_health(PlayerStats.player_hp - amount)
 func restore_health(amount: int) -> void:
 	set_health(PlayerStats.player_hp + amount)
+func set_mana(new_mana: int) -> void:
+	PlayerStats.set_mana(new_mana)
+func mana_cost(amount: int) -> void:
+	set_mana(PlayerStats.player_mana - amount)
+func restore_mana(amount: int) -> void:
+	set_mana(PlayerStats.player_mana + amount)
+func _on_level_up(new_level: int) -> void:
+	levelup_sprite.visible = true
+	await get_tree().create_timer(0.5).timeout
+	levelup_sprite.visible = false
+	
 #func gain_xp(amount: int) -> void: #might need later
 #	PlayerStats.player_xp(amount)
 func death() -> void:

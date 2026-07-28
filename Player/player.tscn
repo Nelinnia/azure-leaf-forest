@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ctuc5jftcwvyf" path="res://Player/Idle/Elf_Idle_02.png" id="3_gwnis"]
 [ext_resource type="Texture2D" uid="uid://ttswr3q11rki" path="res://Player/Sword_Swing/Azure_Leage_Elf_Right_Arm_01.png" id="6_dkpta"]
 [ext_resource type="Texture2D" uid="uid://k8ih4tnwm2qb" path="res://Player/Sword_Swing/Azure_Leage_Elf_Right_Arm_02.png" id="7_lfmf2"]
+[ext_resource type="Texture2D" uid="uid://bfdcxdbgfgt15" path="res://Player/Level_Up/Level_up_Circle.png" id="7_m0h3t"]
 [ext_resource type="Texture2D" uid="uid://c61s2jqdu7pgp" path="res://Player/Misc/Azure_Leage_Elf_Leg_Left.png" id="8_00tjw"]
 [ext_resource type="Texture2D" uid="uid://beeaygajwe7fh" path="res://Player/Sword_Swing/Azure_Leage_Elf_Right_Arm_03.png" id="8_pisgm"]
 [ext_resource type="Texture2D" uid="uid://bybxaf3nnke3r" path="res://Player/Sword_Swing/Azure_Leage_Elf_Right_Arm_04.png" id="9_b1ygp"]
@@ -31,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://cw2hhirusj2b5" path="res://Player/Weapons/Bow/Arrows/Simple_Wooden_Arrow.png" id="28_76lrf"]
 [ext_resource type="AudioStream" uid="uid://kn77n08o6g33" path="res://Player/Weapons/Bow/Bow Drawn.wav" id="29_efx54"]
 [ext_resource type="AudioStream" uid="uid://de5mqlogjshim" path="res://Player/Weapons/Sword Taking .wav" id="30_755ss"]
+[ext_resource type="Script" uid="uid://f5xc6skdqm0p" path="res://Player/weapon_magic.gd" id="33_i4o1l"]
 
 [sub_resource type="Animation" id="Animation_x3vf3"]
 length = 0.001
@@ -545,6 +547,13 @@ scale = Vector2(0.13888891, 0.13888888)
 sprite_frames = SubResource("SpriteFrames_l8h54")
 animation = &"idle"
 
+[node name="LevelupSprite" type="Sprite2D" parent="Visuals" unique_id=771965540]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, 7.000002)
+scale = Vector2(0.15715091, 0.16869795)
+texture = ExtResource("7_m0h3t")
+
 [node name="PlayerParts" type="Node2D" parent="Visuals" unique_id=259045276]
 unique_name_in_owner = true
 
@@ -678,3 +687,7 @@ unique_name_in_owner = true
 [node name="WeaponSwapAudio" type="AudioStreamPlayer2D" parent="." unique_id=413742612]
 unique_name_in_owner = true
 stream = ExtResource("30_755ss")
+
+[node name="WeaponMagic" type="Node2D" parent="." unique_id=1422724341]
+unique_name_in_owner = true
+script = ExtResource("33_i4o1l")

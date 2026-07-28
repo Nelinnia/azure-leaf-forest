@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cuqphuttvabdb" path="res://User Interface/HUD/ManaBar/Mana_Over_bar.png" id="6_fta7w"]
 [ext_resource type="Texture2D" uid="uid://c0wmm5lrc43qj" path="res://User Interface/HUD/ManaBar/Mana_Progress_bar.png" id="7_h4as0"]
 [ext_resource type="Texture2D" uid="uid://bd425a30u3mxe" path="res://User Interface/HUD/XPBar/Xp_Under_bar.png" id="8_6hstw"]
+[ext_resource type="Texture2D" uid="uid://xejc1as3pkfw" path="res://User Interface/HUD/ManaBar/Mana_bar_active.png" id="8_bnbs7"]
 [ext_resource type="Texture2D" uid="uid://ds0cijlxm0cdi" path="res://User Interface/HUD/XPBar/Xp_Over_bar.png" id="9_bnbs7"]
 [ext_resource type="Texture2D" uid="uid://do252rmaqm2rk" path="res://User Interface/HUD/XPBar/Xp_Progress_bar.png" id="10_po3ix"]
 
@@ -31,11 +32,11 @@ script = ExtResource("1_1u1tc")
 
 [node name="HealthBar" type="TextureProgressBar" parent="PlayerBars" unique_id=2028332464]
 layout_mode = 0
-offset_left = 1.0
+offset_left = 6.0
 offset_top = 10.0
-offset_right = 200.0
+offset_right = 205.0
 offset_bottom = 50.0
-value = 50.0
+value = 100.0
 rounded = true
 texture_under = ExtResource("2_y77tf")
 texture_over = ExtResource("3_5bung")
@@ -48,21 +49,26 @@ offset_top = -34.0
 offset_right = 141.0
 offset_bottom = 166.0
 scale = Vector2(0.5, 0.5)
-value = 50.0
+value = 100.0
 rounded = true
 fill_mode = 3
 texture_under = ExtResource("5_acw22")
 texture_over = ExtResource("6_fta7w")
 texture_progress = ExtResource("7_h4as0")
 
+[node name="ManaActiveSprite" type="Sprite2D" parent="PlayerBars/ManaBar" unique_id=96461136]
+visible = false
+z_index = -1
+position = Vector2(98, 104)
+texture = ExtResource("8_bnbs7")
+
 [node name="ExpBar" type="TextureProgressBar" parent="PlayerBars" unique_id=1394766032]
 layout_mode = 0
-offset_left = 24.0
+offset_left = 26.0
 offset_top = -7.0
-offset_right = 46.559998
+offset_right = 48.559998
 offset_bottom = -1.6750002
 scale = Vector2(3, 3)
-value = 50.0
 rounded = true
 texture_under = ExtResource("8_6hstw")
 texture_over = ExtResource("9_bnbs7")

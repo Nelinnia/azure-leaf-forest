@@ -9,3 +9,4 @@ func _ready() -> void:
 
 func _on_timeout() -> void:
 	player.restore_health(1)
+	player.restore_mana(PlayerStats.max_player_mana * 0.05)

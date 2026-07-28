@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://45g4ehxkj2ev"]
+
+[ext_resource type="Script" uid="uid://cswa6pmj22q8" path="res://Player/Weapons/Bow/Arrows/Magic_Arrow/magic_arrow.gd" id="1_f683y"]
+[ext_resource type="Texture2D" uid="uid://cm1u2wbn18lfo" path="res://Player/Weapons/Bow/Arrows/Magic_Arrow/Magic_Silver_Arrow.png" id="2_xrm3q"]
+[ext_resource type="Texture2D" uid="uid://cr62kxtpu76gn" path="res://Player/Weapons/Bow/Arrows/Magic_Arrow/Magic_Silver_Arrow_Sprial_01.png" id="3_2bqg4"]
+[ext_resource type="Texture2D" uid="uid://mt4wlo810cp3" path="res://Player/Weapons/Bow/Arrows/Magic_Arrow/Magic_Silver_Arrow_Sprial_02.png" id="4_f683y"]
+[ext_resource type="Texture2D" uid="uid://bnj82lmxg2o3w" path="res://Player/Weapons/Bow/Arrows/Magic_Arrow/Sparkle.png" id="5_f683y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nq3hm"]
+size = Vector2(33.833332, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nq3hm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2bqg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_f683y")
+}],
+"loop": 1,
+"name": &"spiral",
+"speed": 5.0
+}]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nq3hm"]
+particle_flag_disable_z = true
+radial_velocity_min = -21.500021
+radial_velocity_max = 53.759975
+gravity = Vector3(-100, 0, 0)
+scale_min = 0.099999994
+scale_max = 0.099999994
+
+[node name="MagicArrow" type="Area2D" unique_id=296111389]
+scale = Vector2(0.3, 0.3)
+collision_layer = 8
+collision_mask = 6
+script = ExtResource("1_f683y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1870051525]
+position = Vector2(46.666664, 3.3333333)
+shape = SubResource("RectangleShape2D_nq3hm")
+debug_color = Color(0.956139, 0.19117999, 0.23758855, 0.41960785)
+
+[node name="ArrowSprite" type="Sprite2D" parent="." unique_id=677980988]
+visible = false
+texture = ExtResource("2_xrm3q")
+
+[node name="SpiralAnimatedSprite" type="AnimatedSprite2D" parent="." unique_id=1245358599]
+sprite_frames = SubResource("SpriteFrames_nq3hm")
+animation = &"spiral"
+autoplay = "spiral"
+frame_progress = 0.9638504
+
+[node name="SparkleParticles" type="GPUParticles2D" parent="." unique_id=1478860340]
+position = Vector2(49.999996, -19.999998)
+amount = 10
+texture = ExtResource("5_f683y")
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_nq3hm")
+
+[node name="SparkleParticles2" type="GPUParticles2D" parent="." unique_id=78525513]
+position = Vector2(49.999996, 26.666668)
+amount = 10
+texture = ExtResource("5_f683y")
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_nq3hm")

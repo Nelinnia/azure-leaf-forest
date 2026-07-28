@@ -2,6 +2,8 @@ class_name WeaponBow
 extends WeaponBase
 
 
+@onready var weapon_magic :WeaponMagic= get_parent().get_node("WeaponMagic")
+
 @onready var bow_marker: Marker2D = $BowMarker
 @onready var bow_ani_sprite: AnimatedSprite2D = $BowMarker/BowAniSprite
 @onready var arrow_sprite: Sprite2D = $BowMarker/ArrowSprite
@@ -11,7 +13,9 @@ extends WeaponBase
 @onready var bow_draw_audio: AudioStreamPlayer2D = %BowDrawAudio
 
 
-const BASIC_ARROW :PackedScene= preload("res://Player/Weapons/Bow/Arrows/basic_arrow.tscn")
+const BASIC_ARROW :PackedScene = preload("res://Player/Weapons/Bow/Arrows/basic_arrow.tscn")
+const MAGIC_ARROW :PackedScene = preload("res://Player/Weapons/Bow/Arrows/Magic_Arrow/magic_arrow.tscn")
+
 
 var draw_counter :int= 0
 @export var base_bow_damage :int= 2
@@ -19,11 +23,13 @@ var draw_counter :int= 0
 var aim_angle :float= 0.0
 var is_locked_out :bool= false
 
+
 @export var boost_distance :float= 300.0
 
 func _ready() -> void:
 	draw_timer.timeout.connect(_draw_bow)
 	lock_out_timer.timeout.connect(_lock_out_timeout)
+	#PlayerStats.magic_activated.connect(activate_magic)
 
 func handle_process(delta: float) -> void:
 	var to_mouse := get_global_mouse_position() - player.global_position
@@ -51,13 +57,23 @@ func on_attack_released() -> void:
 	if draw_counter == 0: #prevents the player from spamming base arrow.
 		is_locked_out = true
 		lock_out_timer.start() 
+	 
+	if PlayerStats.is_magic_active == true and PlayerStats.player_mana >= MagicArrow.MANA_COST:
+		var arrow: Node2D = MAGIC_ARROW.instantiate()
+		get_tree().current_scene.add_child(arrow)
+		arrow.global_position = bow_marker.global_position
+		arrow.global_rotation = aim_angle
+		arrow.bow = self
+		arrow.apply_charge(draw_counter)
+		player.mana_cost(arrow.mana_cost)
+	else:
+		var arrow :Node2D = BASIC_ARROW.instantiate()
+		get_tree().current_scene.add_child(arrow)
+		arrow.global_position = bow_marker.global_position
+		arrow.global_rotation = aim_angle
+		arrow.bow = self
+		arrow.apply_charge(draw_counter)
 	
-	var arrow :Node2D= BASIC_ARROW.instantiate()
-	get_tree().current_scene.add_child(arrow)
-	arrow.global_position = bow_marker.global_position
-	arrow.global_rotation = aim_angle
-	arrow.bow = self
-	arrow.apply_charge(draw_counter)
 	
 	launch_backward()
 	
@@ -79,7 +95,8 @@ func get_bow_damage(charge: int) -> float:
 	var index := clampi(charge, 0, charge_multipliers.size() - 1)
 	var multiplier := charge_multipliers[index]
 	return (base_bow_damage + PlayerStats.get_bow_damage_bonus()) * multiplier
-	
+
+
 
 func launch_backward() -> void:
 	var is_airboren := player.current_state != Player.State.GROUND
