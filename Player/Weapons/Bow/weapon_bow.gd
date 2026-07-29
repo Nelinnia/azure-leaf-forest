@@ -29,7 +29,6 @@ var is_locked_out :bool= false
 func _ready() -> void:
 	draw_timer.timeout.connect(_draw_bow)
 	lock_out_timer.timeout.connect(_lock_out_timeout)
-	#PlayerStats.magic_activated.connect(activate_magic)
 
 func handle_process(delta: float) -> void:
 	var to_mouse := get_global_mouse_position() - player.global_position

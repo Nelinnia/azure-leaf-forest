@@ -13,6 +13,7 @@ extends CharacterBody2D
 
 var player_health :int= PlayerStats.player_hp
 var player_mana :int= PlayerStats.player_mana
+
 #Quad every base value
 @export var acceleration :float= 2800.0
 @export var deceleration :float= 5600.0
@@ -27,14 +28,14 @@ const MAX_JUMPS :int= 2
 var jump_count :int= 0
 
 @export_category("Jump")
-@export_range(10.0, 200.0) var jump_height :float= 200.0
+@export_range(10.0, 400.0) var jump_height :float= 130.0
 @export_range(0.1, 1.5) var jump_time_to_peak :float= 0.37 #not quad
 @export_range(0.1, 1.5) var jump_time_to_descent :float= 0.2 #not quad
-@export_range(50.0, 200.0) var jump_horizontal_distance :float= 360.0
+@export_range(50.0, 400.0) var jump_horizontal_distance :float= 360.0
 @export_range(5.0, 50.0) var jump_cut_divider :float= 15.0
 
 @export_category("Double Jump")
-@export_range(10.0, 200.0) var double_jump_height :float= 120.0
+@export_range(10.0, 400.0) var double_jump_height :float= 60.0
 @export_range(0.1, 1.5) var double_jump_time_to_peak :float= 0.3 #not quad
 @export_range(0.1, 1.5) var double_jump_time_to_descent :float= 0.25 #not quad
 
@@ -94,6 +95,7 @@ func _ready() -> void:
 	current_weapon_node = weapon_sword
 	PlayerStats.health_changed.connect(_on_health_changed)
 	PlayerStats.level_changed.connect(_on_level_up)
+	PlayerStats.stat_changed.connect(_on_stat_change)
 	_swap_weapon()
 	coyote_timer.wait_time = 0.1
 	coyote_timer.one_shot = true
@@ -139,9 +141,6 @@ func _on_level_up(new_level: int) -> void:
 	levelup_sprite.visible = true
 	await get_tree().create_timer(0.5).timeout
 	levelup_sprite.visible = false
-	
-#func gain_xp(amount: int) -> void: #might need later
-#	PlayerStats.player_xp(amount)
 func death() -> void:
 	pass
 
@@ -319,9 +318,20 @@ func _transition_to_state(new_state: State) -> void:
 			animated_sprite.play("jump_anim")
 			jump_count = MAX_JUMPS
 
+# recalcs jump variables whenever player lvs stat
+func _on_stat_change(stat_name: String, new_value: int) -> void:
+	if stat_name == "strength":
+		jump_speed = calculate_jump_speed(jump_height + PlayerStats.get_jump_bonus(), jump_time_to_peak)
+		jump_gravity = calculate_jump_gravity(jump_height + PlayerStats.get_jump_bonus(), jump_time_to_peak)
+		fall_gravity = calculate_fall_gravity(jump_height + PlayerStats.get_jump_bonus(), jump_time_to_descent)
+	if stat_name == "dexterity":
+		double_jump_speed = calculate_jump_speed(double_jump_height + PlayerStats.get_double_jump_bonus(), jump_time_to_peak)
+		double_jump_gravity = calculate_jump_gravity(double_jump_height + PlayerStats.get_double_jump_bonus(), jump_time_to_peak)
+		double_jump_fall_gravity = calculate_fall_gravity(double_jump_height + PlayerStats.get_double_jump_bonus(), jump_time_to_descent)
 
 
-
+func calculate_jump_height() -> float:
+	return jump_height + PlayerStats.get_jump_bonus()
 
 func calculate_jump_speed(height: float, time_to_peak: float) -> float:
 	return (-2.0 * height) / time_to_peak

@@ -21,7 +21,7 @@ var player_xp := 0
 var player_skill_points_available := 99
 
 
-var strength :int= 1 #Increases sword damage, max height of base jumo
+var strength :int= 1 #Increases sword damage, max height of base jump
 var dexterity :int= 1 #Increases bow damage, max height of double jump
 var agility :int= 1 #Increases weapon charge rate, move speed
 var wisdom :int= 1 #Increases magic damage,  mana
