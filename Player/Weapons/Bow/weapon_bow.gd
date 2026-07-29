@@ -43,6 +43,7 @@ func handle_process(delta: float) -> void:
 func on_attack_pressed() -> void:
 	if is_locked_out: #prevents the player from spamming base arrow.
 		return
+	_get_draw_time()
 	draw_timer.start()
 	arrow_sprite.visible = true
 
@@ -95,7 +96,10 @@ func get_bow_damage(charge: int) -> float:
 	var multiplier := charge_multipliers[index]
 	return (base_bow_damage + PlayerStats.get_bow_damage_bonus()) * multiplier
 
-
+@export var base_draw_time := 1.05
+func _get_draw_time() -> void:
+	var timer_reduction := PlayerStats.get_weapon_charge_rate_deduction()
+	draw_timer.wait_time = maxf(base_draw_time - timer_reduction, 0.05)
 
 func launch_backward() -> void:
 	var is_airboren := player.current_state != Player.State.GROUND

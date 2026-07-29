@@ -61,7 +61,7 @@ func get_move_speed_bonus() -> float:
 	return agility * 5   #base 480
 
 func get_weapon_charge_rate_deduction() -> float:
-	return agility * 0.05   #unsure, 1 agility = .05 seconds. change later mabey
+	return agility * 0.05   #unsure, 1 agility = .05 seconds
 
 func get_max_mana_increase() -> void:
 	max_player_mana = 20 + (wisdom * 2)

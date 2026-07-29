@@ -133,6 +133,7 @@ func restore_health(amount: int) -> void:
 	set_health(PlayerStats.player_hp + amount)
 func set_mana(new_mana: int) -> void:
 	PlayerStats.set_mana(new_mana)
+	PlayerStats.get_max_mana_increase()  #need better place
 func mana_cost(amount: int) -> void:
 	set_mana(PlayerStats.player_mana - amount)
 func restore_mana(amount: int) -> void:

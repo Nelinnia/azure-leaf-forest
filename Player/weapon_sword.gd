@@ -30,6 +30,7 @@ func _ready() -> void:
 
 func on_attack_pressed() -> void:
 	#sword_area_2d.monitoring = false
+	_get_charge_time()
 	charge_timer.start()
 	player.attack_animation_player.play("sword_swing_charge")
 	player.left_arm.play("sword_swing_ground")
@@ -79,6 +80,11 @@ func get_sword_damage(charge: int) -> float:
 func _on_area_entered(other_area: Area2D) -> void:
 	if other_area is NPC:
 		other_area.take_damage(get_sword_damage(charge_level))
+
+@export var base_charge_time := 1.05
+func _get_charge_time() -> void:
+	var timer_reduction := PlayerStats.get_weapon_charge_rate_deduction()
+	charge_timer.wait_time = maxf(base_charge_time - timer_reduction, 0.05)
 
 func launch_forward() -> void:
 	var is_airborn := player.current_state != Player.State.GROUND

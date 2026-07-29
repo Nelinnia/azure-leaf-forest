@@ -533,9 +533,11 @@ shape = SubResource("RectangleShape2D_nq3hm")
 
 [node name="ChargeTimer" type="Timer" parent="." unique_id=106411532]
 unique_name_in_owner = true
+wait_time = 1.0499999999999998
 
 [node name="DrawTimer" type="Timer" parent="." unique_id=2141199147]
 unique_name_in_owner = true
+wait_time = 1.0499999999999998
 
 [node name="Visuals" type="Node2D" parent="." unique_id=1449225136]
 unique_name_in_owner = true
