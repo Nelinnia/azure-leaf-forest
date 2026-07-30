@@ -3,10 +3,11 @@ extends Node
 const SAVE_PATH = "user://settings.cfg"
 var config := ConfigFile.new()
 
-#Graphics variables
-var particles_enabled :bool= true
+#Interface variables
+var player_bar_numbers_enabled :bool= true
 
-var damage_text_enabled :bool = true
+#Graphics variables
+
 
 #Audio variables
 var volume_master :float= 0.5 #starts at 50% volume
@@ -21,7 +22,7 @@ func load_settings() -> void:
 	if config.load(SAVE_PATH) != OK:
 		return
 		
-		particles_enabled = config.get_value("graphics", "particles_enabled", true)
+		#particles_enabled = config.get_value("graphics", "particles_enabled", true)
 		volume_master = config.get_value("audio", "master", 1.0)
 		volume_sfx = config.get_value("audio", "SFX", 1.0)
 		volume_ambiance = config.get_value("audio", "ambiance", 1.0)
@@ -29,7 +30,8 @@ func load_settings() -> void:
 	_apply_volumes()
 
 func save_settings() -> void:
-	config.set_value("graphics", "particles_enabled", particles_enabled)
+	#config.set_value("graphics", "particles_enabled", particles_enabled)
+	config.set_value("interface", "player_bar_numbers_enabled", player_bar_numbers_enabled)
 	config.set_value("audio", "master", volume_master)
 	config.set_value("audio", "SFX", volume_sfx)
 	config.set_value("audio", "ambiance", volume_ambiance)
@@ -54,13 +56,3 @@ func _apply_volumes() -> void:
 	set_volume("SFX", volume_sfx)
 	set_volume("ambiance", volume_ambiance)
 	set_volume("music", volume_music)
-
-
-#func _on_particle_toggled(enabled: bool) -> void:
-#	SettingsManager.particles_enabled = enabled
-#	SettingsManager.save_settings()
-#	get_tree().call_group("Turret_Particles", "set_emitting", enabled)
-#
-#func _on_damage_text_toggled(enabled: bool) -> void:
-#	SettingsManager.damage_text_enabled = enabled
-#	SettingsManager.save_settings()

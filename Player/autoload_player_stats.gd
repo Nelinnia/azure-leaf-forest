@@ -14,8 +14,8 @@ var is_magic_active :bool
 
 var player_hp := 100
 var max_player_hp := 100
-var player_mana := 20
-var max_player_mana := 20
+var player_mana := 18
+var max_player_mana := 18
 var player_lv := 1
 var player_xp := 0
 var player_skill_points_available := 99
@@ -64,7 +64,7 @@ func get_weapon_charge_rate_deduction() -> float:
 	return agility * 0.05   #unsure, 1 agility = .05 seconds
 
 func get_max_mana_increase() -> void:
-	max_player_mana = 20 + (wisdom * 2)
+	max_player_mana = 18 + (wisdom * 2)
 	player_mana = clampi(player_mana, 0, max_player_mana)
 	mana_changed.emit(player_mana, max_player_mana)
 func set_mana(new_mana: int) -> void:
