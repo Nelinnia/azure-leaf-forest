@@ -142,6 +142,8 @@ func _on_level_up(new_level: int) -> void:
 	levelup_sprite.visible = true
 	await get_tree().create_timer(0.5).timeout
 	levelup_sprite.visible = false
+func get_total_max_speed() -> float:
+	return max_speed + PlayerStats.get_move_speed_bonus()
 func death() -> void:
 	pass
 
@@ -210,9 +212,10 @@ func _swap_weapon() -> void:
 
 func process_ground_state(delta: float) -> void:
 	var is_moving := absf(direction_x) > 0.0
+	var total_max_speed := get_total_max_speed()
 	if is_moving:
 		velocity.x += acceleration * direction_x * delta
-		velocity.x = clampf(velocity.x, -max_speed, max_speed)
+		velocity.x = clampf(velocity.x, -total_max_speed, total_max_speed)
 		
 		_update_facing(direction_x)
 		hair_back.visible = true

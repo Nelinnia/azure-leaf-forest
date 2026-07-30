@@ -13,8 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://xejc1as3pkfw" path="res://User Interface/HUD/ManaBar/Mana_bar_active.png" id="8_bnbs7"]
 [ext_resource type="Texture2D" uid="uid://ds0cijlxm0cdi" path="res://User Interface/HUD/XPBar/Xp_Over_bar.png" id="9_bnbs7"]
 [ext_resource type="Texture2D" uid="uid://do252rmaqm2rk" path="res://User Interface/HUD/XPBar/Xp_Progress_bar.png" id="10_po3ix"]
+[ext_resource type="Script" uid="uid://cew3upbnuf1vt" path="res://User Interface/Settings/settings.gd" id="14_e7pn4"]
 [ext_resource type="StyleBox" uid="uid://cku88k2vjw6xx" path="res://User Interface/Assets/MenuTheme.tres" id="14_po3ix"]
 [ext_resource type="Texture2D" uid="uid://bsjo167w2r4v6" path="res://User Interface/Assets/Texture_Button_Border.png" id="14_wpw37"]
+[ext_resource type="ButtonGroup" uid="uid://dvqgx5g0hey5s" path="res://User Interface/Settings/settings_button_group.tres" id="15_g6dgd"]
 [ext_resource type="Script" uid="uid://cgqdrl50rir44" path="res://User Interface/interface_menu_container.gd" id="16_wpw37"]
 
 [node name="PlayerUI" type="Control" unique_id=1326240640]
@@ -114,22 +116,26 @@ offset_top = 140.0
 offset_right = 268.0
 offset_bottom = 180.0
 
-[node name="Settings" type="Control" parent="GameUI" unique_id=965284014]
+[node name="Settings" type="Control" parent="." unique_id=965284014]
+visible = false
 anchors_preset = 0
 offset_left = 503.0
 offset_top = 233.0
 offset_right = 543.0
 offset_bottom = 273.0
+script = ExtResource("14_e7pn4")
 
-[node name="GraphicsTextureButton" type="TextureButton" parent="GameUI/Settings" unique_id=1040239258]
+[node name="GraphicsTextureButton" type="TextureButton" parent="Settings" unique_id=1040239258]
 layout_mode = 0
 offset_left = 163.0
 offset_top = -35.0
 offset_right = 263.0
 offset_bottom = 5.0
+toggle_mode = true
+button_group = ExtResource("15_g6dgd")
 texture_normal = ExtResource("14_wpw37")
 
-[node name="Label" type="Label" parent="GameUI/Settings/GraphicsTextureButton" unique_id=1432323241]
+[node name="Label" type="Label" parent="Settings/GraphicsTextureButton" unique_id=1432323241]
 layout_mode = 0
 offset_left = 15.0
 offset_top = 7.0
@@ -137,15 +143,17 @@ offset_right = 85.0
 offset_bottom = 30.0
 text = "Graphics"
 
-[node name="SoundTextureButton" type="TextureButton" parent="GameUI/Settings" unique_id=803523873]
+[node name="SoundTextureButton" type="TextureButton" parent="Settings" unique_id=803523873]
 layout_mode = 0
 offset_left = 78.0
 offset_top = -35.0
 offset_right = 178.0
 offset_bottom = 5.0
+toggle_mode = true
+button_group = ExtResource("15_g6dgd")
 texture_normal = ExtResource("14_wpw37")
 
-[node name="Label" type="Label" parent="GameUI/Settings/SoundTextureButton" unique_id=477686853]
+[node name="Label" type="Label" parent="Settings/SoundTextureButton" unique_id=477686853]
 layout_mode = 0
 offset_left = 23.0
 offset_top = 8.0
@@ -153,14 +161,16 @@ offset_right = 72.0
 offset_bottom = 31.0
 text = "Sound"
 
-[node name="InterfaceTextureButton" type="TextureButton" parent="GameUI/Settings" unique_id=700241217]
+[node name="InterfaceTextureButton" type="TextureButton" parent="Settings" unique_id=700241217]
 layout_mode = 0
 offset_top = -35.0
 offset_right = 100.0
 offset_bottom = 5.0
+toggle_mode = true
+button_group = ExtResource("15_g6dgd")
 texture_normal = ExtResource("14_wpw37")
 
-[node name="Label" type="Label" parent="GameUI/Settings/InterfaceTextureButton" unique_id=103309733]
+[node name="Label" type="Label" parent="Settings/InterfaceTextureButton" unique_id=103309733]
 layout_mode = 0
 offset_left = 15.0
 offset_top = 7.0
@@ -168,68 +178,95 @@ offset_right = 85.0
 offset_bottom = 30.0
 text = "Interface"
 
-[node name="SoundMenuContainer" type="PanelContainer" parent="GameUI/Settings" unique_id=12196899]
+[node name="SoundMenuContainer" type="PanelContainer" parent="Settings" unique_id=12196899]
+visible = false
 layout_mode = 0
 offset_right = 149.0
 offset_bottom = 124.0
 theme_override_styles/panel = ExtResource("14_po3ix")
 
-[node name="GridContainer" type="GridContainer" parent="GameUI/Settings/SoundMenuContainer" unique_id=1465710851]
+[node name="GridContainer" type="GridContainer" parent="Settings/SoundMenuContainer" unique_id=1465710851]
 layout_mode = 2
 columns = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameUI/Settings/SoundMenuContainer/GridContainer" unique_id=1216040003]
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/SoundMenuContainer/GridContainer" unique_id=1216040003]
 layout_mode = 2
 
-[node name="MasterSoundLabel" type="Label" parent="GameUI/Settings/SoundMenuContainer/GridContainer/VBoxContainer" unique_id=2129589834]
+[node name="MasterSoundLabel" type="Label" parent="Settings/SoundMenuContainer/GridContainer/VBoxContainer" unique_id=2129589834]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="GameUI/Settings/SoundMenuContainer/GridContainer/VBoxContainer" unique_id=857871651]
+[node name="Label2" type="Label" parent="Settings/SoundMenuContainer/GridContainer/VBoxContainer" unique_id=857871651]
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="GameUI/Settings/SoundMenuContainer/GridContainer/VBoxContainer" unique_id=526022200]
+[node name="Label3" type="Label" parent="Settings/SoundMenuContainer/GridContainer/VBoxContainer" unique_id=526022200]
 layout_mode = 2
 
-[node name="Label4" type="Label" parent="GameUI/Settings/SoundMenuContainer/GridContainer/VBoxContainer" unique_id=770237478]
+[node name="Label4" type="Label" parent="Settings/SoundMenuContainer/GridContainer/VBoxContainer" unique_id=770237478]
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="GameUI/Settings/SoundMenuContainer/GridContainer" unique_id=221493854]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Settings/SoundMenuContainer/GridContainer" unique_id=221493854]
 layout_mode = 2
 
-[node name="MasterSoundSlider" type="HSlider" parent="GameUI/Settings/SoundMenuContainer/GridContainer/VBoxContainer2" unique_id=1702873010]
+[node name="MasterSoundSlider" type="HSlider" parent="Settings/SoundMenuContainer/GridContainer/VBoxContainer2" unique_id=1702873010]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="HSlider2" type="HSlider" parent="GameUI/Settings/SoundMenuContainer/GridContainer/VBoxContainer2" unique_id=663153916]
+[node name="HSlider2" type="HSlider" parent="Settings/SoundMenuContainer/GridContainer/VBoxContainer2" unique_id=663153916]
 layout_mode = 2
 
-[node name="HSlider3" type="HSlider" parent="GameUI/Settings/SoundMenuContainer/GridContainer/VBoxContainer2" unique_id=1866965443]
+[node name="HSlider3" type="HSlider" parent="Settings/SoundMenuContainer/GridContainer/VBoxContainer2" unique_id=1866965443]
 layout_mode = 2
 
-[node name="HSlider4" type="HSlider" parent="GameUI/Settings/SoundMenuContainer/GridContainer/VBoxContainer2" unique_id=139583983]
+[node name="HSlider4" type="HSlider" parent="Settings/SoundMenuContainer/GridContainer/VBoxContainer2" unique_id=139583983]
 layout_mode = 2
 
-[node name="InterfaceMenuContainer" type="PanelContainer" parent="GameUI/Settings" unique_id=1854124567]
+[node name="InterfaceMenuContainer" type="PanelContainer" parent="Settings" unique_id=1854124567]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_styles/panel = ExtResource("14_po3ix")
 script = ExtResource("16_wpw37")
 
-[node name="GridContainer" type="GridContainer" parent="GameUI/Settings/InterfaceMenuContainer" unique_id=1021966487]
+[node name="GridContainer" type="GridContainer" parent="Settings/InterfaceMenuContainer" unique_id=1021966487]
 layout_mode = 2
 columns = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameUI/Settings/InterfaceMenuContainer/GridContainer" unique_id=681430945]
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/InterfaceMenuContainer/GridContainer" unique_id=681430945]
 layout_mode = 2
 
-[node name="PlayerBarToggleLabel" type="Label" parent="GameUI/Settings/InterfaceMenuContainer/GridContainer/VBoxContainer" unique_id=850686365]
+[node name="UIscaleLabel" type="Label" parent="Settings/InterfaceMenuContainer/GridContainer/VBoxContainer" unique_id=426751763]
+layout_mode = 2
+text = "UI Scale"
+
+[node name="PlayerBarToggleLabel" type="Label" parent="Settings/InterfaceMenuContainer/GridContainer/VBoxContainer" unique_id=850686365]
 layout_mode = 2
 text = "Bar Numbers"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="GameUI/Settings/InterfaceMenuContainer/GridContainer" unique_id=724621045]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Settings/InterfaceMenuContainer/GridContainer" unique_id=724621045]
 layout_mode = 2
 
-[node name="PlayerBarToggleCheck" type="CheckButton" parent="GameUI/Settings/InterfaceMenuContainer/GridContainer/VBoxContainer2" unique_id=2007305917]
+[node name="UIScaleSlider" type="HSlider" parent="Settings/InterfaceMenuContainer/GridContainer/VBoxContainer2" unique_id=1759028354]
 unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PlayerBarToggleCheck" type="CheckButton" parent="Settings/InterfaceMenuContainer/GridContainer/VBoxContainer2" unique_id=2007305917]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="GraphicsMenuContainer" type="PanelContainer" parent="Settings" unique_id=2110353182]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = ExtResource("14_po3ix")
+
+[node name="GridContainer" type="GridContainer" parent="Settings/GraphicsMenuContainer" unique_id=1066311735]
+z_index = 2
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/GraphicsMenuContainer/GridContainer" unique_id=514268893]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Settings/GraphicsMenuContainer/GridContainer" unique_id=982734988]
 layout_mode = 2
