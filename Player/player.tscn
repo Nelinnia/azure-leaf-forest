@@ -23,9 +23,16 @@
 [ext_resource type="Texture2D" uid="uid://k57pt8u5p04g" path="res://Player/Weapons/ChargeAnimation/Charge_Aura_01.png" id="19_7emwf"]
 [ext_resource type="Texture2D" uid="uid://bbdq0hogjvu88" path="res://User Interface/Assets/Pip.png" id="19_o28un"]
 [ext_resource type="Texture2D" uid="uid://ddn77qsixxnwm" path="res://Player/Weapons/ChargeAnimation/Charge_Aura_02.png" id="20_hshwv"]
+[ext_resource type="Texture2D" uid="uid://d02cslao88joa" path="res://Player/Weapons/Poison_Start_anim/Poison_start_01.png" id="21_8ynux"]
+[ext_resource type="Texture2D" uid="uid://tfn28t3ocuar" path="res://Player/Weapons/Poison_Trail_anim/Poison_Trail_01.png" id="21_j2n6q"]
+[ext_resource type="Texture2D" uid="uid://dvj6i68ejs8li" path="res://Player/Weapons/Poison_Start_anim/Poison_start_02.png" id="22_d30e8"]
 [ext_resource type="AudioStream" uid="uid://3t3rqydydkm7" path="res://Player/Weapons/ChargeAnimation/Spell Cast (Version 1).wav" id="22_hshwv"]
+[ext_resource type="Texture2D" uid="uid://dyyc3exsuit13" path="res://Player/Weapons/Poison_Trail_anim/Poison_Trail_02.png" id="22_jp1hh"]
+[ext_resource type="Texture2D" uid="uid://dgb7a43q6u64i" path="res://Player/Weapons/Poison_Start_anim/Poison_start_03.png" id="23_6pogt"]
 [ext_resource type="Texture2D" uid="uid://dsxkfbnppbiig" path="res://Player/Weapons/Bow/Simple_Wooden_Bow_01.png" id="23_8viyr"]
+[ext_resource type="Texture2D" uid="uid://bbstk5mfan6i1" path="res://Player/Weapons/Poison_Trail_anim/Poison_Trail_03.png" id="23_qs4pp"]
 [ext_resource type="Script" uid="uid://coe2f1xcfxfey" path="res://Player/Weapons/Bow/weapon_bow.gd" id="23_sm0op"]
+[ext_resource type="Texture2D" uid="uid://byx7s5hdg0eq7" path="res://Player/Weapons/Poison_Start_anim/Poison_start_04.png" id="24_ie76m"]
 [ext_resource type="Texture2D" uid="uid://chhvmbksa7ydr" path="res://Player/Weapons/Bow/Simple_Wooden_Bow_02.png" id="24_sm0op"]
 [ext_resource type="Texture2D" uid="uid://t5ml0081qjcs" path="res://Player/Weapons/Bow/Simple_Wooden_Bow_03.png" id="25_76lrf"]
 [ext_resource type="Texture2D" uid="uid://b2oikrs4j46jn" path="res://Player/Weapons/Bow/Simple_Wooden_Bow_04.png" id="26_efx54"]
@@ -477,6 +484,40 @@ animations = [{
 radius = 22.348825
 height = 189.37184
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_hpem4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_8ynux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_d30e8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_6pogt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_ie76m")
+}],
+"loop": 0,
+"name": &"PoisonStart",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_j2n6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_jp1hh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_qs4pp")
+}],
+"loop": 1,
+"name": &"PoisonTrail",
+"speed": 10.0
+}]
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_xplfv"]
 animations = [{
 "frames": [{
@@ -490,6 +531,9 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nq3hm"]
+radius = 38.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5yyr1"]
 animations = [{
@@ -599,7 +643,6 @@ animation = &"sword_swing_air"
 
 [node name="Weapon" type="Node2D" parent="Visuals" unique_id=1269724272]
 unique_name_in_owner = true
-visible = false
 script = ExtResource("17_b1ygp")
 
 [node name="WeaponMarker" type="Marker2D" parent="Visuals/Weapon" unique_id=793270116]
@@ -619,7 +662,15 @@ collision_mask = 4
 position = Vector2(-0.29921305, -22.404547)
 rotation = 0.022648752
 shape = SubResource("CapsuleShape2D_nq3hm")
-debug_color = Color(0.9395802, 0.21215683, 0.33157519, 0.41960785)
+debug_color = Color(0.9411765, 0.21176471, 0.33333334, 0.41960785)
+
+[node name="PoisonAnim" type="AnimatedSprite2D" parent="Visuals/Weapon/WeaponMarker/Sword" unique_id=1756530959]
+position = Vector2(22.436546, -18.421902)
+sprite_frames = SubResource("SpriteFrames_hpem4")
+animation = &"PoisonStart"
+autoplay = "PoisonTrail"
+frame = 3
+frame_progress = 1.0
 
 [node name="Pips" type="Node2D" parent="Visuals/Weapon/WeaponMarker" unique_id=1160307461]
 unique_name_in_owner = true
@@ -664,7 +715,16 @@ texture = ExtResource("19_o28un")
 [node name="PipchargeAudio" type="AudioStreamPlayer2D" parent="Visuals/Weapon/WeaponMarker/Pips" unique_id=571898714]
 stream = ExtResource("22_hshwv")
 
+[node name="AirSpinArea" type="Area2D" parent="Visuals/Weapon" unique_id=1609444747]
+unique_name_in_owner = true
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visuals/Weapon/AirSpinArea" unique_id=1158155512]
+shape = SubResource("CircleShape2D_nq3hm")
+debug_color = Color(0.9411765, 0.21176471, 0.33333334, 0.41960785)
+
 [node name="WeaponBow" type="Node2D" parent="." unique_id=809111670]
+visible = false
 position = Vector2(3, -1)
 scale = Vector2(0.15, 0.15)
 script = ExtResource("23_sm0op")

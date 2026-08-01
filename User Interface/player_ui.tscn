@@ -117,7 +117,6 @@ offset_right = 268.0
 offset_bottom = 180.0
 
 [node name="Settings" type="Control" parent="." unique_id=965284014]
-visible = false
 anchors_preset = 0
 offset_left = 503.0
 offset_top = 233.0
@@ -142,6 +141,25 @@ offset_top = 7.0
 offset_right = 85.0
 offset_bottom = 30.0
 text = "Graphics"
+
+[node name="KeybindTextureButton" type="TextureButton" parent="Settings" unique_id=993931519]
+z_index = -1
+layout_mode = 0
+offset_left = 248.0
+offset_top = -35.0
+offset_right = 348.0
+offset_bottom = 5.0
+toggle_mode = true
+button_group = ExtResource("15_g6dgd")
+texture_normal = ExtResource("14_wpw37")
+
+[node name="Label" type="Label" parent="Settings/KeybindTextureButton" unique_id=1427203972]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 7.0
+offset_right = 85.0
+offset_bottom = 30.0
+text = "Keybinds"
 
 [node name="SoundTextureButton" type="TextureButton" parent="Settings" unique_id=803523873]
 layout_mode = 0
@@ -269,4 +287,21 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Settings/GraphicsMenuContainer/GridContainer" unique_id=982734988]
+layout_mode = 2
+
+[node name="KeybindMenuContainer" type="PanelContainer" parent="Settings" unique_id=95042969]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = ExtResource("14_po3ix")
+
+[node name="GridContainer" type="GridContainer" parent="Settings/KeybindMenuContainer" unique_id=517748346]
+z_index = 2
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/KeybindMenuContainer/GridContainer" unique_id=1974547507]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Settings/KeybindMenuContainer/GridContainer" unique_id=664428355]
 layout_mode = 2
