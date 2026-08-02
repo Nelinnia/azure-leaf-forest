@@ -52,16 +52,18 @@ func get_sword_damage_bonus() -> float:
 	return strength * 3
 func get_bow_damage_bonus() -> float:
 	return dexterity * 2
+func get_magic_damage_bonus() -> float:
+	return wisdom
 
 func get_jump_bonus() -> float:
-	return strength * 5.0 #base 200
+	return strength * 5.0 
 func get_double_jump_bonus() -> float:
-	return dexterity * 3.0 #base 120
+	return dexterity * 3.0 
 func get_move_speed_bonus() -> float:
-	return agility * 5   #base 480
+	return agility * 5   
 
 func get_weapon_charge_rate_deduction() -> float:
-	return agility * 0.05   #unsure, 1 agility = .05 seconds
+	return agility * 0.05   # 1 agility = .05 seconds
 
 func get_max_mana_increase() -> void:
 	max_player_mana = 18 + (wisdom * 2)

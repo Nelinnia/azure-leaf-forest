@@ -24,30 +24,39 @@ func set_health(new_health: int) -> void:
 
 func take_damage(damage: int) -> void:
 	set_health(health - damage)
-	
-	var damage_indicator :Node2D= preload("res://User Interface/HUD/damage_indicator.tscn").instantiate()
-	get_tree().current_scene.add_child(damage_indicator)
-	damage_indicator.global_position = global_position
-	damage_indicator.display_amount(damage)
+	_spawn_damage_indicator(damage, false)
+
 
 
 
 var _poison_timer :Timer= null
 var _poison_damage :int= 0
-var _poison_accumulator :int= 0
-func apply_poison(damage_per_tick: int) -> void:
+var _poison_ticks_remaining :int= 0
+func apply_poison(damage_per_tick: int, ticks :int= 5) -> void:
 	_poison_damage += damage_per_tick
+	_poison_ticks_remaining = ticks
 	if _poison_timer == null:
 		_poison_timer = Timer.new()
 		add_child(_poison_timer)
-		_poison_timer.wait_time = 5.0
+		_poison_timer.wait_time = 1.0
 		_poison_timer.timeout.connect(_on_poison_tick)
-		_poison_timer.start()
+	_poison_timer.start()
 func _on_poison_tick() -> void:
 	if _poison_damage > 0:
-		_poison_accumulator += _poison_damage
-	
+		set_health(health - _poison_damage)
+		_spawn_damage_indicator(_poison_damage, true)
+	_poison_ticks_remaining -= 1
+	if _poison_ticks_remaining <= 0:
+		_poison_timer.stop()
 
+
+
+func _spawn_damage_indicator(amount: int, poison: bool) -> void:
+	var damage_indicator :Node2D= preload("res://User Interface/HUD/damage_indicator.tscn").instantiate()
+	get_tree().current_scene.add_child(damage_indicator)
+	damage_indicator.global_position = global_position
+	damage_indicator.is_poison = poison
+	damage_indicator.display_amount(amount)
 
 
 func _die(was_killed :bool= false) -> void:

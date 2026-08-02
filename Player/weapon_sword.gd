@@ -12,6 +12,8 @@ extends WeaponBase
 @onready var sparkle_3: Sprite2D = %Sparkle3
 @onready var charge_ani_sprite: AnimatedSprite2D = $WeaponMarker/Pips/ChargeAniSprite
 
+@onready var poison_anim: AnimatedSprite2D = $WeaponMarker/Sword/PoisonAnim
+
 @export var boost_distance :float= 300.0
 
 @onready var pipcharge_audio: AudioStreamPlayer2D = $WeaponMarker/Pips/PipchargeAudio
@@ -23,13 +25,24 @@ var charges :int= 0 # used to count the charges before sword begins swinging
 @export var base_sword_damage :int= 7
 var charge_level :int= 0 # used so when sword swings it remembers what charge the attack had
 
+const MANA_COST :int= 10
+var mana_consumed :bool = false
 
 func _ready() -> void:
 	charge_timer.timeout.connect(_on_charge_timeout)
 	sword_area_2d.area_entered.connect(_on_area_entered) 
 
 func on_attack_pressed() -> void:
-	#sword_area_2d.monitoring = false
+	mana_consumed = false
+	if PlayerStats.is_magic_active == true:
+		if PlayerStats.player_mana >= MANA_COST:
+			mana_consumed = true
+			player.mana_cost(MANA_COST)
+			poison_anim.visible = true
+			poison_anim.play("PoisonStart")
+		else:
+			PlayerStats.set_magic_active(false)
+			poison_anim.visible = false
 	_get_charge_time()
 	charge_timer.start()
 	player.attack_animation_player.play("sword_swing_charge")
@@ -77,9 +90,17 @@ func get_sword_damage(charge: int) -> float:
 	var multiplier := charge_multipliers[index]
 	return (base_sword_damage + PlayerStats.get_sword_damage_bonus()) * multiplier
 
+func get_poison_damage(charge: int) -> float:
+	var index := clampi(charge, 0, charge_multipliers.size() - 1)
+	var multiplier := charge_multipliers[index]
+	return (PlayerStats.get_magic_damage_bonus() * multiplier)
+
 func _on_area_entered(other_area: Area2D) -> void:
 	if other_area is NPC:
 		other_area.take_damage(get_sword_damage(charge_level))
+		if mana_consumed:
+			other_area.apply_poison(get_poison_damage(charge_level))
+
 
 @export var base_charge_time := 1.05
 func _get_charge_time() -> void:
