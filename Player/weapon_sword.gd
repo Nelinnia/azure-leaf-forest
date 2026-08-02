@@ -13,6 +13,7 @@ extends WeaponBase
 @onready var charge_ani_sprite: AnimatedSprite2D = $WeaponMarker/Pips/ChargeAniSprite
 
 @onready var poison_anim: AnimatedSprite2D = $WeaponMarker/Sword/PoisonAnim
+@onready var poison_swing_anim: AnimatedSprite2D = $WeaponMarker/Sword/PoisonSwingAnim
 
 @export var boost_distance :float= 300.0
 
@@ -57,11 +58,15 @@ func on_attack_released() -> void:
 	charge_level = charges
 	charge_timer.stop()
 	player._start_attack()
+	if mana_consumed == true:
+		poison_swing_anim.visible = true
+		poison_swing_anim.play("PoisonTrail")
 	launch_forward()
 	reset_charges()
 
 func on_attack_end() -> void: #called during animations as method tracks. 
 	sword_area_2d.monitoring = false
+	poison_swing_anim.visible = false
 
 func _on_charge_timeout() -> void:
 	charges += 1

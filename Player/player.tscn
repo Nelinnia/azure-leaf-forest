@@ -669,9 +669,12 @@ visible = false
 position = Vector2(22.436546, -18.421902)
 sprite_frames = SubResource("SpriteFrames_hpem4")
 animation = &"PoisonStart"
-autoplay = "PoisonTrail"
-frame = 3
-frame_progress = 1.0
+
+[node name="PoisonSwingAnim" type="AnimatedSprite2D" parent="Visuals/Weapon/WeaponMarker/Sword" unique_id=484156939]
+visible = false
+position = Vector2(-51.602425, -3.540495)
+sprite_frames = SubResource("SpriteFrames_hpem4")
+animation = &"PoisonTrail"
 
 [node name="Pips" type="Node2D" parent="Visuals/Weapon/WeaponMarker" unique_id=1160307461]
 unique_name_in_owner = true
