@@ -20,6 +20,8 @@ const MAGIC_ARROW :PackedScene = preload("res://Player/Weapons/Bow/Arrows/Magic_
 var draw_counter :int= 0
 @export var base_bow_damage :int= 2
 
+var mana_consumed :bool= false
+
 var aim_angle :float= 0.0
 var is_locked_out :bool= false
 
@@ -43,6 +45,13 @@ func handle_process(delta: float) -> void:
 func on_attack_pressed() -> void:
 	if is_locked_out: #prevents the player from spamming base arrow.
 		return
+	mana_consumed = false
+	if PlayerStats.is_magic_active == true:
+		if PlayerStats.player_mana >= MagicArrow.MANA_COST:
+			mana_consumed = true
+			player.mana_cost(MagicArrow.MANA_COST)
+		else:
+			PlayerStats.set_magic_active(false)
 	_get_draw_time()
 	draw_timer.start()
 	arrow_sprite.visible = true
@@ -58,14 +67,14 @@ func on_attack_released() -> void:
 		is_locked_out = true
 		lock_out_timer.start() 
 	 
-	if PlayerStats.is_magic_active == true and PlayerStats.player_mana >= MagicArrow.MANA_COST:
+	if PlayerStats.is_magic_active == true and mana_consumed == true:
 		var arrow: Node2D = MAGIC_ARROW.instantiate()
 		get_tree().current_scene.add_child(arrow)
 		arrow.global_position = bow_marker.global_position
 		arrow.global_rotation = aim_angle
 		arrow.bow = self
 		arrow.apply_charge(draw_counter)
-		player.mana_cost(arrow.mana_cost)
+		#player.mana_cost(arrow.mana_cost)
 	else:
 		var arrow :Node2D = BASIC_ARROW.instantiate()
 		get_tree().current_scene.add_child(arrow)
@@ -90,11 +99,18 @@ func _draw_bow() -> void:
 	if draw_counter >= max_charge:
 		draw_timer.stop()
 
+
 @export var charge_multipliers :Array[float]= [1, 2, 3, 5]
 func get_bow_damage(charge: int) -> float:
 	var index := clampi(charge, 0, charge_multipliers.size() - 1)
 	var multiplier := charge_multipliers[index]
 	return (base_bow_damage + PlayerStats.get_bow_damage_bonus()) * multiplier
+
+func get_magic_damage(charge: int) -> float:
+	var index := clampi(charge, 0, charge_multipliers.size() - 1)
+	var multiplier := charge_multipliers[index]
+	return (PlayerStats.get_magic_damage_bonus() * 2)
+
 
 @export var base_draw_time := 1.05
 func _get_draw_time() -> void:
