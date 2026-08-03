@@ -40,6 +40,7 @@
 [ext_resource type="AudioStream" uid="uid://kn77n08o6g33" path="res://Player/Weapons/Bow/Bow Drawn.wav" id="29_efx54"]
 [ext_resource type="AudioStream" uid="uid://de5mqlogjshim" path="res://Player/Weapons/Sword Taking .wav" id="30_755ss"]
 [ext_resource type="Script" uid="uid://f5xc6skdqm0p" path="res://Player/weapon_magic.gd" id="33_i4o1l"]
+[ext_resource type="Texture2D" uid="uid://dbnpgk6ms7xfu" path="res://Player/Misc/charging_ball.png" id="39_d30e8"]
 
 [sub_resource type="Animation" id="Animation_x3vf3"]
 length = 0.001
@@ -555,6 +556,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6pogt"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 10.4
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -24.000002
+radial_accel_max = -2.2351742e-06
+scale_min = 0.049999997
+scale_max = 0.099999994
+
 [node name="Player" type="CharacterBody2D" unique_id=1729205455]
 script = ExtResource("1_l8h54")
 
@@ -728,7 +739,6 @@ shape = SubResource("CircleShape2D_nq3hm")
 debug_color = Color(0.9411765, 0.21176471, 0.33333334, 0.41960785)
 
 [node name="WeaponBow" type="Node2D" parent="." unique_id=809111670]
-visible = false
 position = Vector2(3, -1)
 scale = Vector2(0.15, 0.15)
 script = ExtResource("23_sm0op")
@@ -749,6 +759,14 @@ stream = ExtResource("29_efx54")
 
 [node name="LockOutTimer" type="Timer" parent="WeaponBow" unique_id=2131501861]
 unique_name_in_owner = true
+
+[node name="ChargeGPUParticles" type="GPUParticles2D" parent="WeaponBow" unique_id=1338558556]
+position = Vector2(60, 13.333333)
+scale = Vector2(6.6666665, 6.6666665)
+emitting = false
+amount = 15
+texture = ExtResource("39_d30e8")
+process_material = SubResource("ParticleProcessMaterial_6pogt")
 
 [node name="WeaponSwapAudio" type="AudioStreamPlayer2D" parent="." unique_id=413742612]
 unique_name_in_owner = true

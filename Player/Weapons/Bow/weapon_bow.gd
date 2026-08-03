@@ -7,10 +7,13 @@ extends WeaponBase
 @onready var bow_marker: Marker2D = $BowMarker
 @onready var bow_ani_sprite: AnimatedSprite2D = $BowMarker/BowAniSprite
 @onready var arrow_sprite: Sprite2D = $BowMarker/ArrowSprite
+@onready var charge_gpu_particles: GPUParticles2D = $ChargeGPUParticles
+
 
 @onready var draw_timer: Timer = %DrawTimer
 @onready var lock_out_timer: Timer = %LockOutTimer
 @onready var bow_draw_audio: AudioStreamPlayer2D = %BowDrawAudio
+
 
 
 const BASIC_ARROW :PackedScene = preload("res://Player/Weapons/Bow/Arrows/basic_arrow.tscn")
@@ -50,6 +53,7 @@ func on_attack_pressed() -> void:
 		if PlayerStats.player_mana >= MagicArrow.MANA_COST:
 			mana_consumed = true
 			player.mana_cost(MagicArrow.MANA_COST)
+			charge_gpu_particles.emitting = true
 		else:
 			PlayerStats.set_magic_active(false)
 	_get_draw_time()
@@ -62,6 +66,7 @@ func on_attack_released() -> void:
 	draw_timer.stop()
 	arrow_sprite.visible = false
 	bow_ani_sprite.frame = 0
+	charge_gpu_particles.emitting = false
 	
 	if draw_counter == 0: #prevents the player from spamming base arrow.
 		is_locked_out = true
@@ -118,12 +123,8 @@ func _get_draw_time() -> void:
 	draw_timer.wait_time = maxf(base_draw_time - timer_reduction, 0.05)
 
 func launch_backward() -> void:
-	var is_airboren := player.current_state != Player.State.GROUND
-	var is_max_charge := draw_counter >= max_charge
-	
-	if is_airboren and is_max_charge:
-		var boost_direction := -Vector2.RIGHT.rotated( aim_angle)
-		player.apply_movement_boost(boost_direction * boost_distance)
+	var direction := -Vector2.RIGHT.rotated(aim_angle)
+	launch_boost(direction, draw_counter >= max_charge, boost_distance)
 
 #prevents the player from spamming base arrow.
 func _lock_out_timeout() -> void:

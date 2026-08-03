@@ -117,6 +117,7 @@ offset_right = 268.0
 offset_bottom = 180.0
 
 [node name="Settings" type="Control" parent="." unique_id=965284014]
+visible = false
 anchors_preset = 0
 offset_left = 503.0
 offset_top = 233.0
@@ -239,7 +240,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="InterfaceMenuContainer" type="PanelContainer" parent="Settings" unique_id=1854124567]
-visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0

@@ -6,6 +6,7 @@ extends WeaponBase
 @onready var weapon_marker: Marker2D = $WeaponMarker
 @onready var charge_timer: Timer = %ChargeTimer
 @onready var sword_area_2d: Area2D = $WeaponMarker/Sword/SwordArea2D
+@onready var air_spin_area: Area2D = %AirSpinArea
 
 @onready var sparkle: Sprite2D = %Sparkle
 @onready var sparkle_2: Sprite2D = %Sparkle2
@@ -33,6 +34,9 @@ func _ready() -> void:
 	charge_timer.timeout.connect(_on_charge_timeout)
 	sword_area_2d.area_entered.connect(_on_area_entered) 
 
+func get_aim_direction() -> Vector2:
+	return(get_global_mouse_position() - player.global_position).normalized()
+
 func on_attack_pressed() -> void:
 	mana_consumed = false
 	if PlayerStats.is_magic_active == true:
@@ -54,6 +58,9 @@ func on_attack_pressed() -> void:
 	player.right_arm.pause()
 
 func on_attack_released() -> void:
+	var is_airborne := player.current_state != Player.State.GROUND
+	if is_airborne:
+		air_spin_area.monitoring = true
 	sword_area_2d.monitoring = true
 	charge_level = charges
 	charge_timer.stop()
@@ -65,8 +72,12 @@ func on_attack_released() -> void:
 	reset_charges()
 
 func on_attack_end() -> void: #called during animations as method tracks. 
+	var is_airborne := player.current_state != Player.State.GROUND
 	sword_area_2d.monitoring = false
 	poison_swing_anim.visible = false
+	if is_airborne:
+		air_spin_area.monitoring = false
+
 
 func _on_charge_timeout() -> void:
 	charges += 1
@@ -113,11 +124,5 @@ func _get_charge_time() -> void:
 	charge_timer.wait_time = maxf(base_charge_time - timer_reduction, 0.05)
 
 func launch_forward() -> void:
-	var is_airborn := player.current_state != Player.State.GROUND
-	var is_max_charge := charges >= max_charge
-	
-	if is_airborn and is_max_charge:
-		var boost_direction := player.velocity.normalized()
-		if boost_direction == Vector2.ZERO:
-			boost_direction = Vector2.LEFT if player.is_facing_left else Vector2.RIGHT
-		player.apply_movement_boost(boost_direction * boost_distance)
+	var direction := get_aim_direction()
+	launch_boost(direction, charges >= max_charge, boost_distance)
