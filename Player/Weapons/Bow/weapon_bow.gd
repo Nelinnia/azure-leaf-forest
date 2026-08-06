@@ -12,7 +12,9 @@ extends WeaponBase
 
 @onready var draw_timer: Timer = %DrawTimer
 @onready var lock_out_timer: Timer = %LockOutTimer
+
 @onready var bow_draw_audio: AudioStreamPlayer2D = %BowDrawAudio
+@onready var arrow_loose_audio: AudioStreamPlayer2D = %ArrowLooseAudio
 
 
 
@@ -67,6 +69,7 @@ func on_attack_released() -> void:
 	arrow_sprite.visible = false
 	bow_ani_sprite.frame = 0
 	charge_gpu_particles.emitting = false
+	arrow_loose_audio.play()
 	
 	if draw_counter == 0: #prevents the player from spamming base arrow.
 		is_locked_out = true

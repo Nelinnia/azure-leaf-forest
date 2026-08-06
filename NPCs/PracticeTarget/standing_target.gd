@@ -1,3 +1,4 @@
+class_name StandingTarget
 extends NPC
 
 # BUG: when hody is hit damage isnt registered(fix later) 
@@ -5,6 +6,8 @@ extends NPC
 @onready var body_area: Area2D = %BodyArea
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+
 
 func _ready() -> void:
 	super._ready()

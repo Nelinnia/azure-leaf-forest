@@ -27,6 +27,7 @@ script = ExtResource("1_ftdfd")
 
 [node name="ClickAudio" type="AudioStreamPlayer2D" parent="." unique_id=414108842]
 stream = ExtResource("2_uaw1b")
+bus = &"Sfx"
 
 [node name="PanelContainer2" type="PanelContainer" parent="." unique_id=1987298010]
 clip_contents = true

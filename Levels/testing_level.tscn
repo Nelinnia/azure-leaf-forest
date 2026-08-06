@@ -9,6 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://c10kosptab1wk" path="res://Levels/Art/Trees/Tree_Top_Leaves_01.png" id="5_jy78r"]
 [ext_resource type="Texture2D" uid="uid://vjyekkc8kup3" path="res://Levels/Art/Trees/Tree_Double_Leaves_01.png" id="6_07pr4"]
 [ext_resource type="Texture2D" uid="uid://dvhpouoja5kak" path="res://Levels/Art/Trees/Tree_Double_Leaves_02.png" id="7_gk6bq"]
+[ext_resource type="AudioStream" uid="uid://c5uxlpo4g4kh6" path="res://Levels/Music/2. The Whispering Woods.wav" id="10_6cwen"]
+[ext_resource type="PackedScene" uid="uid://b658wvd0wl8rp" path="res://NPCs/PracticeTarget/moving_target.tscn" id="11_m1lqy"]
+
+[sub_resource type="Curve2D" id="Curve2D_7vwpx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 171, -1, 0, 0, 0, 0, -303, -1)
+}
+point_count = 2
 
 [node name="Testing_Level" type="Node2D" unique_id=300299023]
 
@@ -72,3 +80,19 @@ position = Vector2(-613, -188)
 
 [node name="StandingTarget3" parent="." unique_id=2077193452 instance=ExtResource("5_etno1")]
 position = Vector2(337, -28.000002)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=94746110]
+stream = ExtResource("10_6cwen")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+
+[node name="MovingTarget" parent="." unique_id=1412847585 node_paths=PackedStringArray("path") instance=ExtResource("11_m1lqy")]
+position = Vector2(47, -300)
+path = NodePath("../Path2D")
+movement_speed = 100.0
+health = 1000
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1460893396]
+position = Vector2(47, -300)
+curve = SubResource("Curve2D_7vwpx")

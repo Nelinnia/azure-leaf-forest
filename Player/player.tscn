@@ -40,6 +40,7 @@
 [ext_resource type="AudioStream" uid="uid://kn77n08o6g33" path="res://Player/Weapons/Bow/Bow Drawn.wav" id="29_efx54"]
 [ext_resource type="AudioStream" uid="uid://de5mqlogjshim" path="res://Player/Weapons/Sword Taking .wav" id="30_755ss"]
 [ext_resource type="Script" uid="uid://f5xc6skdqm0p" path="res://Player/weapon_magic.gd" id="33_i4o1l"]
+[ext_resource type="AudioStream" uid="uid://bumxwe8pwl65y" path="res://Player/Weapons/Bow/Arrow Loose.wav" id="39_6pogt"]
 [ext_resource type="Texture2D" uid="uid://dbnpgk6ms7xfu" path="res://Player/Misc/charging_ball.png" id="39_d30e8"]
 
 [sub_resource type="Animation" id="Animation_x3vf3"]
@@ -729,6 +730,7 @@ texture = ExtResource("19_o28un")
 
 [node name="PipchargeAudio" type="AudioStreamPlayer2D" parent="Visuals/Weapon/WeaponMarker/Pips" unique_id=571898714]
 stream = ExtResource("22_hshwv")
+bus = &"Sfx"
 
 [node name="AirSpinArea" type="Area2D" parent="Visuals/Weapon" unique_id=1609444747]
 unique_name_in_owner = true
@@ -756,6 +758,12 @@ texture = ExtResource("28_76lrf")
 [node name="BowDrawAudio" type="AudioStreamPlayer2D" parent="WeaponBow" unique_id=2044408074]
 unique_name_in_owner = true
 stream = ExtResource("29_efx54")
+bus = &"Sfx"
+
+[node name="ArrowLooseAudio" type="AudioStreamPlayer2D" parent="WeaponBow" unique_id=1161846707]
+unique_name_in_owner = true
+stream = ExtResource("39_6pogt")
+volume_db = -1.0
 
 [node name="LockOutTimer" type="Timer" parent="WeaponBow" unique_id=2131501861]
 unique_name_in_owner = true
@@ -771,6 +779,7 @@ process_material = SubResource("ParticleProcessMaterial_6pogt")
 [node name="WeaponSwapAudio" type="AudioStreamPlayer2D" parent="." unique_id=413742612]
 unique_name_in_owner = true
 stream = ExtResource("30_755ss")
+bus = &"Sfx"
 
 [node name="WeaponMagic" type="Node2D" parent="." unique_id=1422724341]
 unique_name_in_owner = true
