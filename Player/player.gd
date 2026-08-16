@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 
 @onready var hair_back: Sprite2D = %HairBack
+@onready var hair_animated_sprite: AnimatedSprite2D = %HairAnimatedSprite
 @onready var player_parts: Node2D = %PlayerParts
 @onready var right_arm: AnimatedSprite2D = %Right_Arm
 @onready var left_arm: AnimatedSprite2D = %Left_Arm
@@ -308,6 +309,7 @@ func _transition_to_state(new_state: State) -> void:
 			animated_sprite.play("falling")
 			animation_player.play("falling")
 			hair_back.visible = false
+			hair_animated_sprite.visible = false
 			if jump_count == MAX_JUMPS:
 				current_gravity = double_jump_fall_gravity
 			else:
@@ -320,6 +322,8 @@ func _transition_to_state(new_state: State) -> void:
 			current_gravity = double_jump_gravity
 			velocity.x = direction_x * jump_horizontal_speed
 			animated_sprite.play("jump_anim")
+			hair_animated_sprite.visible = true
+			hair_animated_sprite.play("Jump_Boost")
 			jump_count = MAX_JUMPS
 
 # recalcs jump variables whenever player lvs stat

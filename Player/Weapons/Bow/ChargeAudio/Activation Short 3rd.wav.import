@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bagy2jqcw2lt5"
+path="res://.godot/imported/Activation Short 3rd.wav-cd30e9a37d57354c1f5c629a5886711d.sample"
+
+[deps]
+
+source_file="res://Player/Weapons/Bow/ChargeAudio/Activation Short 3rd.wav"
+dest_files=["res://.godot/imported/Activation Short 3rd.wav-cd30e9a37d57354c1f5c629a5886711d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

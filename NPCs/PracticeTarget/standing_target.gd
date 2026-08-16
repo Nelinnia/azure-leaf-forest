@@ -1,9 +1,9 @@
 class_name StandingTarget
 extends NPC
 
-# BUG: when hody is hit damage isnt registered(fix later) 
-# Arrow only hits head since its "NPC" body is just area2D
-@onready var body_area: Area2D = %BodyArea
+
+
+@onready var crit_area_2d: CritArea2D = %CritArea2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -11,8 +11,8 @@ extends NPC
 
 func _ready() -> void:
 	super._ready()
-	self.area_entered.connect(_on_head_hit)
-	body_area.area_entered.connect(_on_body_hit)
+	self.area_entered.connect(_on_body_hit)
+	crit_area_2d.area_entered.connect(_on_head_hit)
 
 
 
@@ -21,13 +21,9 @@ func _on_body_hit(area: Area2D) -> void:
 func _on_head_hit(area: Area2D) -> void:
 	animation_player.play("head_hit")
 
-func take_damage(damage: int) -> void:
-	set_health(health - damage)
+func take_damage(damage: int, is_crit :bool= false) -> void:
+	super.take_damage(damage, is_crit)
 	PlayerStats.add_xp(base_xp)
-	var damage_indicator :Node2D= preload("res://User Interface/HUD/damage_indicator.tscn").instantiate()
-	get_tree().current_scene.add_child(damage_indicator)
-	damage_indicator.global_position = global_position
-	damage_indicator.display_amount(damage)
 	print(health)
 
 

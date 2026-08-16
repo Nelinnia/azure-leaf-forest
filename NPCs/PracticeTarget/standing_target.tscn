@@ -2,13 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://b6yuu862so1m2" path="res://NPCs/PracticeTarget/Standing_Target_Head_01.png" id="1_slbs5"]
 [ext_resource type="Script" uid="uid://c7e7ka2qb61xf" path="res://NPCs/PracticeTarget/standing_target.gd" id="1_xm2ot"]
+[ext_resource type="Script" uid="uid://rp2fe7078gc2" path="res://Editor/CritArea.gd" id="2_5rln3"]
 [ext_resource type="Texture2D" uid="uid://dlf2drjud1363" path="res://NPCs/PracticeTarget/Standing_Target_Torso_01.png" id="2_xm2ot"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_etno1"]
-radius = 56.764618
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jy78r"]
 size = Vector2(80.85106, 85.106384)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_etno1"]
+radius = 56.764618
 
 [sub_resource type="Animation" id="Animation_slbs5"]
 length = 0.001
@@ -51,7 +52,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_5rln3"]
 resource_name = "body_hit"
-length = 0.39999999999999997
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -67,7 +68,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_xm2ot"]
 resource_name = "head_hit"
-length = 0.39999999999999997
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -106,23 +107,25 @@ collision_mask = 12
 script = ExtResource("1_xm2ot")
 health = 1000
 
-[node name="HeadCollisionShape2D" type="CollisionShape2D" parent="." unique_id=2079542064]
-unique_name_in_owner = true
-position = Vector2(2.000001, -12.000006)
-scale = Vector2(0.3, 0.3)
-shape = SubResource("CircleShape2D_etno1")
-debug_color = Color(0.60694355, 0.10777175, 4.813075e-08, 0.41960785)
-
-[node name="BodyArea" type="Area2D" parent="." unique_id=1790938320]
-unique_name_in_owner = true
-collision_layer = 4
-collision_mask = 12
-
-[node name="BodyCollisionShape2D2" type="CollisionShape2D" parent="BodyArea" unique_id=236527901]
+[node name="BodyCollisionShape2D2" type="CollisionShape2D" parent="." unique_id=236527901]
 unique_name_in_owner = true
 position = Vector2(1.4999999, 11)
 scale = Vector2(0.235, 0.235)
 shape = SubResource("RectangleShape2D_jy78r")
+debug_color = Color(0.60694355, 0.10777175, 4.813075e-08, 0.41960785)
+
+[node name="CritArea2D" type="Area2D" parent="." unique_id=1770266221]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 12
+script = ExtResource("2_5rln3")
+metadata/_custom_type_script = "uid://rp2fe7078gc2"
+
+[node name="HeadCollisionShape2D" type="CollisionShape2D" parent="CritArea2D" unique_id=2079542064]
+unique_name_in_owner = true
+position = Vector2(2.000001, -12.000006)
+scale = Vector2(0.3, 0.3)
+shape = SubResource("CircleShape2D_etno1")
 debug_color = Color(0.60694355, 0.10777175, 4.813075e-08, 0.41960785)
 
 [node name="HeadSprite" type="Sprite2D" parent="." unique_id=251509438]

@@ -22,6 +22,12 @@ const BASIC_ARROW :PackedScene = preload("res://Player/Weapons/Bow/Arrows/basic_
 const MAGIC_ARROW :PackedScene = preload("res://Player/Weapons/Bow/Arrows/Magic_Arrow/magic_arrow.tscn")
 
 
+@onready var charge_audio_player: AudioStreamPlayer2D = $ChargeGPUParticles/ChargeAudioPlayer
+const CHARGE_01 :AudioStream= preload("res://Player/Weapons/Bow/ChargeAudio/Activation Short.wav")
+const CHARGE_02 :AudioStream = preload("res://Player/Weapons/Bow/ChargeAudio/Activation Short 3rd.wav")
+const CHARGE_03 :AudioStream = preload("res://Player/Weapons/Bow/ChargeAudio/Activation Short 5th.wav")
+const CHARGE_04 :AudioStream = preload("res://Player/Weapons/Bow/ChargeAudio/Activation Short Noise Burst Sparkles.wav") 
+
 var draw_counter :int= 0
 @export var base_bow_damage :int= 2
 

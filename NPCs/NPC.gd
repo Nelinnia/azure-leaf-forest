@@ -6,6 +6,7 @@ extends Area2D
 @export var base_xp :int= 5
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_health(health)
@@ -16,15 +17,16 @@ func _ready() -> void:
 func set_health(new_health: int) -> void:
 	health = maxi(0, new_health)
 	
-	
 	if health <= 0.0:
 		_die(true)
 
 
 
-func take_damage(damage: int) -> void:
+func take_damage(damage: int, is_crit: bool = false) -> void:
+	if is_crit:
+		damage *= 1.5
 	set_health(health - damage)
-	_spawn_damage_indicator(damage, false)
+	_spawn_damage_indicator(damage, false, is_crit)
 
 
 
@@ -51,11 +53,12 @@ func _on_poison_tick() -> void:
 
 
 
-func _spawn_damage_indicator(amount: int, poison: bool) -> void:
+func _spawn_damage_indicator(amount: int, poison: bool, crit: bool = false) -> void:
 	var damage_indicator :Node2D= preload("res://User Interface/HUD/damage_indicator.tscn").instantiate()
 	get_tree().current_scene.add_child(damage_indicator)
 	damage_indicator.global_position = global_position
 	damage_indicator.is_poison = poison
+	damage_indicator.is_crit = crit
 	damage_indicator.display_amount(amount)
 
 

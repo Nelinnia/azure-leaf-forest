@@ -8,5 +8,5 @@ const MANA_COST :int= 10
 
 
 func _on_area_entered(other_area: Area2D) -> void: #detects NPCs
-	if other_area is NPC:
+	if other_area.has_method("take_damage"):
 		other_area.take_damage(bow.get_bow_damage(charge_level) + (bow.get_magic_damage(charge_level)))

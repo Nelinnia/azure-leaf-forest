@@ -81,7 +81,7 @@ position = Vector2(-613, -188)
 [node name="StandingTarget3" parent="." unique_id=2077193452 instance=ExtResource("5_etno1")]
 position = Vector2(337, -28.000002)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=94746110]
+[node name="LevelMusicPlayer" type="AudioStreamPlayer" parent="." unique_id=94746110]
 stream = ExtResource("10_6cwen")
 volume_db = -10.0
 autoplay = true
@@ -96,3 +96,11 @@ health = 1000
 [node name="Path2D" type="Path2D" parent="." unique_id=1460893396]
 position = Vector2(47, -300)
 curve = SubResource("Curve2D_7vwpx")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1613362260]
+z_index = -500
+offset_left = -1432.0
+offset_top = -1752.0
+offset_right = 1633.0
+offset_bottom = 877.0
+color = Color(0, 0, 0, 1)

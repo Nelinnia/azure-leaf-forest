@@ -10,8 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://k8ih4tnwm2qb" path="res://Player/Sword_Swing/Azure_Leage_Elf_Right_Arm_02.png" id="7_lfmf2"]
 [ext_resource type="Texture2D" uid="uid://bfdcxdbgfgt15" path="res://Player/Level_Up/Level_up_Circle.png" id="7_m0h3t"]
 [ext_resource type="Texture2D" uid="uid://c61s2jqdu7pgp" path="res://Player/Misc/Azure_Leage_Elf_Leg_Left.png" id="8_00tjw"]
+[ext_resource type="Texture2D" uid="uid://b0l0e7yig720j" path="res://Player/Jump_Boost/Elf_Jump_Boost_01.png" id="8_dy65m"]
 [ext_resource type="Texture2D" uid="uid://beeaygajwe7fh" path="res://Player/Sword_Swing/Azure_Leage_Elf_Right_Arm_03.png" id="8_pisgm"]
 [ext_resource type="Texture2D" uid="uid://bybxaf3nnke3r" path="res://Player/Sword_Swing/Azure_Leage_Elf_Right_Arm_04.png" id="9_b1ygp"]
+[ext_resource type="Texture2D" uid="uid://68m8rhnpo8vf" path="res://Player/Jump_Boost/Elf_Jump_Boost_02.png" id="9_maysp"]
 [ext_resource type="Texture2D" uid="uid://cpvt7qnkdp0tg" path="res://Player/Misc/Azure_Leage_Elf_Leg_Right.png" id="9_x3vf3"]
 [ext_resource type="Texture2D" uid="uid://ddawbx4xyo08s" path="res://Player/Sword_Swing/left_arm/Azure_Leage_Elf_Left_Arm_01.png" id="10_o28un"]
 [ext_resource type="Texture2D" uid="uid://c33fhyl8xlb5c" path="res://Player/Misc/Azure_Leage_Elf_Hair_Back.png" id="10_x3vf3"]
@@ -426,6 +428,20 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_1acsy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_dy65m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_maysp")
+}],
+"loop": 0,
+"name": &"Jump_Boost",
+"speed": 5.0
+}]
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_o28un"]
 animations = [{
 "frames": [{
@@ -612,6 +628,17 @@ position = Vector2(0, 7.000002)
 scale = Vector2(0.15715091, 0.16869795)
 texture = ExtResource("7_m0h3t")
 
+[node name="HairAnimatedSprite" type="AnimatedSprite2D" parent="Visuals" unique_id=1554097508]
+unique_name_in_owner = true
+visible = false
+z_index = -1
+position = Vector2(1, -4)
+scale = Vector2(0.139, 0.139)
+sprite_frames = SubResource("SpriteFrames_1acsy")
+animation = &"Jump_Boost"
+frame = 1
+frame_progress = 1.0
+
 [node name="PlayerParts" type="Node2D" parent="Visuals" unique_id=259045276]
 unique_name_in_owner = true
 
@@ -631,6 +658,7 @@ texture = ExtResource("9_x3vf3")
 
 [node name="HairBack" type="Sprite2D" parent="Visuals/PlayerParts" unique_id=1689437038]
 unique_name_in_owner = true
+visible = false
 z_index = -2
 position = Vector2(0, -9)
 scale = Vector2(0.139, 0.139)
@@ -655,6 +683,7 @@ animation = &"sword_swing_air"
 
 [node name="Weapon" type="Node2D" parent="Visuals" unique_id=1269724272]
 unique_name_in_owner = true
+visible = false
 script = ExtResource("17_b1ygp")
 
 [node name="WeaponMarker" type="Marker2D" parent="Visuals/Weapon" unique_id=793270116]
@@ -775,6 +804,8 @@ emitting = false
 amount = 15
 texture = ExtResource("39_d30e8")
 process_material = SubResource("ParticleProcessMaterial_6pogt")
+
+[node name="ChargeAudioPlayer" type="AudioStreamPlayer2D" parent="WeaponBow/ChargeGPUParticles" unique_id=402729761]
 
 [node name="WeaponSwapAudio" type="AudioStreamPlayer2D" parent="." unique_id=413742612]
 unique_name_in_owner = true

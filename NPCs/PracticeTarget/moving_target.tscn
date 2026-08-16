@@ -2,13 +2,25 @@
 
 [ext_resource type="Script" uid="uid://bws0srdjbcs1p" path="res://NPCs/PracticeTarget/moveing_target.gd" id="1_2ytvo"]
 [ext_resource type="Texture2D" uid="uid://b6yuu862so1m2" path="res://NPCs/PracticeTarget/Standing_Target_Head_01.png" id="2_n1rxe"]
+[ext_resource type="Script" uid="uid://rp2fe7078gc2" path="res://Editor/CritArea.gd" id="2_th5n8"]
 [ext_resource type="Texture2D" uid="uid://dlf2drjud1363" path="res://NPCs/PracticeTarget/Standing_Target_Torso_01.png" id="3_th5n8"]
+[ext_resource type="Texture2D" uid="uid://brgti0bkl7ybp" path="res://NPCs/PracticeTarget/Particles/Magic_Star.png" id="4_n1rxe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jy78r"]
+size = Vector2(80.85106, 85.106384)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_etno1"]
 radius = 56.764618
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jy78r"]
-size = Vector2(80.85106, 85.106384)
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nq3hm"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 5.17
+angle_min = -49.99999
+angle_max = 50.00001
+gravity = Vector3(0, 98, 0)
+scale_min = 0.049999997
+scale_max = 0.049999997
 
 [sub_resource type="Animation" id="Animation_slbs5"]
 length = 0.001
@@ -105,24 +117,33 @@ collision_layer = 4
 collision_mask = 12
 script = ExtResource("1_2ytvo")
 
-[node name="HeadCollisionShape2D" type="CollisionShape2D" parent="." unique_id=2079542064]
+[node name="BodyCollisionShape2D2" type="CollisionShape2D" parent="." unique_id=236527901]
+unique_name_in_owner = true
+position = Vector2(1.4999999, 11)
+scale = Vector2(0.235, 0.235)
+shape = SubResource("RectangleShape2D_jy78r")
+debug_color = Color(0.60694355, 0.10777175, 4.813075e-08, 0.41960785)
+
+[node name="CritArea2D" type="Area2D" parent="." unique_id=1155195719]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 12
+script = ExtResource("2_th5n8")
+metadata/_custom_type_script = "uid://rp2fe7078gc2"
+
+[node name="HeadCollisionShape2D" type="CollisionShape2D" parent="CritArea2D" unique_id=2079542064]
 unique_name_in_owner = true
 position = Vector2(2.000001, -12.000006)
 scale = Vector2(0.3, 0.3)
 shape = SubResource("CircleShape2D_etno1")
 debug_color = Color(0.60694355, 0.10777175, 4.813075e-08, 0.41960785)
 
-[node name="BodyArea" type="Area2D" parent="." unique_id=1790938320]
-unique_name_in_owner = true
-collision_layer = 4
-collision_mask = 12
-
-[node name="BodyCollisionShape2D2" type="CollisionShape2D" parent="BodyArea" unique_id=236527901]
-unique_name_in_owner = true
-position = Vector2(1.4999999, 11)
-scale = Vector2(0.235, 0.235)
-shape = SubResource("RectangleShape2D_jy78r")
-debug_color = Color(0.60694355, 0.10777175, 4.813075e-08, 0.41960785)
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1979131702]
+position = Vector2(0, 27)
+amount = 5
+texture = ExtResource("4_n1rxe")
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_nq3hm")
 
 [node name="HeadSprite" type="Sprite2D" parent="." unique_id=251509438]
 position = Vector2(-0.90000004, -0.6)
