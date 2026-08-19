@@ -77,7 +77,9 @@ func on_attack_end() -> void: #called during animations as method tracks.
 	poison_swing_anim.visible = false
 	if is_airborne:
 		air_spin_area.monitoring = false
-
+func on_attack_end_left() -> void:
+	if player.is_facing_left:
+		on_attack_end()
 
 func _on_charge_timeout() -> void:
 	charges += 1

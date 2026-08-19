@@ -162,7 +162,11 @@ func _start_attack() -> void:
 	is_attacking = true
 	var is_ground := current_state == State.GROUND
 	var attack_anim := "sword_swing_ground" if is_ground else "sword_swing_air"
-	attack_animation_player.play(attack_anim)
+	if not is_ground and is_facing_left:
+		attack_animation_player.play_backwards("sword_swing_air")
+	else:
+		attack_animation_player.play(attack_anim)
+	#attack_animation_player.play(attack_anim)
 	left_arm.play(attack_anim)
 	right_arm.play(attack_anim)
 func _on_attack_finished(anim_name: StringName) -> void:
