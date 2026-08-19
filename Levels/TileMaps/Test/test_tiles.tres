@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" format=3 uid="uid://cp4uneprfpr7i"]
 
-[ext_resource type="Texture2D" uid="uid://ckqivy8tcel3j" path="res://Levels/TileMaps/Test/Test_Leaves_Ground_32x32.png" id="1_xwr6r"]
+[ext_resource type="Texture2D" uid="uid://85cvldeakv1u" path="res://Levels/TileMaps/Test/Test_Leaves_Ground_64x64.png" id="1_xwr6r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1q84e"]
 resource_name = "Ground leaves"
@@ -8,6 +8,12 @@ texture = ExtResource("1_xwr6r")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [resource]
 tile_size = Vector2i(32, 32)
