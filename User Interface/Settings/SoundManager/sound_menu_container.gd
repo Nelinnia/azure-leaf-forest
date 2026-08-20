@@ -40,19 +40,10 @@ func _ready() -> void:
 	ambiance_slider.max_value = 1.0
 	ambiance_slider.step = 0.05
 	
-	master_sound_slider.value_changed.connect(func(v): SettingsManager.set_volume("master", v); master_sound_label.text = "%d%%" % int(v * 100))
-	music_slider.value_changed.connect(func(v): SettingsManager.set_volume("music", v); music_label.text = "%d%%" % int(v * 100))
-	sfx_slider.value_changed.connect(func(v): SettingsManager.set_volume("sfx", v); sfx_label.text = "%d%%" % int(v * 100))
-	ambiance_slider.value_changed.connect(func(v): SettingsManager.set_volume("ambiance", v); ambiance_label.text = "%d%%" % int(v * 100))
+	master_sound_slider.value_changed.connect(func(v): SettingsManager.set_volume("master", v); master_sound_label.text = "Master %d%%" % int(v * 100))
+	music_slider.value_changed.connect(func(v): SettingsManager.set_volume("music", v); music_label.text = "Music %d%%" % int(v * 100))
+	sfx_slider.value_changed.connect(func(v): SettingsManager.set_volume("sfx", v); sfx_label.text = "SFX %d%%" % int(v * 100))
+	ambiance_slider.value_changed.connect(func(v): SettingsManager.set_volume("ambiance", v); ambiance_label.text = "Ambiance %d%%" % int(v * 100))
 
 func _on_volume_changed(value: float) -> void:
 	SettingsManager.set_volume("master", value)
-	#_update_volume_label(value)
-
-
-
-#func _update_volume_label(value: float) -> void:
-#	master_volume_label.text = "Master Volume: %d%%" % int(SettingsManager.volume_master * 100)
-#	sfx_volume_label.text = "Turret Volume: %d%%" % int(SettingsManager.volume_turret * 100)
-#	ambiance_volume_label.text = "Ambiance Volume: %d%%" % int(SettingsManager.volume_ambiance * 100)
-#	music_volume_label.text = "Music Volume: %d%%" % int(SettingsManager.volume_music * 100)

@@ -19,8 +19,9 @@
 [ext_resource type="StyleBox" uid="uid://cku88k2vjw6xx" path="res://User Interface/Assets/MenuTheme.tres" id="14_po3ix"]
 [ext_resource type="Texture2D" uid="uid://bsjo167w2r4v6" path="res://User Interface/Assets/Texture_Button_Border.png" id="14_wpw37"]
 [ext_resource type="ButtonGroup" uid="uid://dvqgx5g0hey5s" path="res://User Interface/Settings/settings_button_group.tres" id="15_g6dgd"]
-[ext_resource type="Script" uid="uid://cgqdrl50rir44" path="res://User Interface/interface_menu_container.gd" id="16_wpw37"]
 [ext_resource type="PackedScene" uid="uid://ck5a1a2wy2bpp" path="res://User Interface/Settings/SoundManager/sound_menu_container.tscn" id="18_bnh8w"]
+[ext_resource type="PackedScene" uid="uid://cmawd71jkrlnk" path="res://User Interface/Settings/InterfaceManager/interface_menu_container.tscn" id="19_ywelb"]
+[ext_resource type="PackedScene" uid="uid://0nhrc3pcs7ut" path="res://User Interface/Settings/KeybindManager/keybind_menu_container.tscn" id="21_ywelb"]
 
 [node name="PlayerUI" type="Control" unique_id=1326240640]
 layout_mode = 3
@@ -205,38 +206,8 @@ text = "Interface"
 visible = false
 layout_mode = 0
 
-[node name="InterfaceMenuContainer" type="PanelContainer" parent="Settings" unique_id=1854124567]
+[node name="InterfaceMenuContainer" parent="Settings" unique_id=534852961 instance=ExtResource("19_ywelb")]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_styles/panel = ExtResource("14_po3ix")
-script = ExtResource("16_wpw37")
-
-[node name="GridContainer" type="GridContainer" parent="Settings/InterfaceMenuContainer" unique_id=1021966487]
-layout_mode = 2
-columns = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Settings/InterfaceMenuContainer/GridContainer" unique_id=681430945]
-layout_mode = 2
-
-[node name="UIscaleLabel" type="Label" parent="Settings/InterfaceMenuContainer/GridContainer/VBoxContainer" unique_id=426751763]
-layout_mode = 2
-text = "UI Scale"
-
-[node name="PlayerBarToggleLabel" type="Label" parent="Settings/InterfaceMenuContainer/GridContainer/VBoxContainer" unique_id=850686365]
-layout_mode = 2
-text = "Bar Numbers"
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="Settings/InterfaceMenuContainer/GridContainer" unique_id=724621045]
-layout_mode = 2
-
-[node name="UIScaleSlider" type="HSlider" parent="Settings/InterfaceMenuContainer/GridContainer/VBoxContainer2" unique_id=1759028354]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="PlayerBarToggleCheck" type="CheckButton" parent="Settings/InterfaceMenuContainer/GridContainer/VBoxContainer2" unique_id=2007305917]
-unique_name_in_owner = true
-layout_mode = 2
 
 [node name="GraphicsMenuContainer" type="PanelContainer" parent="Settings" unique_id=2110353182]
 visible = false
@@ -255,22 +226,9 @@ layout_mode = 2
 [node name="VBoxContainer2" type="VBoxContainer" parent="Settings/GraphicsMenuContainer/GridContainer" unique_id=982734988]
 layout_mode = 2
 
-[node name="KeybindMenuContainer" type="PanelContainer" parent="Settings" unique_id=95042969]
+[node name="KeybindMenuContainer" parent="Settings" unique_id=97548811 instance=ExtResource("21_ywelb")]
 visible = false
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_styles/panel = ExtResource("14_po3ix")
-
-[node name="GridContainer" type="GridContainer" parent="Settings/KeybindMenuContainer" unique_id=517748346]
-z_index = 2
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Settings/KeybindMenuContainer/GridContainer" unique_id=1974547507]
-layout_mode = 2
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="Settings/KeybindMenuContainer/GridContainer" unique_id=664428355]
-layout_mode = 2
 
 [node name="ClickAudio" type="AudioStreamPlayer2D" parent="." unique_id=885364043]
 stream = ExtResource("1_3dkjn")

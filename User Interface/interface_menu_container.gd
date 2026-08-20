@@ -14,6 +14,10 @@ extends PanelContainer
 func _ready() -> void:
 	player_bar_toggle_check.button_pressed = SettingsManager.player_bar_numbers_enabled
 	player_bar_toggle_check.toggled.connect(_on_player_bar_enabled)
+	
+	ui_scale_slider.value = SettingsManager.ui_scale
+	ui_scale_slider.value_changed.connect(_on_scale_UI)
+
 
 
 func _on_player_bar_enabled(enabled : bool) -> void:
@@ -22,5 +26,11 @@ func _on_player_bar_enabled(enabled : bool) -> void:
 	player_bars.bar_label_visibility_toggle(enabled)
 
 
-func scale_UI() -> void:
-	player_ui.scale
+func _on_scale_UI(value: float) -> void:
+	SettingsManager.ui_scale = value
+	SettingsManager.save_settings()
+	apply_UI_scale(value)
+	
+func apply_UI_scale(value: float) -> void:
+	player_ui.pivot_offset = player_ui.size / 2.0
+	player_ui.scale = Vector2(value, value)

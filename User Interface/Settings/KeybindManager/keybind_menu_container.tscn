@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://0nhrc3pcs7ut"]
+
+[ext_resource type="StyleBox" uid="uid://cku88k2vjw6xx" path="res://User Interface/Assets/MenuTheme.tres" id="1_doeef"]
+[ext_resource type="Script" uid="uid://k7vimajhvf5u" path="res://User Interface/keybind_menu_container.gd" id="2_rqcxc"]
+
+[node name="KeybindMenuContainer" type="PanelContainer" unique_id=97548811]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = ExtResource("1_doeef")
+script = ExtResource("2_rqcxc")
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=263568969]
+z_index = 2
+layout_mode = 2
+theme_override_constants/h_separation = 25
+theme_override_constants/v_separation = 13
+columns = 2
+
+[node name="MoveLeftLabel" type="Label" parent="GridContainer" unique_id=1652358252]
+layout_mode = 2
+text = "Move Left"
+
+[node name="MoveLeftButton" type="Button" parent="GridContainer" unique_id=1995446298]
+unique_name_in_owner = true
+layout_mode = 2
+text = "A"
+
+[node name="MoveRightLabel" type="Label" parent="GridContainer" unique_id=1398364966]
+layout_mode = 2
+text = "Move Right"
+
+[node name="MoveRightButton" type="Button" parent="GridContainer" unique_id=905309697]
+unique_name_in_owner = true
+layout_mode = 2
+text = "D"
+
+[node name="JumpLabel" type="Label" parent="GridContainer" unique_id=1676556290]
+layout_mode = 2
+text = "Jump"
+
+[node name="JumpButton" type="Button" parent="GridContainer" unique_id=1445495702]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Space"
+
+[node name="AttackLabel" type="Label" parent="GridContainer" unique_id=1774579087]
+layout_mode = 2
+text = "Attack"
+
+[node name="AttackButton" type="Button" parent="GridContainer" unique_id=490448474]
+unique_name_in_owner = true
+layout_mode = 2
+text = "LMB"
+
+[node name="WeaponSwapLabel" type="Label" parent="GridContainer" unique_id=1900494713]
+layout_mode = 2
+text = "Weapon Swap"
+
+[node name="WeaponSwapButton" type="Button" parent="GridContainer" unique_id=593408216]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Tab"
+
+[node name="MagicActiveLabel" type="Label" parent="GridContainer" unique_id=92892635]
+layout_mode = 2
+text = "Magic"
+
+[node name="MagicActiveButton" type="Button" parent="GridContainer" unique_id=2102098981]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Q"
+
+[node name="PlayerStatsLabel" type="Label" parent="GridContainer" unique_id=1506343473]
+layout_mode = 2
+text = "Stats"
+
+[node name="PlayerStatsButton" type="Button" parent="GridContainer" unique_id=1836711511]
+unique_name_in_owner = true
+layout_mode = 2
+text = "P"

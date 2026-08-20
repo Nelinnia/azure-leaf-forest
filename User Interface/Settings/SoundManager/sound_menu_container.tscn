@@ -18,19 +18,19 @@ layout_mode = 2
 
 [node name="MasterSoundLabel" type="Label" parent="GridContainer/VBoxContainer" unique_id=2146421996]
 layout_mode = 2
-text = "Master"
+text = "Master 100%"
 
 [node name="MusicLabel" type="Label" parent="GridContainer/VBoxContainer" unique_id=1460596256]
 layout_mode = 2
-text = "Music"
+text = "Music 100%"
 
 [node name="SfxLabel" type="Label" parent="GridContainer/VBoxContainer" unique_id=1918829989]
 layout_mode = 2
-text = "SFX"
+text = "SFX 100%"
 
 [node name="AmbianceLabel" type="Label" parent="GridContainer/VBoxContainer" unique_id=397728083]
 layout_mode = 2
-text = "Ambiance"
+text = "Ambiance 100%"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="GridContainer" unique_id=619979451]
 layout_mode = 2

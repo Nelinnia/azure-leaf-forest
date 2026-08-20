@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://blm1n7fdu8xha"]
+
+[ext_resource type="Texture2D" uid="uid://x0mtaqt3y16g" path="res://Levels/Art/Effects/Fog/Fog_01.png" id="1_yfwv7"]
+[ext_resource type="Script" uid="uid://da0mcefxeqfqx" path="res://Levels/Art/Effects/Fog/fog.gd" id="2_n1nrl"]
+
+[node name="Fog" type="Sprite2D" unique_id=794427461]
+texture = ExtResource("1_yfwv7")
+script = ExtResource("2_n1nrl")

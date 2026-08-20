@@ -2,9 +2,10 @@ extends Node
 
 const SAVE_PATH = "user://settings.cfg"
 var config := ConfigFile.new()
-
+ 
 #Interface variables
 var player_bar_numbers_enabled :bool= true
+var ui_scale :float= 1.0
 
 #Graphics variables
 
@@ -32,6 +33,7 @@ func load_settings() -> void:
 func save_settings() -> void:
 	#config.set_value("graphics", "particles_enabled", particles_enabled)
 	config.set_value("interface", "player_bar_numbers_enabled", player_bar_numbers_enabled)
+	config.set_value("interface", "ui_scale", ui_scale)
 	config.set_value("audio", "master", volume_master)
 	config.set_value("audio", "sfx", volume_sfx)
 	config.set_value("audio", "ambiance", volume_ambiance)
