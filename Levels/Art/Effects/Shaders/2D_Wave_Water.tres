@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d1kx173l2vrnc"]
+
+[ext_resource type="Shader" uid="uid://mtxihbceaf1s" path="res://Levels/Art/Effects/Shaders/2D_Wave_Water.gdshader" id="1_verw8"]
+[ext_resource type="Texture2D" uid="uid://ckrsklpwnv4la" path="res://Levels/Art/Effects/Water/wave_texture.png" id="2_c8d1k"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_verw8")
+shader_parameter/edge_color = Color(1, 1, 1, 1)
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
+shader_parameter/water_color = Color(0.16078432, 0.29411766, 1, 1)
+shader_parameter/wave_texture_sampler = ExtResource("2_c8d1k")
+shader_parameter/height = 1.0
+shader_parameter/ratio = 1.0
+shader_parameter/wave_scale = 32.0
