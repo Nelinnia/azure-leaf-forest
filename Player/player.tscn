@@ -44,6 +44,8 @@
 [ext_resource type="Script" uid="uid://f5xc6skdqm0p" path="res://Player/weapon_magic.gd" id="33_i4o1l"]
 [ext_resource type="AudioStream" uid="uid://bumxwe8pwl65y" path="res://Player/Weapons/Bow/Arrow Loose.wav" id="39_6pogt"]
 [ext_resource type="Texture2D" uid="uid://dbnpgk6ms7xfu" path="res://Player/Misc/charging_ball.png" id="39_d30e8"]
+[ext_resource type="Script" uid="uid://bupm42cdoruty" path="res://Player/fishing_rod.gd" id="45_maysp"]
+[ext_resource type="Texture2D" uid="uid://5y2m7tpkuih8" path="res://Player/Weapons/Fishing Rod/Fishing_Rod_Basic.png" id="46_1l10g"]
 
 [sub_resource type="Animation" id="Animation_x3vf3"]
 length = 0.001
@@ -261,6 +263,46 @@ _data = {
 &"run": SubResource("Animation_5htga")
 }
 
+[sub_resource type="Animation" id="Animation_1l10g"]
+resource_name = "Casting"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FishingRod/FishingRodMarker:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.69829893, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FishingRod/RightArmSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.510758, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FishingRod/LeftArmSprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.31718236, -0.03538969, -0.31764992386296775]
+}
+
 [sub_resource type="Animation" id="Animation_n471f"]
 length = 0.001
 tracks/0/type = "value"
@@ -274,6 +316,42 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FishingRod/FishingRodMarker:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FishingRod/RightArmSprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FishingRod/LeftArmSprite:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.31718236]
 }
 
 [sub_resource type="Animation" id="Animation_7emwf"]
@@ -381,6 +459,7 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n471f"]
 _data = {
+&"Casting": SubResource("Animation_1l10g"),
 &"RESET": SubResource("Animation_n471f"),
 &"sword_swing_air": SubResource("Animation_7emwf"),
 &"sword_swing_charge": SubResource("Animation_b1ygp"),
@@ -799,6 +878,7 @@ volume_db = -1.0
 
 [node name="LockOutTimer" type="Timer" parent="WeaponBow" unique_id=2131501861]
 unique_name_in_owner = true
+wait_time = 0.5
 
 [node name="ChargeGPUParticles" type="GPUParticles2D" parent="WeaponBow" unique_id=1338558556]
 position = Vector2(60, 13.333333)
@@ -818,3 +898,37 @@ bus = &"Sfx"
 [node name="WeaponMagic" type="Node2D" parent="." unique_id=1422724341]
 unique_name_in_owner = true
 script = ExtResource("33_i4o1l")
+
+[node name="FishingRod" type="Node2D" parent="." unique_id=109162594]
+visible = false
+scale = Vector2(0.15, 0.15)
+script = ExtResource("45_maysp")
+
+[node name="FishingRodMarker" type="Marker2D" parent="FishingRod" unique_id=1291040879]
+
+[node name="FishingRodSprite" type="Sprite2D" parent="FishingRod/FishingRodMarker" unique_id=544608589]
+unique_name_in_owner = true
+position = Vector2(46.666668, -20.000004)
+rotation = -2.3564785
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("46_1l10g")
+
+[node name="LineMarker" type="Marker2D" parent="FishingRod/FishingRodMarker" unique_id=1589187349]
+position = Vector2(99.99999, -60)
+
+[node name="CastingSound" type="AudioStreamPlayer2D" parent="FishingRod" unique_id=1467295054]
+unique_name_in_owner = true
+
+[node name="RightArmSprite" type="Sprite2D" parent="FishingRod" unique_id=2067779431]
+unique_name_in_owner = true
+position = Vector2(-6.6666665, 0)
+texture = ExtResource("6_dkpta")
+
+[node name="LeftArmSprite" type="Sprite2D" parent="FishingRod" unique_id=2058468526]
+unique_name_in_owner = true
+position = Vector2(46.666664, -4.7683716e-07)
+rotation = -0.31718236
+texture = ExtResource("7_lfmf2")
+
+[node name="FishingLine" type="Line2D" parent="FishingRod" unique_id=446675667]
+width = 5.0

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FishItem" format=3 uid="uid://d070ss61n4et4"]
+
+[ext_resource type="Texture2D" uid="uid://nyfj4p06mf6a" path="res://Items/Fish/Elephant_Fish/Elephant_Fish.png" id="1_j8io2"]
+[ext_resource type="Script" uid="uid://dc42u6nhx3tis" path="res://Items/Fish/Fish_Item.gd" id="2_xutud"]
+
+[resource]
+script = ExtResource("2_xutud")
+item_name = "Elephant Fish"
+item_texture = ExtResource("1_j8io2")
+metadata/_custom_type_script = "uid://dc42u6nhx3tis"

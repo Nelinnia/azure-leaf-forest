@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bws0srdjbcs1p" path="res://NPCs/PracticeTarget/moveing_target.gd" id="1_2ytvo"]
 [ext_resource type="Texture2D" uid="uid://b6yuu862so1m2" path="res://NPCs/PracticeTarget/Standing_Target_Head_01.png" id="2_n1rxe"]
-[ext_resource type="Script" uid="uid://rp2fe7078gc2" path="res://Editor/CritArea.gd" id="2_th5n8"]
+[ext_resource type="Script" uid="uid://rp2fe7078gc2" path="res://Editor/Crit Area/CritArea.gd" id="2_th5n8"]
 [ext_resource type="Texture2D" uid="uid://dlf2drjud1363" path="res://NPCs/PracticeTarget/Standing_Target_Torso_01.png" id="3_th5n8"]
 [ext_resource type="Texture2D" uid="uid://brgti0bkl7ybp" path="res://NPCs/PracticeTarget/Particles/Magic_Star.png" id="4_n1rxe"]
 

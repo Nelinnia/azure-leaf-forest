@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ubwoeeeu33xi"
-path="res://.godot/imported/CritArea2D.png-26cc566f92eaf5056917d9e433cb0a30.ctex"
+uid="uid://rs3f1q8dhc3o"
+path="res://.godot/imported/Fishing_Area_Icon.png-f33cf11c05ac16df27ea79a79d1a5037.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Editor/CritArea2D.png"
-dest_files=["res://.godot/imported/CritArea2D.png-26cc566f92eaf5056917d9e433cb0a30.ctex"]
+source_file="res://Editor/Fishing Area/Fishing_Area_Icon.png"
+dest_files=["res://.godot/imported/Fishing_Area_Icon.png-f33cf11c05ac16df27ea79a79d1a5037.ctex"]
 
 [params]
 

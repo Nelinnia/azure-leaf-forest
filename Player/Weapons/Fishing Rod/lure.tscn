@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://cctuohtqd0mck"]
+
+[ext_resource type="Script" uid="uid://ct8qd4xp7af21" path="res://Player/Weapons/Fishing Rod/lure.gd" id="1_kytn1"]
+[ext_resource type="Texture2D" uid="uid://o68x373aomnr" path="res://Player/Weapons/Fishing Rod/Fishing_Hook_Basic.png" id="2_ii8dm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nq3hm"]
+
+[sub_resource type="Animation" id="Animation_vbpkb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LureSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ii8dm"]
+resource_name = "bob"
+length = 0.19999999999999998
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LureSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 13), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vbpkb"]
+_data = {
+&"RESET": SubResource("Animation_vbpkb"),
+&"bob": SubResource("Animation_ii8dm")
+}
+
+[node name="Lure" type="Area2D" unique_id=1166135933]
+scale = Vector2(0.5, 0.5)
+collision_layer = 8
+collision_mask = 18
+script = ExtResource("1_kytn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=328979319]
+position = Vector2(-1, -12)
+shape = SubResource("RectangleShape2D_nq3hm")
+
+[node name="LureSprite" type="Sprite2D" parent="." unique_id=932398328]
+texture = ExtResource("2_ii8dm")
+
+[node name="BiteCheckTimer" type="Timer" parent="." unique_id=1478637366]
+wait_time = 2.0
+
+[node name="ReactTimer" type="Timer" parent="." unique_id=124252423]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1351335918]
+libraries/ = SubResource("AnimationLibrary_vbpkb")

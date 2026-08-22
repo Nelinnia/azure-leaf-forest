@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://cuh4dpnsbsapt"]
+
+[ext_resource type="Script" uid="uid://c68c2rv2oh3vg" path="res://Levels/Art/Effects/Water/Splash/splash_anim.gd" id="1_85dok"]
+[ext_resource type="Texture2D" uid="uid://qhrxpc6pxlau" path="res://Levels/Art/Effects/Water/Splash/Splash_Anim_01.png" id="1_mltjh"]
+[ext_resource type="Texture2D" uid="uid://cwu32ckm4piq5" path="res://Levels/Art/Effects/Water/Splash/Splash_Anim_02.png" id="2_l8r47"]
+[ext_resource type="Texture2D" uid="uid://cgc073d5cgbgq" path="res://Levels/Art/Effects/Water/Splash/Splash_Anim_03.png" id="3_85dok"]
+[ext_resource type="Texture2D" uid="uid://ds2ymewvbn0ma" path="res://Levels/Art/Effects/Water/Splash/Splash_Anim_04.png" id="4_hcuxk"]
+[ext_resource type="Texture2D" uid="uid://dgm18vvjo53h8" path="res://Levels/Art/Effects/Water/Splash/Splash_Anim_05.png" id="5_sx8cv"]
+[ext_resource type="Texture2D" uid="uid://coif6hlp4jy5y" path="res://Levels/Art/Effects/Water/Splash/Splash_Anim_06.png" id="6_a40y8"]
+[ext_resource type="AudioStream" uid="uid://dgv7f0fm01o8x" path="res://Levels/Art/Effects/Water/Splash/water_blop.wav" id="7_l8r47"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nq3hm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mltjh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_l8r47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_85dok")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hcuxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sx8cv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_a40y8")
+}],
+"loop": 0,
+"name": &"splash",
+"speed": 12.0
+}]
+
+[node name="Splash" type="Node2D" unique_id=1259797912]
+script = ExtResource("1_85dok")
+
+[node name="SplashAudio" type="AudioStreamPlayer2D" parent="." unique_id=1974042063]
+unique_name_in_owner = true
+stream = ExtResource("7_l8r47")
+bus = &"Sfx"
+
+[node name="SplashAnim" type="AnimatedSprite2D" parent="." unique_id=1236844187]
+unique_name_in_owner = true
+position = Vector2(3, -39)
+sprite_frames = SubResource("SpriteFrames_nq3hm")
+animation = &"splash"
+autoplay = "splash"

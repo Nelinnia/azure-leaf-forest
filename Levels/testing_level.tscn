@@ -3,7 +3,6 @@
 [ext_resource type="TileSet" uid="uid://cp4uneprfpr7i" path="res://Levels/TileMaps/Test/test_tiles.tres" id="1_2jkhj"]
 [ext_resource type="PackedScene" uid="uid://dtachfi1i0cp4" path="res://Player/player.tscn" id="1_xaao8"]
 [ext_resource type="Texture2D" uid="uid://pffmern3qb4d" path="res://Levels/Art/Foliage/Forground_Blue_Leaves_01.png" id="2_tb27h"]
-[ext_resource type="Material" uid="uid://d1kx173l2vrnc" path="res://Levels/Art/Effects/Shaders/2D_Wave_Water.tres" id="3_cqne0"]
 [ext_resource type="PackedScene" uid="uid://bbx1yqurtxbim" path="res://User Interface/player_ui.tscn" id="3_eaqdo"]
 [ext_resource type="Script" uid="uid://cb43hthlc2xv4" path="res://Player/player_camera.gd" id="3_fjab3"]
 [ext_resource type="Texture2D" uid="uid://dvdhlxaxltd4v" path="res://Levels/Art/Trees/Tree_Base_01.png" id="4_5i00d"]
@@ -20,7 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://bw5ayc77wv18s" path="res://Levels/Art/Terain/Hill_Baren_01.png" id="15_xie0y"]
 [ext_resource type="Texture2D" uid="uid://b1cj61qqjqsef" path="res://Levels/Art/Terain/Blue_Leave_Ring_01.png" id="16_yvu5s"]
 [ext_resource type="Script" uid="uid://doatmwmtm5ifv" path="res://Levels/Art/Effects/Fog/fog_spawners.gd" id="19_dl464"]
-[ext_resource type="Script" uid="uid://b5s2rcr5ygjcw" path="res://Editor/FishingArea.gd" id="21_slkrf"]
+[ext_resource type="Shader" uid="uid://mtxihbceaf1s" path="res://Levels/Art/Effects/Shaders/2D_Wave_Water.gdshader" id="19_rb6tr"]
+[ext_resource type="Texture2D" uid="uid://ckrsklpwnv4la" path="res://Levels/Art/Effects/Water/wave_texture.png" id="20_ge3ai"]
+[ext_resource type="Script" uid="uid://b5s2rcr5ygjcw" path="res://Editor/Fishing Area/FishingArea.gd" id="21_slkrf"]
+[ext_resource type="Script" uid="uid://dvw12t57g7rpi" path="res://Editor/Fishing Area/lure_area.gd" id="23_ge3ai"]
 
 [sub_resource type="Curve2D" id="Curve2D_7vwpx"]
 _data = {
@@ -34,8 +36,22 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ge3ai"]
+resource_local_to_scene = true
+shader = ExtResource("19_rb6tr")
+shader_parameter/edge_color = Color(1, 1, 1, 1)
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
+shader_parameter/water_color = Color(0.16078432, 0.29411766, 1, 1)
+shader_parameter/wave_texture_sampler = ExtResource("20_ge3ai")
+shader_parameter/height = 148.0
+shader_parameter/ratio = 2.1621621621621623
+shader_parameter/wave_scale = 32.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nq3hm"]
 size = Vector2(454, 290)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xplfv"]
+size = Vector2(320, 144)
 
 [node name="Testing_Level" type="Node2D" unique_id=300299023]
 
@@ -45,7 +61,6 @@ scroll_scale = Vector2(1.05, 1.025)
 scroll_offset = Vector2(54, -111)
 
 [node name="BorderSprites" type="Node2D" parent="Forground1" unique_id=1127947572]
-visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Forground1/BorderSprites" unique_id=481519836]
 position = Vector2(1604.0001, -617)
@@ -339,7 +354,7 @@ position = Vector2(2037, 302)
 
 [node name="Water" type="ColorRect" parent="." unique_id=710280465]
 z_index = 1
-material = ExtResource("3_cqne0")
+material = SubResource("ShaderMaterial_ge3ai")
 offset_left = 1184.0
 offset_top = -596.0
 offset_right = 1504.0
@@ -347,9 +362,20 @@ offset_bottom = -448.0
 script = ExtResource("4_slkrf")
 
 [node name="FishingArea" type="Area2D" parent="Water" unique_id=1041116379]
+collision_layer = 0
 script = ExtResource("21_slkrf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Water/FishingArea" unique_id=643085548]
 position = Vector2(160, 25)
 shape = SubResource("RectangleShape2D_nq3hm")
 debug_color = Color(0.04912115, 0.33008716, 0.58239275, 0.41960785)
+
+[node name="LureArea" type="Area2D" parent="Water" unique_id=411093972]
+collision_layer = 16
+collision_mask = 24
+script = ExtResource("23_ge3ai")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Water/LureArea" unique_id=93623514]
+position = Vector2(160, 77)
+shape = SubResource("RectangleShape2D_xplfv")
+debug_color = Color(0.7117561, 0.30348817, 0.940027, 0.41960785)

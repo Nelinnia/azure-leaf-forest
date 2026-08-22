@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 
+signal weapon_changed(new_weapon: Weapon_State)
 
 @onready var hair_back: Sprite2D = %HairBack
 @onready var hair_animated_sprite: AnimatedSprite2D = %HairAnimatedSprite
@@ -28,6 +29,8 @@ var player_mana :int= PlayerStats.player_mana
 const MAX_JUMPS :int= 2
 var jump_count :int= 0
 
+var can_fish :bool= false
+
 @export_category("Jump")
 @export_range(10.0, 400.0) var jump_height :float= 130.0
 @export_range(0.1, 1.5) var jump_time_to_peak :float= 0.37 #not quad
@@ -48,6 +51,7 @@ var jump_count :int= 0
 #player weapons
 @onready var weapon_sword: WeaponSword = %Weapon
 @onready var weapon_bow: WeaponBow = $WeaponBow
+@onready var fishing_rod: FishingRod = $FishingRod
 
 # Jumping variables
 @onready var jump_speed := calculate_jump_speed(jump_height, jump_time_to_peak)
@@ -68,7 +72,8 @@ const SWORD_SWAP = preload("res://Player/Weapons/Sword Taking .wav")
 
 enum Weapon_State {
 	SWORD,
-	BOW
+	BOW,
+	FISHING_ROD
 }
 
 var current_weapon_node :WeaponBase
@@ -93,6 +98,7 @@ func _ready() -> void:
 	_transition_to_state(current_state)
 	weapon_sword.setup(self)
 	weapon_bow.setup(self)
+	fishing_rod.setup(self)
 	current_weapon_node = weapon_sword
 	PlayerStats.health_changed.connect(_on_health_changed)
 	PlayerStats.level_changed.connect(_on_level_up)
@@ -196,11 +202,23 @@ func apply_movement_boost(displacement: Vector2) -> void:
 
 # Handles the node visibility for when the weapons are swapped
 func _swap_weapon() -> void:
-	current_weapon = Weapon_State.BOW if current_weapon == Weapon_State.SWORD else Weapon_State.SWORD
-	current_weapon_node.deactivate()
-	current_weapon_node = weapon_bow if current_weapon == Weapon_State.BOW else  weapon_sword
-	current_weapon_node.activate()
+	var target := Weapon_State.BOW if current_weapon == Weapon_State.SWORD else Weapon_State.SWORD
+	equip_weapon(target)
+	#current_weapon_node.deactivate()
+	#current_weapon_node = weapon_bow if current_weapon == Weapon_State.BOW else  weapon_sword
+	#current_weapon_node.activate()
 	
+	
+func equip_weapon(target: Weapon_State) -> void:
+	if target == Weapon_State.BOW and can_fish:
+		target = Weapon_State.FISHING_ROD
+	if target == current_weapon:
+		return
+	
+	current_weapon_node.deactivate()
+	current_weapon = target
+	current_weapon_node = _get_weapon_node(target)
+	current_weapon_node.activate()
 	match  current_weapon:
 		Weapon_State.SWORD:
 			weapon_swap_audio.play()
@@ -212,8 +230,20 @@ func _swap_weapon() -> void:
 			left_arm.visible = false
 			right_arm.visible = false
 			sword_area_2d.monitoring = false #Bug fix: sword was dealing damage while bow was equipt
+		Weapon_State.FISHING_ROD:
+			fishing_rod.visible = true
+			weapon_bow.visible = false
+			left_arm.visible = false
+			right_arm.visible = false
+			sword_area_2d.monitoring = false
+	
+	weapon_changed.emit(current_weapon)
 
-
+func _get_weapon_node(state: Weapon_State) -> WeaponBase:
+	match  state:
+		Weapon_State.BOW: return weapon_bow
+		Weapon_State.FISHING_ROD: return fishing_rod
+	return weapon_sword
 
 func process_ground_state(delta: float) -> void:
 	var is_moving := absf(direction_x) > 0.0
