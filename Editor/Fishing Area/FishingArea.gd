@@ -1,3 +1,4 @@
+@icon("res://Editor/Fishing Area/Fishing_Area_Icon.png")
 class_name FishingArea
 extends Area2D
 

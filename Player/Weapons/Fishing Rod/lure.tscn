@@ -49,7 +49,7 @@ collision_mask = 18
 script = ExtResource("1_kytn1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=328979319]
-position = Vector2(-1, -12)
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_nq3hm")
 
 [node name="LureSprite" type="Sprite2D" parent="." unique_id=932398328]
@@ -62,3 +62,6 @@ wait_time = 2.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1351335918]
 libraries/ = SubResource("AnimationLibrary_vbpkb")
+
+[node name="FishMarker" type="Marker2D" parent="." unique_id=757518944]
+position = Vector2(12, 24)

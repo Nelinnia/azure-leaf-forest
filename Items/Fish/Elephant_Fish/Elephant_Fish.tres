@@ -5,6 +5,8 @@
 
 [resource]
 script = ExtResource("2_xutud")
+catch_chance = 2.0
+xp_reward = 5
 item_name = "Elephant Fish"
 item_texture = ExtResource("1_j8io2")
 metadata/_custom_type_script = "uid://dc42u6nhx3tis"

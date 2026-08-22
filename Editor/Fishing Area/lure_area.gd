@@ -1,3 +1,4 @@
+@icon("res://Editor/LureArea/Lure_Area_Icon.png")
 class_name LureArea
 extends Area2D
 

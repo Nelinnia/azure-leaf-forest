@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FishItem" format=3 uid="uid://dgtv2aduba4s2"]
+
+[ext_resource type="Texture2D" uid="uid://cdqcd2is8tec1" path="res://Items/Fish/Amethyst_Shell/Amethyst_Shell.png" id="1_2n58j"]
+[ext_resource type="Script" uid="uid://dc42u6nhx3tis" path="res://Items/Fish/Fish_Item.gd" id="1_fw84d"]
+
+[resource]
+script = ExtResource("1_fw84d")
+xp_reward = 15
+item_name = "Amethyst Shell"
+item_texture = ExtResource("1_2n58j")
+metadata/_custom_type_script = "uid://dc42u6nhx3tis"

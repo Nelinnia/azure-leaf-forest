@@ -48,6 +48,7 @@ func on_attack_pressed() -> void:
 		else:
 			PlayerStats.set_magic_active(false)
 			poison_anim.visible = false
+			
 	_get_charge_time()
 	charge_timer.start()
 	player.attack_animation_player.play("sword_swing_charge")

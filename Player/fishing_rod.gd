@@ -33,7 +33,7 @@ func on_attack_pressed() -> void:
 		attack_animation_player.play("Casting")
 		_cast_lure()
 	else:
-		current_lure.reel_in()
+		current_lure.reel_in(line_marker.global_position)
 
 #spawns line between lure and pole
 func _update_fishing_line() -> void:
