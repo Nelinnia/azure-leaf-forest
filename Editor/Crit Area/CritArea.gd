@@ -1,4 +1,4 @@
-@icon("res://Editor/CritArea2D.png")
+@icon("res://Editor/Crit Area/CritArea2D.png")
 class_name CritArea2D
 extends Area2D
 

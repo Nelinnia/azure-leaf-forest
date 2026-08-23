@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 
 signal weapon_changed(new_weapon: Weapon_State)
+static var instance: Player
 
 @onready var hair_back: Sprite2D = %HairBack
 @onready var hair_animated_sprite: AnimatedSprite2D = %HairAnimatedSprite
@@ -11,6 +12,12 @@ signal weapon_changed(new_weapon: Weapon_State)
 @onready var left_arm: AnimatedSprite2D = %Left_Arm
 @onready var levelup_sprite: Sprite2D = %LevelupSprite
 
+
+@onready var footstep_audio: AudioStreamPlayer2D = $FootstepAudio
+const FOOTSTEP_01 = preload("uid://bhpvt505xbkhr")
+const FOOTSTEP_02 = preload("uid://cvmp2j7j8s6ld")
+const FOOTSTEP_03 = preload("uid://cd0ecibidwmov")
+var footstep_array :Array= []
 
 
 var player_health :int= PlayerStats.player_hp
@@ -91,10 +98,11 @@ var current_state :State= State.GROUND
 var direction_x :float= 0.0
 var is_facing_left :bool= false
 var is_boosting :bool= false
-#@export var voost_lockout_duratioin :float= 0.25 #look into if this is being used anywhere
+
 var current_gravity :float= 0.0
 
 func _ready() -> void:
+	instance = self
 	_transition_to_state(current_state)
 	weapon_sword.setup(self)
 	weapon_bow.setup(self)
@@ -103,6 +111,7 @@ func _ready() -> void:
 	PlayerStats.health_changed.connect(_on_health_changed)
 	PlayerStats.level_changed.connect(_on_level_up)
 	PlayerStats.stat_changed.connect(_on_stat_change)
+	footstep_array = [FOOTSTEP_01, FOOTSTEP_02, FOOTSTEP_03]
 	_swap_weapon()
 	coyote_timer.wait_time = 0.1
 	coyote_timer.one_shot = true
@@ -256,6 +265,10 @@ func process_ground_state(delta: float) -> void:
 		hair_back.visible = true
 		animated_sprite.play("run")
 		animation_player.play("run")
+		if not footstep_audio.playing:
+			footstep_audio.stream = footstep_array.pick_random()
+			footstep_audio.play()
+
 	else:
 		velocity.x = move_toward(velocity.x, 0, deceleration * delta)
 		

@@ -685,6 +685,11 @@ libraries/ = SubResource("AnimationLibrary_n471f")
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_nq3hm")
 
+[node name="FootstepAudio" type="AudioStreamPlayer2D" parent="." unique_id=1419976433]
+volume_db = -15.0
+max_polyphony = 10
+bus = &"Sfx"
+
 [node name="ChargeTimer" type="Timer" parent="." unique_id=106411532]
 unique_name_in_owner = true
 wait_time = 1.0499999999999998

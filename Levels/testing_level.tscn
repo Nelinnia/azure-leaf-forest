@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b658wvd0wl8rp" path="res://NPCs/PracticeTarget/moving_target.tscn" id="11_m1lqy"]
 [ext_resource type="Texture2D" uid="uid://dap7bpa4l0syt" path="res://Levels/Art/Trees/BG Tree/BG_Tree_Base_01.png" id="12_7vwpx"]
 [ext_resource type="Texture2D" uid="uid://c38swy2qjjtml" path="res://Levels/Art/Trees/BG Tree/BG_Tree_Top_01.png" id="13_l15r3"]
+[ext_resource type="Texture2D" uid="uid://c162hfvt2xh77" path="res://Levels/Art/Rocks/Half_Circle_Moss_Bolder_01.png" id="15_x6k0l"]
 [ext_resource type="Texture2D" uid="uid://bw5ayc77wv18s" path="res://Levels/Art/Terain/Hill_Baren_01.png" id="15_xie0y"]
 [ext_resource type="Texture2D" uid="uid://b1cj61qqjqsef" path="res://Levels/Art/Terain/Blue_Leave_Ring_01.png" id="16_yvu5s"]
 [ext_resource type="Script" uid="uid://doatmwmtm5ifv" path="res://Levels/Art/Effects/Fog/fog_spawners.gd" id="19_dl464"]
@@ -27,6 +28,7 @@
 [ext_resource type="Script" uid="uid://dc42u6nhx3tis" path="res://Items/Fish/Fish_Item.gd" id="24_f30kk"]
 [ext_resource type="Resource" uid="uid://d070ss61n4et4" path="res://Items/Fish/Elephant_Fish/Elephant_Fish.tres" id="25_fidev"]
 [ext_resource type="Resource" uid="uid://dgtv2aduba4s2" path="res://Items/Fish/Amethyst_Shell/Amethyst_Shell.tres" id="27_um4e2"]
+[ext_resource type="PackedScene" uid="uid://wlj4qhfjgwy0" path="res://Levels/Art/Rocks/Round Boulder/round_boulder_01.tscn" id="29_mt4hw"]
 
 [sub_resource type="Curve2D" id="Curve2D_7vwpx"]
 _data = {
@@ -40,7 +42,7 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_um4e2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mt4hw"]
 resource_local_to_scene = true
 shader = ExtResource("19_rb6tr")
 shader_parameter/edge_color = Color(1, 1, 1, 1)
@@ -340,6 +342,10 @@ scale = Vector2(0.65, 0.65)
 texture = ExtResource("9_7cpc5")
 flip_h = true
 
+[node name="HalfCircleMossBolder01" type="Sprite2D" parent="Back2round1" unique_id=1324576530]
+position = Vector2(618, 113)
+texture = ExtResource("15_x6k0l")
+
 [node name="Background2" type="Parallax2D" parent="." unique_id=1661439753]
 z_index = -10
 scroll_scale = Vector2(0.85, 1)
@@ -396,7 +402,7 @@ position = Vector2(2037, 302)
 
 [node name="Water" type="ColorRect" parent="." unique_id=710280465]
 z_index = 1
-material = SubResource("ShaderMaterial_um4e2")
+material = SubResource("ShaderMaterial_mt4hw")
 offset_left = 1184.0
 offset_top = -596.0
 offset_right = 1504.0
@@ -423,3 +429,6 @@ fish_remaining = 99
 position = Vector2(160, 77)
 shape = SubResource("RectangleShape2D_xplfv")
 debug_color = Color(0.7117561, 0.30348817, 0.940027, 0.41960785)
+
+[node name="RoundBoulder" parent="." unique_id=1765137258 instance=ExtResource("29_mt4hw")]
+position = Vector2(-402, -130)

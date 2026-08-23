@@ -23,7 +23,7 @@ enum Lure_State {
 
 const GRAVITY :float= 800.0
 const BITE_CHANCE :float= 0.2
-const REACT_TIME :float= 2.0
+const REACT_TIME :float= 1.0
 
 var state :Lure_State= Lure_State.CASTING
 var current_area :LureArea= null

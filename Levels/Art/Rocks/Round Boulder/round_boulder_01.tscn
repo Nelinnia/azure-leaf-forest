@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://wlj4qhfjgwy0"]
+
+[ext_resource type="Texture2D" uid="uid://bd3lhf2rfolqw" path="res://Levels/Art/Rocks/Round Boulder/Round_Moss_Boulder_01.png" id="1_5wwar"]
+[ext_resource type="Script" uid="uid://y6knwoet7rtv" path="res://Levels/Art/Rocks/Round Boulder/Movable_Boulder.gd" id="1_gr63u"]
+[ext_resource type="Texture2D" uid="uid://dp1br5jfs3cck" path="res://Levels/Art/Rocks/Round Boulder/Round_Moss_Boulder_01_Lightmap.png" id="2_gr63u"]
+[ext_resource type="Script" uid="uid://bpqby5qtoytng" path="res://Editor/Hurt Box/hurt_box.gd" id="4_fikhs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nq3hm"]
+radius = 112.00446
+
+[node name="RoundBoulder" type="CharacterBody2D" unique_id=1374816385]
+scale = Vector2(0.5, 0.5)
+collision_mask = 3
+script = ExtResource("1_gr63u")
+
+[node name="BoulderCollision" type="CollisionShape2D" parent="." unique_id=1092774083]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(-2, -5)
+shape = SubResource("CircleShape2D_nq3hm")
+debug_color = Color(0.4407947, 0.25643566, 0.0759765, 0.41960785)
+
+[node name="BoulderSprite" type="Sprite2D" parent="." unique_id=136541131]
+unique_name_in_owner = true
+texture = ExtResource("1_5wwar")
+
+[node name="LightMap" type="Sprite2D" parent="." unique_id=2103817487]
+texture = ExtResource("2_gr63u")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=780113002 node_paths=PackedStringArray("node")]
+collision_layer = 4
+collision_mask = 12
+script = ExtResource("4_fikhs")
+node = NodePath("..")
+
+[node name="HurtBoxCollision" type="CollisionShape2D" parent="HurtBox" unique_id=1956430380]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(-2, -5)
+shape = SubResource("CircleShape2D_nq3hm")
+debug_color = Color(0.7183835, 0.024232581, 0.13596082, 0.41960785)

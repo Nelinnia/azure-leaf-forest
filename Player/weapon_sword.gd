@@ -115,6 +115,7 @@ func get_poison_damage(charge: int) -> float:
 	return (PlayerStats.get_magic_damage_bonus() * multiplier)
 
 func _on_area_entered(other_area: Area2D) -> void:
+	#print("area entered: ", other_area.name)
 	if other_area.has_method("take_damage"):
 		other_area.take_damage(get_sword_damage(charge_level))
 		if mana_consumed:
