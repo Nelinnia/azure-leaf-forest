@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://bbh15x60ufurv"]
+
+[ext_resource type="Script" uid="uid://0x1ldgmbvcgc" path="res://Items/Item.gd" id="1_sd53u"]
+[ext_resource type="Script" uid="uid://bkbvwvj4qtuk5" path="res://Editor/QuestResource/Quest_Resource.gd" id="2_hbt2t"]
+[ext_resource type="Script" uid="uid://bwx0wb5gpapd8" path="res://Editor/QuestStage/Quest_Stage.gd" id="3_x14rp"]
+[ext_resource type="Resource" uid="uid://dr3bbsrn638uu" path="res://Quest/The Boulder, The Better/Stages/Q01_stage_01.tres" id="4_x14rp"]
+[ext_resource type="Resource" uid="uid://ia4ttl3wryht" path="res://Quest/The Boulder, The Better/Stages/Q01_stage_02.tres" id="5_abg8p"]
+[ext_resource type="Resource" uid="uid://cifnaxajojpsx" path="res://Quest/The Boulder, The Better/Stages/Q01_stage_03.tres" id="6_abg8p"]
+
+[resource]
+script = ExtResource("2_hbt2t")
+quest_id = "Q01"
+title = "The Boulder, The Better"
+stages = Array[ExtResource("3_x14rp")]([ExtResource("4_x14rp"), ExtResource("5_abg8p"), ExtResource("6_abg8p")])
+metadata/_custom_type_script = "uid://bkbvwvj4qtuk5"

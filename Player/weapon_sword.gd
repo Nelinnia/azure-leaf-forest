@@ -19,6 +19,7 @@ extends WeaponBase
 @export var boost_distance :float= 300.0
 
 @onready var pipcharge_audio: AudioStreamPlayer2D = $WeaponMarker/Pips/PipchargeAudio
+@onready var swing_audio: AudioStreamPlayer2D = $SwingAudio
 
 
 var charges :int= 0 # used to count the charges before sword begins swinging
@@ -66,6 +67,7 @@ func on_attack_released() -> void:
 	charge_level = charges
 	charge_timer.stop()
 	player._start_attack()
+	swing_audio.play()
 	if mana_consumed == true:
 		poison_swing_anim.visible = true
 		poison_swing_anim.play("PoisonTrail")

@@ -5,11 +5,10 @@ extends CharacterBody2D
 @onready var boulder_sprite: Sprite2D = %BoulderSprite
 @onready var hurt_box_collision: CollisionShape2D = %HurtBoxCollision
 
+@onready var rolling_sound: AudioStreamPlayer2D = %RollingSound
 
 
 const KNOCKBACK_PER_DAMAGE :int= 8
-
-
 
 
 func _physics_process(delta: float) -> void:
@@ -20,10 +19,14 @@ func _physics_process(delta: float) -> void:
 	_roll(delta)
 
 
-
 func _roll(delta: float) -> void:
 	if absf(velocity.x) > 1.0:
 		boulder_sprite.rotation += velocity.x * 0.01 * delta
+		if not rolling_sound.playing:
+			rolling_sound.play()
+	elif rolling_sound.playing:
+		rolling_sound.stop()
+
 
 func take_damage(damage: int, player_position: Vector2 = global_position) -> void:
 	if Player.instance:

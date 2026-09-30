@@ -78,3 +78,12 @@ text = "Stats"
 unique_name_in_owner = true
 layout_mode = 2
 text = "P"
+
+[node name="QuestBookLabel" type="Label" parent="GridContainer" unique_id=2023306292]
+layout_mode = 2
+text = "Quest Book"
+
+[node name="QuestBookButton" type="Button" parent="GridContainer" unique_id=1136672119]
+unique_name_in_owner = true
+layout_mode = 2
+text = "L"

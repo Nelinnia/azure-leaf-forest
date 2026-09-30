@@ -42,6 +42,7 @@
 [ext_resource type="AudioStream" uid="uid://kn77n08o6g33" path="res://Player/Weapons/Bow/Bow Drawn.wav" id="29_efx54"]
 [ext_resource type="AudioStream" uid="uid://de5mqlogjshim" path="res://Player/Weapons/Sword Taking .wav" id="30_755ss"]
 [ext_resource type="Script" uid="uid://f5xc6skdqm0p" path="res://Player/weapon_magic.gd" id="33_i4o1l"]
+[ext_resource type="AudioStream" uid="uid://5hcj15wq1i1q" path="res://Player/Sword_Swing/swipe.wav" id="34_6rl0i"]
 [ext_resource type="AudioStream" uid="uid://bumxwe8pwl65y" path="res://Player/Weapons/Bow/Arrow Loose.wav" id="39_6pogt"]
 [ext_resource type="Texture2D" uid="uid://dbnpgk6ms7xfu" path="res://Player/Misc/charging_ball.png" id="39_d30e8"]
 [ext_resource type="Script" uid="uid://bupm42cdoruty" path="res://Player/fishing_rod.gd" id="45_maysp"]
@@ -855,6 +856,11 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Visuals/Weapon/AirSpinArea" unique_id=1158155512]
 shape = SubResource("CircleShape2D_nq3hm")
 debug_color = Color(0.9411765, 0.21176471, 0.33333334, 0.41960785)
+
+[node name="SwingAudio" type="AudioStreamPlayer2D" parent="Visuals/Weapon" unique_id=1844873681]
+stream = ExtResource("34_6rl0i")
+volume_db = -10.0
+bus = &"Sfx"
 
 [node name="WeaponBow" type="Node2D" parent="." unique_id=809111670]
 position = Vector2(3, -1)

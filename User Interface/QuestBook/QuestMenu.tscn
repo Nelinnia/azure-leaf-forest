@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://b2rjst1adr04x"]
+
+[ext_resource type="StyleBox" uid="uid://dqw4y07w2ewee" path="res://User Interface/Assets/QuestTheme.tres" id="1_a8f33"]
+[ext_resource type="Script" uid="uid://cp7ihj5u5bssy" path="res://User Interface/QuestBook/quest_menu.gd" id="2_jfbdt"]
+
+[node name="QuestMenu" type="PanelContainer" unique_id=904821355]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -641.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_a8f33")
+script = ExtResource("2_jfbdt")
+
+[node name="QuestList" type="VBoxContainer" parent="." unique_id=183299323]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="QuestList" unique_id=588863894]
+layout_mode = 2
+text = "Quests"
+
+[node name="QuestButtonTemp" type="Button" parent="QuestList" unique_id=1556868498]
+visible = false
+layout_mode = 2
+text = "TestQuest"
+
+[node name="QuestDetailPanel" type="VBoxContainer" parent="." unique_id=1820466084]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="QuestDetailPanel" unique_id=641225459]
+layout_mode = 2
+
+[node name="ObjectiveLabel" type="Label" parent="QuestDetailPanel" unique_id=610489723]
+layout_mode = 2
+
+[node name="DescriptionLabel" type="Label" parent="QuestDetailPanel" unique_id=1578293977]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="QuestDetailPanel" unique_id=2050920522]
+layout_mode = 2
+text = "Back"

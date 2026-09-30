@@ -1,0 +1,205 @@
+[gd_scene format=4 uid="uid://c0qwp2ilr3dh6"]
+
+[ext_resource type="TileSet" uid="uid://cp4uneprfpr7i" path="res://Levels/TileMaps/Test/test_tiles.tres" id="1_3j0x7"]
+[ext_resource type="PackedScene" uid="uid://buibrsb0nd4ba" path="res://Levels/Art/Rocks/Breakables/breakable_boulder.tscn" id="2_lk7wy"]
+[ext_resource type="PackedScene" uid="uid://cfq2edrgxof7g" path="res://NPCs/Settlers/Tepanio/tepanio.tscn" id="3_lk7wy"]
+[ext_resource type="Texture2D" uid="uid://bw5ayc77wv18s" path="res://Levels/Art/Terain/Hill_Baren_01.png" id="4_sq2y4"]
+[ext_resource type="Texture2D" path="res://Levels/Art/Terain/Mountain_01.png" id="5_dgl11"]
+[ext_resource type="Texture2D" uid="uid://bwmadss83j5rw" path="res://Levels/Art/Terain/Fields/Wheat_Feild_01.png" id="6_e0fhc"]
+[ext_resource type="Texture2D" uid="uid://dii2v35irl4my" path="res://Levels/Art/Terain/Town/Roads/Stone_Road_01.png" id="7_g76lq"]
+[ext_resource type="Texture2D" uid="uid://yr4ftqpglyg7" path="res://Levels/Art/Terain/Town/Roads/Stone_Road_03.png" id="8_1y0g4"]
+[ext_resource type="Texture2D" uid="uid://is3c47inihje" path="res://Levels/Art/Terain/Town/Wall/Stone_Wall_01.png" id="8_sd1d0"]
+[ext_resource type="Texture2D" uid="uid://mqc8uxnq56fk" path="res://Levels/Art/Terain/Town/Buildings/Tower_01.png" id="9_uoflv"]
+[ext_resource type="Texture2D" uid="uid://6xaum6qbem8m" path="res://Levels/Art/Terain/Town/Town_set.png" id="10_ax67d"]
+[ext_resource type="Texture2D" uid="uid://cbdmumahn3blt" path="res://Levels/Art/Terain/Town/Buildings/Farm_House_02.png" id="11_nxl1c"]
+[ext_resource type="Texture2D" uid="uid://cnibaymms6cnd" path="res://Levels/Art/Terain/Town/Buildings/Farm_House_01.png" id="12_egmic"]
+[ext_resource type="Texture2D" uid="uid://b63erxvsfcjov" path="res://Levels/Art/Terain/Town/Buildings/Town_House_01.png" id="13_dj7l0"]
+[ext_resource type="Texture2D" uid="uid://15k45h2iih0o" path="res://Levels/Art/Terain/River_01.png" id="14_egmic"]
+[ext_resource type="Texture2D" uid="uid://br7rb7ne00jxh" path="res://Levels/Art/Terain/Foliage/Tree/Azure_Tree_01_01.png" id="15_x0g8q"]
+[ext_resource type="Texture2D" uid="uid://de3ouijsso7ur" path="res://Levels/Art/Terain/Foliage/Tree/Azure_Tree_01_02.png" id="16_wdwr3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nq3hm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_x0g8q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_wdwr3")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 0.1
+}]
+
+[node name="ForestEdgeTown" type="Node2D" unique_id=590653433]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=186129449]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAApAAAAAAAAAAAAAAAqAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAArAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAtAAAAAAAAAAAAAAAuAAAAAAAAAAAAAAAvAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAxAAAAAAAAAAAAAAAyAAAAAAAAAAAAAAAzAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA1AAAAAAAAAAAAAAA2AAAAAAAAAAAAAAA3AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA5AAAAAAAAAAAAAAA6AAAAAAAAAAAAAAA7AAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA9AAAAAAAAAAAAAAA+AAAAAAAAAAAAAAA/AAAAAAAAAAAAAABAAAAAAAAAAAAAAABBAAAAAAAAAAAAAABCAAAAAAAAAAAAAABDAAAAAAAAAAAAAABEAAAAAAAAAAAAAABFAAAAAAAAAAAAAABGAAAAAAAAAAAAAABHAAAAAAAAAAAAAABIAAAAAAAAAAAAAABJAAAAAAAAAAAAAABKAAAAAAAAAAAAAABLAAAAAAAAAAAAAABMAAAAAAAAAAAAAABNAAAAAAAAAAAAAABOAAAAAAAAAAAAAABPAAAAAAAAAAAAAABQAAAAAAAAAAAAAABRAAAAAAAAAAAAAABSAAAAAAAAAAAAAABTAAAAAAABAAAAAABUAAAAAAABAAAAAABVAAAAAAABAAAAAABWAAAAAAABAAAAAABXAAAAAAABAAAAAABYAAAAAAABAAAAAABZAAAAAAABAAAAAABaAAAAAAABAAAAAABbAAAAAAABAAAAAABcAAAAAAABAAAAAABdAAAAAAAAAAAAAABeAAAAAAAAAAAAAABfAAAAAAAAAAAAAABgAAAAAAAAAAAAAABhAAAAAAAAAAAAAABiAAAAAAAAAAAAAABjAAAAAAAAAAAAAABkAAAAAAAAAAAAAABlAAAAAAAAAAAAAAA=")
+tile_set = ExtResource("1_3j0x7")
+
+[node name="BreakableBoulder" parent="." unique_id=118731527 instance=ExtResource("2_lk7wy")]
+position = Vector2(2819, -60)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2037393069]
+z_index = -500
+offset_left = 3.0
+offset_top = -2714.0
+offset_right = 3923.0
+offset_bottom = 309.0
+color = Color(0.32955998, 0.5835499, 0.77930415, 1)
+
+[node name="NPCs" type="Node2D" parent="." unique_id=723089329]
+
+[node name="Tepanio" parent="NPCs" unique_id=151004381 instance=ExtResource("3_lk7wy")]
+position = Vector2(944, -36)
+scale = Vector2(0.3508006, 0.3508006)
+
+[node name="Backgrounds" type="Node2D" parent="." unique_id=1938808367]
+
+[node name="Parallax2D" type="Parallax2D" parent="Backgrounds" unique_id=67340837]
+z_index = -1
+
+[node name="BGLayer1" type="Node2D" parent="Backgrounds/Parallax2D" unique_id=902940670]
+position = Vector2(29, 485)
+
+[node name="Hill" type="Sprite2D" parent="Backgrounds/Parallax2D/BGLayer1" unique_id=127754871]
+visible = false
+position = Vector2(1867, -589)
+texture = ExtResource("4_sq2y4")
+
+[node name="Mountains" type="Node2D" parent="Backgrounds/Parallax2D/BGLayer1" unique_id=1217573951]
+z_index = -450
+position = Vector2(161, 454)
+
+[node name="Mountain" type="Sprite2D" parent="Backgrounds/Parallax2D/BGLayer1/Mountains" unique_id=1517185975]
+position = Vector2(754, -1243)
+texture = ExtResource("5_dgl11")
+
+[node name="Mountain2" type="Sprite2D" parent="Backgrounds/Parallax2D/BGLayer1/Mountains" unique_id=463860976]
+position = Vector2(842, -1246)
+texture = ExtResource("5_dgl11")
+
+[node name="Mountain3" type="Sprite2D" parent="Backgrounds/Parallax2D/BGLayer1/Mountains" unique_id=1996893572]
+position = Vector2(927, -1238)
+texture = ExtResource("5_dgl11")
+
+[node name="Mountain4" type="Sprite2D" parent="Backgrounds/Parallax2D/BGLayer1/Mountains" unique_id=2082037532]
+position = Vector2(1005, -1243)
+texture = ExtResource("5_dgl11")
+
+[node name="Mountain5" type="Sprite2D" parent="Backgrounds/Parallax2D/BGLayer1/Mountains" unique_id=1954622699]
+position = Vector2(1070, -1241)
+texture = ExtResource("5_dgl11")
+
+[node name="Mountain6" type="Sprite2D" parent="Backgrounds/Parallax2D/BGLayer1/Mountains" unique_id=1332383465]
+position = Vector2(1156, -1236)
+texture = ExtResource("5_dgl11")
+
+[node name="Mountain7" type="Sprite2D" parent="Backgrounds/Parallax2D/BGLayer1/Mountains" unique_id=1631403545]
+position = Vector2(663, -1244)
+texture = ExtResource("5_dgl11")
+
+[node name="Mountain8" type="Sprite2D" parent="Backgrounds/Parallax2D/BGLayer1/Mountains" unique_id=1675993234]
+position = Vector2(580, -1244)
+texture = ExtResource("5_dgl11")
+
+[node name="BGLayer2" type="Parallax2D" parent="Backgrounds" unique_id=682462650]
+z_index = -50
+scroll_scale = Vector2(0.95, 0.99)
+
+[node name="Fields" type="Node2D" parent="Backgrounds/BGLayer2" unique_id=834053862]
+z_index = -400
+
+[node name="Field" type="Sprite2D" parent="Backgrounds/BGLayer2/Fields" unique_id=2143425781]
+position = Vector2(893, -209)
+texture = ExtResource("6_e0fhc")
+
+[node name="Field2" type="Sprite2D" parent="Backgrounds/BGLayer2/Fields" unique_id=461080259]
+position = Vector2(1204, -211)
+texture = ExtResource("6_e0fhc")
+
+[node name="Field3" type="Sprite2D" parent="Backgrounds/BGLayer2/Fields" unique_id=631928860]
+position = Vector2(426, -199)
+texture = ExtResource("6_e0fhc")
+
+[node name="Field4" type="Sprite2D" parent="Backgrounds/BGLayer2/Fields" unique_id=1578671095]
+position = Vector2(2607, -156)
+texture = ExtResource("6_e0fhc")
+
+[node name="Field5" type="Sprite2D" parent="Backgrounds/BGLayer2/Fields" unique_id=1278284498]
+position = Vector2(2184, -162)
+texture = ExtResource("6_e0fhc")
+
+[node name="Field6" type="Sprite2D" parent="Backgrounds/BGLayer2/Fields" unique_id=1796559893]
+position = Vector2(1693, -191)
+texture = ExtResource("6_e0fhc")
+
+[node name="Roads" type="Node2D" parent="Backgrounds/BGLayer2" unique_id=657026372]
+
+[node name="StoneRoad" type="Sprite2D" parent="Backgrounds/BGLayer2/Roads" unique_id=1226952060]
+position = Vector2(1727.9999, -120.00006)
+rotation = 0.4376066
+texture = ExtResource("7_g76lq")
+
+[node name="Town" type="Node2D" parent="Backgrounds/BGLayer2" unique_id=1916781117]
+
+[node name="Wall" type="Sprite2D" parent="Backgrounds/BGLayer2/Town" unique_id=2068972078]
+position = Vector2(1753, -164)
+rotation = 0.041029867
+texture = ExtResource("8_sd1d0")
+
+[node name="Tower" type="Sprite2D" parent="Backgrounds/BGLayer2/Town" unique_id=1706366441]
+position = Vector2(1662, -177)
+texture = ExtResource("9_uoflv")
+
+[node name="Tower2" type="Sprite2D" parent="Backgrounds/BGLayer2/Town" unique_id=1262299628]
+position = Vector2(1844, -183)
+texture = ExtResource("9_uoflv")
+
+[node name="Town" type="Sprite2D" parent="Backgrounds/BGLayer2/Town" unique_id=1212175352]
+z_index = -1
+position = Vector2(1749, -186)
+texture = ExtResource("10_ax67d")
+
+[node name="Houses" type="Node2D" parent="Backgrounds/BGLayer2" unique_id=490577535]
+
+[node name="House" type="Sprite2D" parent="Backgrounds/BGLayer2/Houses" unique_id=1571724499]
+position = Vector2(1764, -117)
+texture = ExtResource("11_nxl1c")
+
+[node name="House2" type="Sprite2D" parent="Backgrounds/BGLayer2/Houses" unique_id=340367910]
+position = Vector2(1668, -128)
+texture = ExtResource("12_egmic")
+
+[node name="House3" type="Sprite2D" parent="Backgrounds/BGLayer2/Houses" unique_id=425462634]
+position = Vector2(1409, -173)
+texture = ExtResource("12_egmic")
+
+[node name="House4" type="Sprite2D" parent="Backgrounds/BGLayer2/Houses" unique_id=1639786118]
+position = Vector2(1807, -142)
+texture = ExtResource("13_dj7l0")
+
+[node name="Environment" type="Node2D" parent="Backgrounds/BGLayer2" unique_id=1338798440]
+
+[node name="River" type="Sprite2D" parent="Backgrounds/BGLayer2/Environment" unique_id=2007502605]
+position = Vector2(1936, -152)
+texture = ExtResource("14_egmic")
+
+[node name="Tree" type="AnimatedSprite2D" parent="Backgrounds/BGLayer2/Environment" unique_id=607167267]
+position = Vector2(1535, -235)
+sprite_frames = SubResource("SpriteFrames_nq3hm")
+frame_progress = 0.58263355
+
+[node name="Tree2" type="AnimatedSprite2D" parent="Backgrounds/BGLayer2/Environment" unique_id=824609875]
+position = Vector2(464, -179)
+sprite_frames = SubResource("SpriteFrames_nq3hm")
+frame_progress = 0.7060605
+flip_h = true
+
+[node name="BGLayer3" type="Parallax2D" parent="Backgrounds" unique_id=1738668392]
+z_index = -10
+
+[node name="StoneRoad2" type="Sprite2D" parent="Backgrounds/BGLayer3" unique_id=5516683]
+position = Vector2(1615, -44)
+texture = ExtResource("8_1y0g4")

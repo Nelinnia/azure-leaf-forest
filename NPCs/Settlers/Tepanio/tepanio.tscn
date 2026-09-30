@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://cfq2edrgxof7g"]
+
+[ext_resource type="Texture2D" uid="uid://c14m8c2c7dsf0" path="res://NPCs/Settlers/Tepanio/Tepanio_Body.png" id="1_1ylxr"]
+[ext_resource type="Script" uid="uid://djtxsbnd7wqeb" path="res://NPCs/Settlers/Tepanio/SettlerNPC.gd" id="1_2nta3"]
+[ext_resource type="Texture2D" uid="uid://4v3dkj8ss7at" path="res://NPCs/Settlers/Boots/Left_Boot_Black.png" id="2_2bfym"]
+[ext_resource type="Texture2D" uid="uid://37oxgwr32wmj" path="res://NPCs/Settlers/Boots/Right_Boot_Black.png" id="3_pj1pk"]
+[ext_resource type="Texture2D" uid="uid://5h4ohttmbacp" path="res://Player/Misc/Azure_Leage_Elf_Arm_Left.png" id="4_pj1pk"]
+[ext_resource type="Texture2D" uid="uid://cfdkcb0qj6v46" path="res://Player/Misc/Azure_Leage_Elf_Arm_Right.png" id="5_2nta3"]
+[ext_resource type="Script" uid="uid://lv1kyc67syv2" path="res://Editor/InteractArea/interact_area.gd" id="7_2eocm"]
+[ext_resource type="Resource" uid="uid://c2asfts3vsey4" path="res://Dialogue/Settlers/Tepanio/Setteler_basic_first_greeting_01.tres" id="8_oom5q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2eocm"]
+size = Vector2(89, 180)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nq3hm"]
+radius = 183.98369
+
+[node name="Tepanio" type="Area2D" unique_id=151004381]
+script = ExtResource("1_2nta3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=709385163]
+position = Vector2(-1, 11)
+shape = SubResource("RectangleShape2D_2eocm")
+
+[node name="Body" type="Sprite2D" parent="." unique_id=341543490]
+texture = ExtResource("1_1ylxr")
+
+[node name="BodyPart" type="Node2D" parent="." unique_id=583509621]
+
+[node name="LeftLeg" type="Sprite2D" parent="BodyPart" unique_id=781531400]
+z_index = -1
+position = Vector2(-23, 84)
+texture = ExtResource("2_2bfym")
+
+[node name="RightLeg" type="Sprite2D" parent="BodyPart" unique_id=885451198]
+z_index = -1
+position = Vector2(19, 85)
+texture = ExtResource("3_pj1pk")
+
+[node name="LeftArm" type="Sprite2D" parent="BodyPart" unique_id=224809825]
+position = Vector2(0, -33)
+texture = ExtResource("4_pj1pk")
+
+[node name="RightArm" type="Sprite2D" parent="BodyPart" unique_id=1244315446]
+position = Vector2(5, -30)
+texture = ExtResource("5_2nta3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=405693203]
+
+[node name="InteractArea" type="Area2D" parent="." unique_id=1982039663]
+position = Vector2(-1, 0)
+script = ExtResource("7_2eocm")
+dialogue_start = ExtResource("8_oom5q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=947790067]
+shape = SubResource("CircleShape2D_nq3hm")
+debug_color = Color(0.6425076, 0.49204755, 0.98588437, 0.41960785)
+
+[node name="InteractLabel" type="Label" parent="InteractArea" unique_id=713386176]
+offset_left = -58.0
+offset_top = -131.0
+offset_right = -18.0
+offset_bottom = -76.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 40

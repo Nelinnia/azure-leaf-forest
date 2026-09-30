@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="DialogueLine" format=3 uid="uid://c2asfts3vsey4"]
+
+[ext_resource type="Script" uid="uid://ctdrn0ol8y7v3" path="res://Dialogue/Resources/DialogueChoice.gd" id="1_hu1ya"]
+[ext_resource type="Script" uid="uid://bch3m64jkfekg" path="res://Dialogue/Resources/DialogueLine.gd" id="2_ilh7j"]
+[ext_resource type="Resource" uid="uid://bbh15x60ufurv" path="res://Quest/The Boulder, The Better/The_Boulder_The_Better.tres" id="3_ilh7j"]
+
+[sub_resource type="Resource" id="Resource_hxnlx"]
+script = ExtResource("2_ilh7j")
+npc_name = "Tepanio"
+pages = Array[String](["Well, if ye find the time."])
+metadata/_custom_type_script = "uid://bch3m64jkfekg"
+
+[sub_resource type="Resource" id="Resource_ilh7j"]
+script = ExtResource("1_hu1ya")
+text = "I am busy"
+next_line = SubResource("Resource_hxnlx")
+metadata/_custom_type_script = "uid://ctdrn0ol8y7v3"
+
+[sub_resource type="Resource" id="Resource_gimsj"]
+script = ExtResource("1_hu1ya")
+text = "Certainly"
+metadata/_custom_type_script = "uid://ctdrn0ol8y7v3"
+
+[sub_resource type="Resource" id="Resource_hu1ya"]
+script = ExtResource("2_ilh7j")
+npc_name = "Tepanio"
+pages = Array[String](["Glad to here it! ", "Towns been meanin' to break that bolder on the east side for some time. ", "If ye take care of that for us it'd be a huge help."])
+choices = Array[ExtResource("1_hu1ya")]([SubResource("Resource_gimsj")])
+metadata/_custom_type_script = "uid://bch3m64jkfekg"
+
+[sub_resource type="Resource" id="Resource_lf0dj"]
+script = ExtResource("1_hu1ya")
+text = "I have some time"
+next_line = SubResource("Resource_hu1ya")
+start_quest = ExtResource("3_ilh7j")
+metadata/_custom_type_script = "uid://ctdrn0ol8y7v3"
+
+[resource]
+script = ExtResource("2_ilh7j")
+npc_name = "Tepanio"
+pages = Array[String](["Haven't seen ye around here before.", "Hold it there... are ye a druid? We ain't see one of you round here for a century!", "Say, think ye could help us out? It'll be quick."])
+choices = Array[ExtResource("1_hu1ya")]([SubResource("Resource_ilh7j"), SubResource("Resource_lf0dj")])
+metadata/_custom_type_script = "uid://bch3m64jkfekg"

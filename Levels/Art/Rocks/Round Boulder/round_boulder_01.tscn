@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://y6knwoet7rtv" path="res://Levels/Art/Rocks/Round Boulder/Movable_Boulder.gd" id="1_gr63u"]
 [ext_resource type="Texture2D" uid="uid://dp1br5jfs3cck" path="res://Levels/Art/Rocks/Round Boulder/Round_Moss_Boulder_01_Lightmap.png" id="2_gr63u"]
 [ext_resource type="Script" uid="uid://bpqby5qtoytng" path="res://Editor/Hurt Box/hurt_box.gd" id="4_fikhs"]
+[ext_resource type="AudioStream" uid="uid://c8oh0wd0xecwa" path="res://Levels/Art/Rocks/Round Boulder/Stone Slide Loop 03.wav" id="5_hfpax"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nq3hm"]
 radius = 112.00446
@@ -39,3 +40,8 @@ z_index = 1
 position = Vector2(-2, -5)
 shape = SubResource("CircleShape2D_nq3hm")
 debug_color = Color(0.7183835, 0.024232581, 0.13596082, 0.41960785)
+
+[node name="RollingSound" type="AudioStreamPlayer2D" parent="." unique_id=2139664345]
+unique_name_in_owner = true
+stream = ExtResource("5_hfpax")
+bus = &"Sfx"

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://buibrsb0nd4ba"]
+
+[ext_resource type="Script" uid="uid://dtrkybcq2nfx6" path="res://NPCs/NPC.gd" id="1_qwp06"]
+[ext_resource type="Texture2D" uid="uid://c162hfvt2xh77" path="res://Levels/Art/Rocks/Half_Circle_Moss_Bolder_01.png" id="2_rve6p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nq3hm"]
+radius = 128.19127
+
+[node name="BreakableBoulder" type="Area2D" unique_id=118731527]
+collision_layer = 4
+collision_mask = 12
+script = ExtResource("1_qwp06")
+health = 500
+base_xp = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2079582471]
+texture = ExtResource("2_rve6p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1188461428]
+shape = SubResource("CircleShape2D_nq3hm")
+debug_color = Color(0.7642545, 0.21111381, 0.9611731, 0.41960785)

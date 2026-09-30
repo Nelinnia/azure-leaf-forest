@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="QuestStage" format=3 uid="uid://cifnaxajojpsx"]
+
+[ext_resource type="Script" uid="uid://bwx0wb5gpapd8" path="res://Editor/QuestStage/Quest_Stage.gd" id="1_cwisv"]
+
+[resource]
+script = ExtResource("1_cwisv")
+stage_name = "Talk Tepanio"
+description = "Head back to Tepanio"
+objective_type = "Travel"
+target_id = "Tepanio"
+metadata/_custom_type_script = "uid://bwx0wb5gpapd8"

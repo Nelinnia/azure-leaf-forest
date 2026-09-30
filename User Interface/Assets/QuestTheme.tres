@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://dqw4y07w2ewee"]
+
+[ext_resource type="Texture2D" uid="uid://davrg44unc76v" path="res://User Interface/Assets/Quest_Log_Papper.png" id="1_0ca68"]
+
+[resource]
+content_margin_left = 50.0
+content_margin_top = 50.0
+content_margin_right = 50.0
+content_margin_bottom = 50.0
+texture = ExtResource("1_0ca68")

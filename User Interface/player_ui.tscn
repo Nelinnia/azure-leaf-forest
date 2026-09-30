@@ -19,9 +19,11 @@
 [ext_resource type="StyleBox" uid="uid://cku88k2vjw6xx" path="res://User Interface/Assets/MenuTheme.tres" id="14_po3ix"]
 [ext_resource type="Texture2D" uid="uid://bsjo167w2r4v6" path="res://User Interface/Assets/Texture_Button_Border.png" id="14_wpw37"]
 [ext_resource type="ButtonGroup" uid="uid://dvqgx5g0hey5s" path="res://User Interface/Settings/settings_button_group.tres" id="15_g6dgd"]
+[ext_resource type="PackedScene" uid="uid://bmofkahoviymx" path="res://User Interface/DialogeBox/dialoge_box.tscn" id="16_qvtu4"]
 [ext_resource type="PackedScene" uid="uid://ck5a1a2wy2bpp" path="res://User Interface/Settings/SoundManager/sound_menu_container.tscn" id="18_bnh8w"]
 [ext_resource type="PackedScene" uid="uid://cmawd71jkrlnk" path="res://User Interface/Settings/InterfaceManager/interface_menu_container.tscn" id="19_ywelb"]
 [ext_resource type="PackedScene" uid="uid://0nhrc3pcs7ut" path="res://User Interface/Settings/KeybindManager/keybind_menu_container.tscn" id="21_ywelb"]
+[ext_resource type="PackedScene" uid="uid://b2rjst1adr04x" path="res://User Interface/QuestBook/QuestMenu.tscn" id="23_isya3"]
 
 [node name="PlayerUI" type="Control" unique_id=1326240640]
 layout_mode = 3
@@ -115,11 +117,27 @@ script = ExtResource("1_6daay")
 
 [node name="StatControl" parent="GameUI" unique_id=125857881 instance=ExtResource("1_akys6")]
 visible = false
+z_index = 2
 layout_mode = 0
-offset_left = 228.0
-offset_top = 140.0
-offset_right = 268.0
-offset_bottom = 180.0
+offset_left = 248.0
+offset_top = 142.0
+offset_right = 288.0
+offset_bottom = 182.0
+
+[node name="QuestMenu" parent="GameUI" unique_id=904821355 instance=ExtResource("23_isya3")]
+visible = false
+layout_mode = 1
+offset_left = 739.0
+offset_top = 107.0
+offset_right = 1078.0
+offset_bottom = 532.13635
+
+[node name="DialogeBox" parent="GameUI" unique_id=94708211 instance=ExtResource("16_qvtu4")]
+layout_mode = 1
+offset_left = 472.0
+offset_top = 408.0
+offset_right = 472.0
+offset_bottom = 408.0
 
 [node name="Settings" type="Control" parent="." unique_id=965284014]
 visible = false
