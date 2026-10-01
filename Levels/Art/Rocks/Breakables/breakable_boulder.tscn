@@ -1,21 +1,164 @@
 [gd_scene format=3 uid="uid://buibrsb0nd4ba"]
 
-[ext_resource type="Script" uid="uid://dtrkybcq2nfx6" path="res://NPCs/NPC.gd" id="1_qwp06"]
-[ext_resource type="Texture2D" uid="uid://c162hfvt2xh77" path="res://Levels/Art/Rocks/Half_Circle_Moss_Bolder_01.png" id="2_rve6p"]
+[ext_resource type="Script" uid="uid://cqcvalau5bgem" path="res://Levels/Art/Rocks/Breakables/breakable_boulder.gd" id="1_d6iul"]
+[ext_resource type="Texture2D" uid="uid://v6ih4eab16yx" path="res://Levels/Art/Rocks/Breakables/Breakable_Half_Circle_Boulder_01.png" id="2_rve6p"]
+[ext_resource type="Texture2D" uid="uid://cwtragg34knwv" path="res://Levels/Art/Rocks/Breakables/Breakable_Half_Circle_Boulder_02.png" id="3_7f4ac"]
+[ext_resource type="Texture2D" uid="uid://dxuadq01jet3p" path="res://Levels/Art/Rocks/Breakables/Breakable_Half_Circle_Boulder_03.png" id="4_kkdx7"]
+[ext_resource type="Texture2D" uid="uid://b06t3mcrs3d2g" path="res://Levels/Art/Rocks/Breakables/Breakable_Half_Circle_Boulder_04.png" id="5_yyir2"]
+[ext_resource type="Texture2D" uid="uid://c63mmsuvb8lss" path="res://Levels/Art/Rocks/Breakables/Boulder_Chunk_01.png" id="6_7f4ac"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nq3hm"]
-radius = 128.19127
+[sub_resource type="SpriteFrames" id="SpriteFrames_nq3hm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rve6p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7f4ac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kkdx7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_yyir2")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_7f4ac"]
+resource_name = "Breaking"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Breakable:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-42, 0), Vector2(-42, 53)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Breakable:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Breakable2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(6, -1), Vector2(6, 61)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Breakable2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-3.1173513, -4.107249]
+}
+
+[sub_resource type="Animation" id="Animation_kkdx7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Breakable:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-42, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Breakable:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Breakable2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, -1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Breakable2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-3.1173513]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yyir2"]
+_data = {
+&"Breaking": SubResource("Animation_7f4ac"),
+&"RESET": SubResource("Animation_kkdx7")
+}
 
 [node name="BreakableBoulder" type="Area2D" unique_id=118731527]
 collision_layer = 4
 collision_mask = 12
-script = ExtResource("1_qwp06")
+script = ExtResource("1_d6iul")
 health = 500
 base_xp = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2079582471]
-texture = ExtResource("2_rve6p")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=94680550]
+sprite_frames = SubResource("SpriteFrames_nq3hm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1188461428]
-shape = SubResource("CircleShape2D_nq3hm")
-debug_color = Color(0.7642545, 0.21111381, 0.9611731, 0.41960785)
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=1642692573]
+polygon = PackedVector2Array(-105, 16, -65, -46, -35, -64, 23, -65, 49, -51, 74, -32, 107, 9, 113, 35, 114, 65, 21, 67, -86, 65, -116, 63, -116, 36)
+
+[node name="Breakable" type="Sprite2D" parent="." unique_id=1283633482]
+visible = false
+position = Vector2(-42, 0)
+texture = ExtResource("6_7f4ac")
+
+[node name="Breakable2" type="Sprite2D" parent="." unique_id=459652336]
+visible = false
+position = Vector2(6, -1)
+rotation = -3.1173513
+texture = ExtResource("6_7f4ac")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1807983206]
+libraries/ = SubResource("AnimationLibrary_yyir2")

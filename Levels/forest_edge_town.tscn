@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://buibrsb0nd4ba" path="res://Levels/Art/Rocks/Breakables/breakable_boulder.tscn" id="2_lk7wy"]
 [ext_resource type="PackedScene" uid="uid://cfq2edrgxof7g" path="res://NPCs/Settlers/Tepanio/tepanio.tscn" id="3_lk7wy"]
 [ext_resource type="Texture2D" uid="uid://bw5ayc77wv18s" path="res://Levels/Art/Terain/Hill_Baren_01.png" id="4_sq2y4"]
-[ext_resource type="Texture2D" path="res://Levels/Art/Terain/Mountain_01.png" id="5_dgl11"]
+[ext_resource type="Texture2D" uid="uid://gdncmy84pes4" path="res://Levels/Art/Terain/Mountains/Mountain_01.png" id="5_v8ht5"]
 [ext_resource type="Texture2D" uid="uid://bwmadss83j5rw" path="res://Levels/Art/Terain/Fields/Wheat_Feild_01.png" id="6_e0fhc"]
 [ext_resource type="Texture2D" uid="uid://dii2v35irl4my" path="res://Levels/Art/Terain/Town/Roads/Stone_Road_01.png" id="7_g76lq"]
 [ext_resource type="Texture2D" uid="uid://yr4ftqpglyg7" path="res://Levels/Art/Terain/Town/Roads/Stone_Road_03.png" id="8_1y0g4"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://15k45h2iih0o" path="res://Levels/Art/Terain/River_01.png" id="14_egmic"]
 [ext_resource type="Texture2D" uid="uid://br7rb7ne00jxh" path="res://Levels/Art/Terain/Foliage/Tree/Azure_Tree_01_01.png" id="15_x0g8q"]
 [ext_resource type="Texture2D" uid="uid://de3ouijsso7ur" path="res://Levels/Art/Terain/Foliage/Tree/Azure_Tree_01_02.png" id="16_wdwr3"]
+[ext_resource type="Texture2D" uid="uid://6vwr306cii4d" path="res://Levels/Art/Terain/Cloud/Cloud_01.png" id="18_v8ht5"]
+[ext_resource type="Texture2D" uid="uid://cx76hi7gtdi44" path="res://Levels/Art/Terain/Cloud/Cloud_Shadow_01.png" id="19_bwqfb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nq3hm"]
 animations = [{
@@ -73,36 +75,36 @@ z_index = -450
 position = Vector2(161, 454)
 
 [node name="Mountain" type="Sprite2D" parent="Backgrounds/Parallax2D/BGLayer1/Mountains" unique_id=1517185975]
-position = Vector2(754, -1243)
-texture = ExtResource("5_dgl11")
+position = Vector2(1634, -1189)
+texture = ExtResource("5_v8ht5")
 
 [node name="Mountain2" type="Sprite2D" parent="Backgrounds/Parallax2D/BGLayer1/Mountains" unique_id=463860976]
-position = Vector2(842, -1246)
-texture = ExtResource("5_dgl11")
+position = Vector2(1735, -1198)
+texture = ExtResource("5_v8ht5")
 
 [node name="Mountain3" type="Sprite2D" parent="Backgrounds/Parallax2D/BGLayer1/Mountains" unique_id=1996893572]
-position = Vector2(927, -1238)
-texture = ExtResource("5_dgl11")
+position = Vector2(1941, -1164)
+texture = ExtResource("5_v8ht5")
 
 [node name="Mountain4" type="Sprite2D" parent="Backgrounds/Parallax2D/BGLayer1/Mountains" unique_id=2082037532]
-position = Vector2(1005, -1243)
-texture = ExtResource("5_dgl11")
+position = Vector2(1761, -1193)
+texture = ExtResource("5_v8ht5")
 
 [node name="Mountain5" type="Sprite2D" parent="Backgrounds/Parallax2D/BGLayer1/Mountains" unique_id=1954622699]
-position = Vector2(1070, -1241)
-texture = ExtResource("5_dgl11")
+position = Vector2(1836, -1183)
+texture = ExtResource("5_v8ht5")
 
 [node name="Mountain6" type="Sprite2D" parent="Backgrounds/Parallax2D/BGLayer1/Mountains" unique_id=1332383465]
-position = Vector2(1156, -1236)
-texture = ExtResource("5_dgl11")
+position = Vector2(1586, -1198)
+texture = ExtResource("5_v8ht5")
 
 [node name="Mountain7" type="Sprite2D" parent="Backgrounds/Parallax2D/BGLayer1/Mountains" unique_id=1631403545]
-position = Vector2(663, -1244)
-texture = ExtResource("5_dgl11")
+position = Vector2(1895, -1172)
+texture = ExtResource("5_v8ht5")
 
 [node name="Mountain8" type="Sprite2D" parent="Backgrounds/Parallax2D/BGLayer1/Mountains" unique_id=1675993234]
-position = Vector2(580, -1244)
-texture = ExtResource("5_dgl11")
+position = Vector2(1536, -1186)
+texture = ExtResource("5_v8ht5")
 
 [node name="BGLayer2" type="Parallax2D" parent="Backgrounds" unique_id=682462650]
 z_index = -50
@@ -189,12 +191,14 @@ texture = ExtResource("14_egmic")
 [node name="Tree" type="AnimatedSprite2D" parent="Backgrounds/BGLayer2/Environment" unique_id=607167267]
 position = Vector2(1535, -235)
 sprite_frames = SubResource("SpriteFrames_nq3hm")
-frame_progress = 0.58263355
+autoplay = "default"
+frame_progress = 0.50210136
 
 [node name="Tree2" type="AnimatedSprite2D" parent="Backgrounds/BGLayer2/Environment" unique_id=824609875]
 position = Vector2(464, -179)
 sprite_frames = SubResource("SpriteFrames_nq3hm")
-frame_progress = 0.7060605
+autoplay = "default"
+frame_progress = 0.5871844
 flip_h = true
 
 [node name="BGLayer3" type="Parallax2D" parent="Backgrounds" unique_id=1738668392]
@@ -203,3 +207,13 @@ z_index = -10
 [node name="StoneRoad2" type="Sprite2D" parent="Backgrounds/BGLayer3" unique_id=5516683]
 position = Vector2(1615, -44)
 texture = ExtResource("8_1y0g4")
+
+[node name="Clouds" type="Node2D" parent="Backgrounds" unique_id=1986732859]
+
+[node name="Cloud" type="Sprite2D" parent="Backgrounds/Clouds" unique_id=697928840]
+position = Vector2(1251, -612)
+texture = ExtResource("18_v8ht5")
+
+[node name="Cloud2" type="Sprite2D" parent="Backgrounds/Clouds/Cloud" unique_id=516010926]
+position = Vector2(-55, 386)
+texture = ExtResource("19_bwqfb")

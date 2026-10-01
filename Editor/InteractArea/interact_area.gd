@@ -22,11 +22,13 @@ func _ready() -> void:
 		if body is Player:
 			player_in_range = false
 			interact_label.visible = false
+			if DialogueManager.dialogue_box.current_line == dialogue_start:
+				DialogueManager.dialogue_box.close_dialogue()
 		)
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if player_in_range and event.is_action_pressed("interact"):
+	if not player_in_range or not event.is_action_pressed("interact"):
 		return
 	
 	if DialogueManager.dialogue_box.visible:

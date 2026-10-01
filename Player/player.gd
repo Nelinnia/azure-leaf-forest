@@ -167,6 +167,9 @@ func death() -> void:
 @onready var charge_timer: Timer = %ChargeTimer
 @onready var weapon_marker: Marker2D = $Visuals/Weapon/WeaponMarker
 func _input(event: InputEvent) -> void:
+	if DialogueManager.dialogue_box.visible:
+		return
+	
 	if event.is_action_pressed("weapon_swap"):
 		_swap_weapon()
 	if event.is_action_pressed("attack") and not is_attacking:
