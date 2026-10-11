@@ -6,19 +6,43 @@
 [ext_resource type="Texture2D" uid="uid://bw5ayc77wv18s" path="res://Levels/Art/Terain/Hill_Baren_01.png" id="4_sq2y4"]
 [ext_resource type="Texture2D" uid="uid://gdncmy84pes4" path="res://Levels/Art/Terain/Mountains/Mountain_01.png" id="5_v8ht5"]
 [ext_resource type="Texture2D" uid="uid://bwmadss83j5rw" path="res://Levels/Art/Terain/Fields/Wheat_Feild_01.png" id="6_e0fhc"]
+[ext_resource type="Texture2D" uid="uid://dwh2p17waski" path="res://Levels/Art/Terain/Fields/Green_Field_01.png" id="7_b7w1c"]
+[ext_resource type="Texture2D" uid="uid://82omelknr280" path="res://Levels/Art/Terain/Fields/Dirt_Road_02.png" id="7_eklry"]
 [ext_resource type="Texture2D" uid="uid://dii2v35irl4my" path="res://Levels/Art/Terain/Town/Roads/Stone_Road_01.png" id="7_g76lq"]
 [ext_resource type="Texture2D" uid="uid://yr4ftqpglyg7" path="res://Levels/Art/Terain/Town/Roads/Stone_Road_03.png" id="8_1y0g4"]
+[ext_resource type="Texture2D" uid="uid://6f02kpt3tklt" path="res://Levels/Art/Terain/Fields/Dirt_Road_01.png" id="8_cc7bq"]
 [ext_resource type="Texture2D" uid="uid://is3c47inihje" path="res://Levels/Art/Terain/Town/Wall/Stone_Wall_01.png" id="8_sd1d0"]
 [ext_resource type="Texture2D" uid="uid://mqc8uxnq56fk" path="res://Levels/Art/Terain/Town/Buildings/Tower_01.png" id="9_uoflv"]
 [ext_resource type="Texture2D" uid="uid://6xaum6qbem8m" path="res://Levels/Art/Terain/Town/Town_set.png" id="10_ax67d"]
 [ext_resource type="Texture2D" uid="uid://cbdmumahn3blt" path="res://Levels/Art/Terain/Town/Buildings/Farm_House_02.png" id="11_nxl1c"]
 [ext_resource type="Texture2D" uid="uid://cnibaymms6cnd" path="res://Levels/Art/Terain/Town/Buildings/Farm_House_01.png" id="12_egmic"]
 [ext_resource type="Texture2D" uid="uid://b63erxvsfcjov" path="res://Levels/Art/Terain/Town/Buildings/Town_House_01.png" id="13_dj7l0"]
+[ext_resource type="PackedScene" uid="uid://b076m3fibnw01" path="res://Levels/Art/Terain/Town/Windmil/windmill.tscn" id="14_bwqfb"]
 [ext_resource type="Texture2D" uid="uid://15k45h2iih0o" path="res://Levels/Art/Terain/River_01.png" id="14_egmic"]
 [ext_resource type="Texture2D" uid="uid://br7rb7ne00jxh" path="res://Levels/Art/Terain/Foliage/Tree/Azure_Tree_01_01.png" id="15_x0g8q"]
 [ext_resource type="Texture2D" uid="uid://de3ouijsso7ur" path="res://Levels/Art/Terain/Foliage/Tree/Azure_Tree_01_02.png" id="16_wdwr3"]
+[ext_resource type="PackedScene" uid="uid://ce3eu0fmbv6f1" path="res://Levels/Art/Terain/Town/WaterWheel/water_wheel.tscn" id="18_8c86s"]
 [ext_resource type="Texture2D" uid="uid://6vwr306cii4d" path="res://Levels/Art/Terain/Cloud/Cloud_01.png" id="18_v8ht5"]
 [ext_resource type="Texture2D" uid="uid://cx76hi7gtdi44" path="res://Levels/Art/Terain/Cloud/Cloud_Shadow_01.png" id="19_bwqfb"]
+[ext_resource type="Texture2D" uid="uid://b26yi34rnmvb5" path="res://Levels/Art/Structures/Wood_House_Full_01.png" id="21_xyede"]
+[ext_resource type="Texture2D" uid="uid://b0lpcde3yeo2e" path="res://Levels/Art/Foliage/Decals/BG_Tree_Stump_01.png" id="22_oqixs"]
+[ext_resource type="Texture2D" uid="uid://bq7nmdrkosipd" path="res://Levels/Art/Terain/Fields/Wheat_Feild_02.png" id="25_5bs3x"]
+[ext_resource type="Texture2D" uid="uid://do6syw5j2xh3h" path="res://Levels/Art/Structures/Wood_Bridge_01.png" id="25_36jpd"]
+[ext_resource type="Texture2D" uid="uid://bfsml4ddjywnn" path="res://Levels/Art/Structures/Wood_House_Full_02.png" id="25_ctmom"]
+[ext_resource type="Script" uid="uid://lpu7o38aialt" path="res://Levels/Art/Terain/Cloud/cloud.gd" id="25_qnm3c"]
+[ext_resource type="Texture2D" uid="uid://c8q5dp7ru8ye6" path="res://Levels/Art/Terain/River_02.png" id="26_oxkj4"]
+[ext_resource type="Shader" uid="uid://mtxihbceaf1s" path="res://Levels/Art/Effects/Shaders/2D_Wave_Water.gdshader" id="27_65vny"]
+[ext_resource type="Texture2D" uid="uid://ckrsklpwnv4la" path="res://Levels/Art/Effects/Water/wave_texture.png" id="28_ctmom"]
+[ext_resource type="Script" uid="uid://cb7janf24p5wd" path="res://Levels/Art/Effects/Water/Water.gd" id="29_36jpd"]
+[ext_resource type="Texture2D" uid="uid://dybuf3c15mlwa" path="res://Levels/Art/Structures/BG_Barn_01.png" id="29_wd86x"]
+[ext_resource type="Script" uid="uid://b5s2rcr5ygjcw" path="res://Editor/Fishing Area/FishingArea.gd" id="30_8c86s"]
+[ext_resource type="Script" uid="uid://dvw12t57g7rpi" path="res://Editor/Fishing Area/lure_area.gd" id="31_oqixs"]
+[ext_resource type="Script" uid="uid://dc42u6nhx3tis" path="res://Items/Fish/Fish_Item.gd" id="32_xukqm"]
+[ext_resource type="Resource" uid="uid://d070ss61n4et4" path="res://Items/Fish/Elephant_Fish/Elephant_Fish.tres" id="33_jvh7g"]
+[ext_resource type="Resource" uid="uid://dgtv2aduba4s2" path="res://Items/Fish/Amethyst_Shell/Amethyst_Shell.tres" id="34_0agr0"]
+[ext_resource type="Texture2D" uid="uid://c2yn5sy6xglyn" path="res://Levels/Art/Terain/Foliage/Stump/Stump_01.png" id="39_xukqm"]
+[ext_resource type="Texture2D" uid="uid://c0mcgbvfurak3" path="res://Levels/Art/Terain/Foliage/Stump/Stump_02.png" id="40_jvh7g"]
+[ext_resource type="Texture2D" uid="uid://bxlg2044efrhy" path="res://Levels/Art/Terain/Fields/Dirt_Road_03.png" id="41_0agr0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nq3hm"]
 animations = [{
@@ -34,14 +58,31 @@ animations = [{
 "speed": 0.1
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qnm3c"]
+resource_local_to_scene = true
+shader = ExtResource("27_65vny")
+shader_parameter/edge_color = Color(1, 1, 1, 1)
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
+shader_parameter/water_color = Color(0, 0.16470589, 0.5372549, 1)
+shader_parameter/wave_texture_sampler = ExtResource("28_ctmom")
+shader_parameter/height = 89.0
+shader_parameter/ratio = 2.8764044943820224
+shader_parameter/wave_scale = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qnm3c"]
+size = Vector2(427, 325)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6e4d"]
+size = Vector2(256, 84)
+
 [node name="ForestEdgeTown" type="Node2D" unique_id=590653433]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=186129449]
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAApAAAAAAAAAAAAAAAqAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAArAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAtAAAAAAAAAAAAAAAuAAAAAAAAAAAAAAAvAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAxAAAAAAAAAAAAAAAyAAAAAAAAAAAAAAAzAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA1AAAAAAAAAAAAAAA2AAAAAAAAAAAAAAA3AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA5AAAAAAAAAAAAAAA6AAAAAAAAAAAAAAA7AAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA9AAAAAAAAAAAAAAA+AAAAAAAAAAAAAAA/AAAAAAAAAAAAAABAAAAAAAAAAAAAAABBAAAAAAAAAAAAAABCAAAAAAAAAAAAAABDAAAAAAAAAAAAAABEAAAAAAAAAAAAAABFAAAAAAAAAAAAAABGAAAAAAAAAAAAAABHAAAAAAAAAAAAAABIAAAAAAAAAAAAAABJAAAAAAAAAAAAAABKAAAAAAAAAAAAAABLAAAAAAAAAAAAAABMAAAAAAAAAAAAAABNAAAAAAAAAAAAAABOAAAAAAAAAAAAAABPAAAAAAAAAAAAAABQAAAAAAAAAAAAAABRAAAAAAAAAAAAAABSAAAAAAAAAAAAAABTAAAAAAABAAAAAABUAAAAAAABAAAAAABVAAAAAAABAAAAAABWAAAAAAABAAAAAABXAAAAAAABAAAAAABYAAAAAAABAAAAAABZAAAAAAABAAAAAABaAAAAAAABAAAAAABbAAAAAAABAAAAAABcAAAAAAABAAAAAABdAAAAAAAAAAAAAABeAAAAAAAAAAAAAABfAAAAAAAAAAAAAABgAAAAAAAAAAAAAABhAAAAAAAAAAAAAABiAAAAAAAAAAAAAABjAAAAAAAAAAAAAABkAAAAAAAAAAAAAABlAAAAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAABAAAAAAAfAAAAAAABAAAAAAAgAAAAAAABAAAAAAAhAAAAAAABAAAAAAAiAAAAAAABAAAAAAAjAAAAAAABAAAAAAAkAAAAAAABAAAAAAAmAAAAAAABAAAAAAAnAAAAAAABAAAAAAAoAAAAAAABAAAAAAApAAAAAAABAAAAAAAqAAAAAAABAAAAAAAlAAAAAAABAAAAAAArAAAAAAABAAAAAAAsAAAAAAABAAAAAAAtAAAAAAABAAAAAAAuAAAAAAABAAAAAAAvAAAAAAABAAAAAAAwAAAAAAABAAAAAAAxAAAAAAABAAAAAAAyAAAAAAABAAAAAAAzAAAAAAABAAAAAAA0AAAAAAABAAAAAAA1AAAAAAABAAAAAAA2AAAAAAABAAAAAAA3AAAAAAABAAAAAAA4AAAAAAABAAAAAAA5AAAAAAABAAAAAAA6AAAAAAABAAAAAAA7AAAAAAABAAAAAAA8AAAAAAABAAAAAAA9AAAAAAABAAAAAAA+AAAAAAABAAAAAAA/AAAAAAABAAAAAABAAAAAAAABAAAAAABBAAAAAAABAAAAAABCAAAAAAABAAAAAABDAAAAAAABAAAAAABEAAAAAAABAAEAAABFAAAAAAABAAEAAABGAAAAAAABAAEAAABHAAAAAAABAAEAAABIAAAAAAABAAEAAABJAAAAAAABAAEAAABKAAAAAAABAAEAAABLAAAAAAABAAAAAABMAAAAAAABAAAAAABNAAAAAAABAAAAAABOAAAAAAABAAAAAABPAAAAAAABAAAAAABQAAAAAAABAAAAAABRAAAAAAABAAAAAABSAAAAAAABAAAAAABTAAAAAAABAAAAAABUAAAAAAABAAAAAABVAAAAAAABAAAAAABWAAAAAAABAAAAAABXAAAAAAABAAAAAABgAAAAAAABAAAAAABhAAAAAAABAAAAAABiAAAAAAABAAAAAABjAAAAAAABAAAAAABkAAAAAAABAAAAAABlAAAAAAABAAAAAABmAAAAAAABAAAAAABnAAAAAAABAAAAAABoAAAAAAABAAAAAABpAAAAAAABAAAAAABqAAAAAAABAAAAAABrAAAAAAABAAAAAABsAAAAAAABAAAAAABtAAAAAAABAAAAAABuAAAAAAABAAAAAABvAAAAAAABAAAAAABwAAAAAAABAAAAAABxAAAAAAABAAAAAAByAAAAAAABAAAAAABzAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAB1AAAAAAAAAAAAAAB2AAAAAAAAAAAAAAB3AAAAAAAAAAAAAAB4AAAAAAAAAAAAAABXAAEAAAABAAAAAABXAAIAAAABAAAAAABgAAIAAAABAAAAAABgAAEAAAABAAAAAABgAAMAAAABAAAAAABfAAMAAAABAAAAAABeAAMAAAABAAAAAABdAAMAAAABAAAAAABcAAMAAAABAAAAAABbAAMAAAABAAAAAABaAAMAAAABAAAAAABZAAMAAAABAAAAAABYAAMAAAABAAAAAABXAAMAAAABAAAAAAA=")
 tile_set = ExtResource("1_3j0x7")
 
 [node name="BreakableBoulder" parent="." unique_id=118731527 instance=ExtResource("2_lk7wy")]
-position = Vector2(2819, -60)
+position = Vector2(3481, -60)
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2037393069]
 z_index = -500
@@ -54,13 +95,16 @@ color = Color(0.32955998, 0.5835499, 0.77930415, 1)
 [node name="NPCs" type="Node2D" parent="." unique_id=723089329]
 
 [node name="Tepanio" parent="NPCs" unique_id=151004381 instance=ExtResource("3_lk7wy")]
-position = Vector2(944, -36)
+position = Vector2(1885, -36)
 scale = Vector2(0.3508006, 0.3508006)
 
 [node name="Backgrounds" type="Node2D" parent="." unique_id=1938808367]
+z_index = -1
+position = Vector2(705, 0)
 
 [node name="Parallax2D" type="Parallax2D" parent="Backgrounds" unique_id=67340837]
 z_index = -1
+scroll_offset = Vector2(30, -44)
 
 [node name="BGLayer1" type="Node2D" parent="Backgrounds/Parallax2D" unique_id=902940670]
 position = Vector2(29, 485)
@@ -108,21 +152,43 @@ texture = ExtResource("5_v8ht5")
 
 [node name="BGLayer2" type="Parallax2D" parent="Backgrounds" unique_id=682462650]
 z_index = -50
-scroll_scale = Vector2(0.95, 0.99)
+scroll_offset = Vector2(42, -33)
 
 [node name="Fields" type="Node2D" parent="Backgrounds/BGLayer2" unique_id=834053862]
 z_index = -400
 
 [node name="Field" type="Sprite2D" parent="Backgrounds/BGLayer2/Fields" unique_id=2143425781]
-position = Vector2(893, -209)
+position = Vector2(893, -175)
+texture = ExtResource("6_e0fhc")
+
+[node name="Field7" type="Sprite2D" parent="Backgrounds/BGLayer2/Fields" unique_id=430997205]
+position = Vector2(1675, -67)
 texture = ExtResource("6_e0fhc")
 
 [node name="Field2" type="Sprite2D" parent="Backgrounds/BGLayer2/Fields" unique_id=461080259]
-position = Vector2(1204, -211)
+position = Vector2(1204, -177)
 texture = ExtResource("6_e0fhc")
 
+[node name="Sprite2D3" type="Sprite2D" parent="Backgrounds/BGLayer2/Fields/Field2" unique_id=585337816]
+position = Vector2(167, 16)
+texture = ExtResource("7_eklry")
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/BGLayer2/Fields/Field2" unique_id=1560451538]
+position = Vector2(145, 52)
+texture = ExtResource("7_b7w1c")
+
 [node name="Field3" type="Sprite2D" parent="Backgrounds/BGLayer2/Fields" unique_id=631928860]
-position = Vector2(426, -199)
+position = Vector2(426, -148)
+texture = ExtResource("6_e0fhc")
+
+[node name="Field8" type="Sprite2D" parent="Backgrounds/BGLayer2/Fields" unique_id=118368653]
+position = Vector2(-24, -105)
+rotation = -0.12918495
+texture = ExtResource("6_e0fhc")
+
+[node name="Field9" type="Sprite2D" parent="Backgrounds/BGLayer2/Fields" unique_id=35150607]
+position = Vector2(-468, -33)
+rotation = -0.086236574
 texture = ExtResource("6_e0fhc")
 
 [node name="Field4" type="Sprite2D" parent="Backgrounds/BGLayer2/Fields" unique_id=1578671095]
@@ -131,17 +197,41 @@ texture = ExtResource("6_e0fhc")
 
 [node name="Field5" type="Sprite2D" parent="Backgrounds/BGLayer2/Fields" unique_id=1278284498]
 position = Vector2(2184, -162)
+rotation = 0.20030372
 texture = ExtResource("6_e0fhc")
 
 [node name="Field6" type="Sprite2D" parent="Backgrounds/BGLayer2/Fields" unique_id=1796559893]
 position = Vector2(1693, -191)
 texture = ExtResource("6_e0fhc")
 
+[node name="Sprite2D2" type="Sprite2D" parent="Backgrounds/BGLayer2/Fields/Field6" unique_id=193702144]
+position = Vector2(-246, 72)
+rotation = -0.007974475
+texture = ExtResource("8_cc7bq")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Backgrounds/BGLayer2/Fields/Field6" unique_id=1458282090]
+position = Vector2(-124, 46)
+texture = ExtResource("7_eklry")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Backgrounds/BGLayer2/Fields/Field6" unique_id=200718997]
+position = Vector2(-22, 54)
+texture = ExtResource("7_eklry")
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/BGLayer2/Fields/Field6" unique_id=1571462909]
+position = Vector2(-150, 82)
+texture = ExtResource("7_b7w1c")
+
 [node name="Roads" type="Node2D" parent="Backgrounds/BGLayer2" unique_id=657026372]
 
 [node name="StoneRoad" type="Sprite2D" parent="Backgrounds/BGLayer2/Roads" unique_id=1226952060]
 position = Vector2(1727.9999, -120.00006)
 rotation = 0.4376066
+texture = ExtResource("7_g76lq")
+
+[node name="StoneRoad2" type="Sprite2D" parent="Backgrounds/BGLayer2/Roads" unique_id=924863694]
+position = Vector2(1641.9999, -56.999992)
+rotation = -2.2946486
+scale = Vector2(0.96866417, 1.0196644)
 texture = ExtResource("7_g76lq")
 
 [node name="Town" type="Node2D" parent="Backgrounds/BGLayer2" unique_id=1916781117]
@@ -164,23 +254,33 @@ z_index = -1
 position = Vector2(1749, -186)
 texture = ExtResource("10_ax67d")
 
-[node name="Houses" type="Node2D" parent="Backgrounds/BGLayer2" unique_id=490577535]
+[node name="Buildings" type="Node2D" parent="Backgrounds/BGLayer2" unique_id=490577535]
 
-[node name="House" type="Sprite2D" parent="Backgrounds/BGLayer2/Houses" unique_id=1571724499]
+[node name="House" type="Sprite2D" parent="Backgrounds/BGLayer2/Buildings" unique_id=1571724499]
 position = Vector2(1764, -117)
 texture = ExtResource("11_nxl1c")
 
-[node name="House2" type="Sprite2D" parent="Backgrounds/BGLayer2/Houses" unique_id=340367910]
+[node name="House2" type="Sprite2D" parent="Backgrounds/BGLayer2/Buildings" unique_id=340367910]
 position = Vector2(1668, -128)
 texture = ExtResource("12_egmic")
 
-[node name="House3" type="Sprite2D" parent="Backgrounds/BGLayer2/Houses" unique_id=425462634]
+[node name="House3" type="Sprite2D" parent="Backgrounds/BGLayer2/Buildings" unique_id=425462634]
 position = Vector2(1409, -173)
 texture = ExtResource("12_egmic")
 
-[node name="House4" type="Sprite2D" parent="Backgrounds/BGLayer2/Houses" unique_id=1639786118]
+[node name="House4" type="Sprite2D" parent="Backgrounds/BGLayer2/Buildings" unique_id=1639786118]
 position = Vector2(1807, -142)
 texture = ExtResource("13_dj7l0")
+
+[node name="Windmill" parent="Backgrounds/BGLayer2/Buildings" unique_id=1027178472 instance=ExtResource("14_bwqfb")]
+position = Vector2(1447, -170)
+
+[node name="Windmill2" parent="Backgrounds/BGLayer2/Buildings" unique_id=1835722144 instance=ExtResource("14_bwqfb")]
+position = Vector2(2093, -170)
+
+[node name="WaterWheel" parent="Backgrounds/BGLayer2/Buildings" unique_id=1355157705 instance=ExtResource("18_8c86s")]
+z_index = 1
+position = Vector2(1843, -138)
 
 [node name="Environment" type="Node2D" parent="Backgrounds/BGLayer2" unique_id=1338798440]
 
@@ -201,19 +301,167 @@ autoplay = "default"
 frame_progress = 0.5871844
 flip_h = true
 
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/BGLayer2/Environment" unique_id=1552336117]
+position = Vector2(-649, -6)
+texture = ExtResource("22_oqixs")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Backgrounds/BGLayer2/Environment" unique_id=40973843]
+position = Vector2(-517, -33)
+texture = ExtResource("22_oqixs")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Backgrounds/BGLayer2/Environment" unique_id=1405250437]
+position = Vector2(-380, -29)
+texture = ExtResource("22_oqixs")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Backgrounds/BGLayer2/Environment" unique_id=1287324680]
+position = Vector2(-245, -45)
+texture = ExtResource("22_oqixs")
+
 [node name="BGLayer3" type="Parallax2D" parent="Backgrounds" unique_id=1738668392]
 z_index = -10
+scroll_offset = Vector2(1764, 1)
 
 [node name="StoneRoad2" type="Sprite2D" parent="Backgrounds/BGLayer3" unique_id=5516683]
-position = Vector2(1615, -44)
+position = Vector2(-149, -45)
 texture = ExtResource("8_1y0g4")
 
 [node name="Clouds" type="Node2D" parent="Backgrounds" unique_id=1986732859]
+z_index = -9
+position = Vector2(694, -43)
 
 [node name="Cloud" type="Sprite2D" parent="Backgrounds/Clouds" unique_id=697928840]
-position = Vector2(1251, -612)
+position = Vector2(1744, -506)
 texture = ExtResource("18_v8ht5")
+script = ExtResource("25_qnm3c")
 
 [node name="Cloud2" type="Sprite2D" parent="Backgrounds/Clouds/Cloud" unique_id=516010926]
+z_index = -2
 position = Vector2(-55, 386)
 texture = ExtResource("19_bwqfb")
+
+[node name="FrontLayer" type="Node2D" parent="Backgrounds" unique_id=2021988931]
+z_index = -10
+
+[node name="House" type="Sprite2D" parent="Backgrounds/FrontLayer" unique_id=1437243709]
+z_index = -1
+position = Vector2(985.00006, -149.00002)
+scale = Vector2(0.41606116, 0.41606116)
+texture = ExtResource("21_xyede")
+
+[node name="BGThing" type="Node2D" parent="Backgrounds/FrontLayer" unique_id=1873089431]
+position = Vector2(985, -149.00002)
+scale = Vector2(0.41606116, 0.41606116)
+
+[node name="Brudge" type="Sprite2D" parent="Backgrounds/FrontLayer/BGThing" unique_id=1124891956]
+z_index = 1
+position = Vector2(2989.945, 158.63054)
+scale = Vector2(2.4034927, 2.4034927)
+texture = ExtResource("25_36jpd")
+
+[node name="House" type="Sprite2D" parent="Backgrounds/FrontLayer/BGThing" unique_id=880675276]
+position = Vector2(1329.1315, 136.99913)
+scale = Vector2(1.9725853, 1.9725853)
+texture = ExtResource("25_ctmom")
+
+[node name="Barn" type="Sprite2D" parent="Backgrounds/FrontLayer/BGThing" unique_id=1746771464]
+position = Vector2(790.7491, 112.964195)
+scale = Vector2(2.6474485, 2.6474485)
+texture = ExtResource("29_wd86x")
+
+[node name="FrontFields" type="Node2D" parent="Backgrounds/FrontLayer" unique_id=1854983072]
+z_index = -20
+
+[node name="Field" type="Sprite2D" parent="Backgrounds/FrontLayer/FrontFields" unique_id=1632784477]
+position = Vector2(1542, -43.999996)
+rotation = 0.07489524
+texture = ExtResource("25_5bs3x")
+
+[node name="Field7" type="Sprite2D" parent="Backgrounds/FrontLayer/FrontFields" unique_id=1070728529]
+position = Vector2(1981, -57.999996)
+rotation = -0.0049297214
+texture = ExtResource("25_5bs3x")
+
+[node name="Field8" type="Sprite2D" parent="Backgrounds/FrontLayer/FrontFields" unique_id=598934743]
+position = Vector2(2281.0002, -51.000008)
+rotation = -0.03515561
+texture = ExtResource("25_5bs3x")
+
+[node name="Field9" type="Sprite2D" parent="Backgrounds/FrontLayer/FrontFields" unique_id=2119629869]
+position = Vector2(2765, -69.999985)
+rotation = 0.038540944
+texture = ExtResource("25_5bs3x")
+
+[node name="Field2" type="Sprite2D" parent="Backgrounds/FrontLayer/FrontFields" unique_id=804026929]
+position = Vector2(1083, -52)
+texture = ExtResource("25_5bs3x")
+
+[node name="Field3" type="Sprite2D" parent="Backgrounds/FrontLayer/FrontFields" unique_id=324505012]
+position = Vector2(627, -51)
+texture = ExtResource("25_5bs3x")
+
+[node name="Field4" type="Sprite2D" parent="Backgrounds/FrontLayer/FrontFields" unique_id=1369723225]
+position = Vector2(199, -23)
+texture = ExtResource("25_5bs3x")
+
+[node name="Field5" type="Sprite2D" parent="Backgrounds/FrontLayer/FrontFields" unique_id=35127716]
+position = Vector2(-267, 7)
+texture = ExtResource("25_5bs3x")
+
+[node name="Field6" type="Sprite2D" parent="Backgrounds/FrontLayer/FrontFields" unique_id=2108880867]
+position = Vector2(-453, 15)
+texture = ExtResource("25_5bs3x")
+
+[node name="River" type="Sprite2D" parent="Backgrounds/FrontLayer" unique_id=1422305529]
+position = Vector2(2181, -23)
+texture = ExtResource("26_oxkj4")
+
+[node name="Water" type="ColorRect" parent="Backgrounds/FrontLayer" unique_id=652902109]
+z_index = 1
+material = SubResource("ShaderMaterial_qnm3c")
+offset_left = 2111.0
+offset_top = 7.0
+offset_right = 2367.0
+offset_bottom = 96.0
+script = ExtResource("29_36jpd")
+water_color = Color(0, 0.16470589, 0.5372549, 1)
+
+[node name="FishingArea" type="Area2D" parent="Backgrounds/FrontLayer/Water" unique_id=343589328]
+collision_layer = 0
+script = ExtResource("30_8c86s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Backgrounds/FrontLayer/Water/FishingArea" unique_id=1158683373]
+position = Vector2(131.5, 7.5)
+shape = SubResource("RectangleShape2D_qnm3c")
+debug_color = Color(0.04912115, 0.33008716, 0.58239275, 0.41960785)
+
+[node name="LureArea" type="Area2D" parent="Backgrounds/FrontLayer/Water" unique_id=1868268010]
+collision_layer = 16
+collision_mask = 24
+script = ExtResource("31_oqixs")
+fish_pool = Array[ExtResource("32_xukqm")]([ExtResource("33_jvh7g"), ExtResource("34_0agr0")])
+fish_remaining = 99
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Backgrounds/FrontLayer/Water/LureArea" unique_id=788688814]
+position = Vector2(128, 47)
+shape = SubResource("RectangleShape2D_u6e4d")
+debug_color = Color(0.7117561, 0.30348817, 0.940027, 0.41960785)
+
+[node name="Decals" type="Node2D" parent="Backgrounds/FrontLayer" unique_id=1131822825]
+z_index = -5
+
+[node name="stump" type="Sprite2D" parent="Backgrounds/FrontLayer/Decals" unique_id=1708203526]
+position = Vector2(-295, -35)
+texture = ExtResource("39_xukqm")
+
+[node name="stump3" type="Sprite2D" parent="Backgrounds/FrontLayer/Decals" unique_id=1764709760]
+position = Vector2(733, -74)
+texture = ExtResource("40_jvh7g")
+
+[node name="stump2" type="Sprite2D" parent="Backgrounds/FrontLayer/Decals" unique_id=1551304609]
+position = Vector2(66, -61)
+scale = Vector2(1.3579874, 1.3579874)
+texture = ExtResource("39_xukqm")
+
+[node name="DirtRoad" type="Sprite2D" parent="Backgrounds/FrontLayer/Decals" unique_id=21851793]
+position = Vector2(1236, -38)
+texture = ExtResource("41_0agr0")
