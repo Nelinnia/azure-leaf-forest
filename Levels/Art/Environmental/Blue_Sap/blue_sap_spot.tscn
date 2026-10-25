@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://cskjkmtj7wdx5"]
+
+[ext_resource type="Script" uid="uid://b31upqgduxj0b" path="res://Levels/Art/Environmental/Blue_Sap/blue_sap_spot.gd" id="1_8dsxv"]
+[ext_resource type="Texture2D" uid="uid://bnfwx3opu7fuo" path="res://Levels/Art/Environmental/Blue_Sap/Blue_Sap_01.png" id="1_20a1w"]
+[ext_resource type="Texture2D" uid="uid://bvm4fll53kua2" path="res://Levels/Art/Environmental/Blue_Sap/Blue_Sap_02.png" id="2_yvrcf"]
+[ext_resource type="Texture2D" uid="uid://rd6hh6eo6ibw" path="res://Levels/Art/Environmental/Blue_Sap/Blue_Sap_03.png" id="3_8dsxv"]
+[ext_resource type="Texture2D" uid="uid://duc7fsl3cujmb" path="res://Levels/Art/Environmental/Blue_Sap/Blue_Sap_04.png" id="4_c1e1c"]
+[ext_resource type="Texture2D" uid="uid://bn1uscup5ouho" path="res://Levels/Art/Environmental/Blue_Sap/Blue_Sap_05.png" id="5_v8xiq"]
+[ext_resource type="Texture2D" uid="uid://cwysafi4yia17" path="res://Levels/Art/Environmental/Blue_Sap/Blue_Sap_06.png" id="6_seh5s"]
+[ext_resource type="Texture2D" uid="uid://dx01mfcrv2gck" path="res://Levels/Art/Environmental/Blue_Sap/Blue_Sap_07.png" id="7_el1e8"]
+[ext_resource type="Texture2D" uid="uid://b5vfhct4de6qw" path="res://Levels/Art/Environmental/Blue_Sap/Blue_Sap_08.png" id="8_ychba"]
+[ext_resource type="Texture2D" uid="uid://bgmclpx6aocmo" path="res://Levels/Art/Environmental/Blue_Sap/Blue_Sap_09.png" id="9_18a43"]
+[ext_resource type="Texture2D" uid="uid://b7b1xmrfs1wix" path="res://Levels/Art/Environmental/Blue_Sap/Blue_Sap_010.png" id="10_qm7wi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nq3hm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_20a1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_yvrcf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8dsxv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_c1e1c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_v8xiq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_seh5s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_el1e8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ychba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_18a43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qm7wi")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="Blue_Sap_Spot" type="Node2D" unique_id=146433207]
+script = ExtResource("1_8dsxv")
+
+[node name="Blue_Sap_Spot_Anim" type="AnimatedSprite2D" parent="." unique_id=772843892]
+unique_name_in_owner = true
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_nq3hm")
+frame_progress = 0.52469605
+
+[node name="Marker2D" type="Marker2D" parent="Blue_Sap_Spot_Anim" unique_id=494483590]
+position = Vector2(16, 48)

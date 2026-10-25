@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bi11bcsygihe8"]
+
+[ext_resource type="Texture2D" uid="uid://dgddhmgrc7n0m" path="res://Levels/Art/Environmental/Blue_Sap/Blue_Sap_Ball.png" id="1_1y6oo"]
+[ext_resource type="Script" uid="uid://do547vb0r3myw" path="res://Levels/Art/Environmental/Blue_Sap/blue_sap_ball.gd" id="2_e8ilx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5yyr1"]
+radius = 7.6045623
+
+[node name="BlueSapBall" type="Node2D" unique_id=1425428365]
+scale = Vector2(0.1, 0.1)
+
+[node name="BlueSapBallAnim" type="Sprite2D" parent="." unique_id=669976928]
+unique_name_in_owner = true
+texture = ExtResource("1_1y6oo")
+script = ExtResource("2_e8ilx")
+
+[node name="Area2D" type="Area2D" parent="BlueSapBallAnim" unique_id=1351114905]
+unique_name_in_owner = true
+position = Vector2(0, -49.999992)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlueSapBallAnim/Area2D" unique_id=1584447300]
+position = Vector2(0, 29.999996)
+scale = Vector2(10.52, 10.52)
+shape = SubResource("CircleShape2D_5yyr1")
+debug_color = Color(0.63795376, 0.52400815, 0.13299233, 0.41960785)
